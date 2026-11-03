@@ -1,0 +1,5 @@
+Solver_Variant,States_Evaluated,Mean_K_Found,Exact_K_Match_Rate,Mean_Optimality_Gap,Mean_Risk_Envelope,Envelope_Feasible_Rate
+Exact-2^n-Enumeration (n=12),40,5.0,1.0,0.0,3.4337175673510636,1.0
+Safe-MinRisk (M(S)-Stratified Multi-Weight),40,5.0,1.0,0.0,3.4337175673510636,1.0
+Naive-ExpectedLoss-Greedy (Unstratified q_i*E_i),40,4.925,0.925,0.075,3.296368864657021,1.0
+DC-PRISM (Adaptive Safe Allowance S_t*),40,4.025,0.805,0.0,3.5720862085136047,1.0

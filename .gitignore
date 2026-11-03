@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+.venv/
+data/*
+!data/README.md
+*.npz
+*.xlsx
+*.xls
+*.docx
+runs/
+private/
+*.log

@@ -1,0 +1,24 @@
+{
+  "sort_keys": [
+    "dataset",
+    "seed",
+    "round",
+    "policy"
+  ],
+  "rows": 6400,
+  "columns": {
+    "D_ids_hash": "1e07cb57d95e874b7f38899000833ef38bc3381f5254b6a8041e821592c57048",
+    "O_ids_hash": "8c08188131577b0d86ce31e2159eb591b47f6eaa41b0718666e16fa84ad13ea8",
+    "C_ids_hash": "aa02c5860786a28648d7a384f6fcd1e54bce9579ce2b7fa994681b938692cea5",
+    "Q_ids_hash": "6491bed487860af52adf521120da4276e99a18fe43f536cd2f1980142bb265d2",
+    "selected_ids": "982d68c4233fdfb0ca310b99b4bcd28f7fc03deffcaf99ee0145f3c57a6fecc1",
+    "released_ids": "73b04972ccf70783ab760147112d52669cb5faa1296cc7cb06e0bf0e3addd1db",
+    "budget_hash": "8918c876f9a65900c0a5e2085f5dddac068040748aa4058e033c6088e0ca9610",
+    "preprocessing_hash": "374717b1e97e3e180b20415c63caefb6a89dc134ff2a8d1048761390a82e631e",
+    "B_t": "8db11c29a62095a9b54c039a4826ce21f0b664dd84e900297a5cdc2db1d305c9",
+    "brier_t": "868d8e34a4f9346935f3613593a913351779a840fce20a0ba7fbc2f8b9bf06c5",
+    "risk_envelope": "b8fe1823d2b7a32c769465c1dcca5a4fd6650042dd2a7499bd72f4962952bda5",
+    "realized_loss": "bf55da7310e804de55b2b42983269457a8e7b82e38269dc63ef42c8b2a8961ce",
+    "k_selected": "3a539a624a07d775955d183132a5edf0078079758018db75cb1474b0eff06074"
+  }
+}

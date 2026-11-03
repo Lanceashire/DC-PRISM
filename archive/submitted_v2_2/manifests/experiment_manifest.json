@@ -1,0 +1,65 @@
+{
+  "package_name": "DC_PRISM_DASFAA2027_Revision_Complete_Package",
+  "revision_round": "Final_Closure_v2.2_Freeze",
+  "core_algorithm_frozen": true,
+  "p2_confirmation_frozen": true,
+  "p4_preprocessing_mode": "Option_A_Strictly_Inductive_D0_Only",
+  "p4_seeds": [
+    4001,
+    4002,
+    4003,
+    4004,
+    4005,
+    4006,
+    4007,
+    4008,
+    4009,
+    4010,
+    4011,
+    4012,
+    4013,
+    4014,
+    4015,
+    4016
+  ],
+  "p4_methods": [
+    "Orig-MinRisk",
+    "Orig-PA",
+    "Safe-MinRisk",
+    "Safe-PA-NoGate",
+    "Fixed-Eps-Safe-PA",
+    "DC-PRISM",
+    "D-Only-Safe-PA",
+    "PRISM-ValueUCB",
+    "BAIT-Cost-Safe",
+    "OrdinaryOnly"
+  ],
+  "runtime_note": "Runtime depends on hardware; fast mode is intended for verification rather than full statistical reproduction.",
+  "audit_checks_verified": {
+    "A_p2_p3_pure_bernoulli_p_true_zero_overwrites": true,
+    "B_q_coverage_evaluated_on_true_dgp_p_true": true,
+    "C_p4_state_construction_zero_hidden_y": true,
+    "D_p4_option_A_strictly_inductive_D0_only_preprocessing": true,
+    "E_hidden_label_mutation_test_100pct_passed": true,
+    "F_true_delayed_ordinary_feedback_queue_L2": true,
+    "G_duplicate_exploration_rate_0pct": true,
+    "H_zero_post_release_modification_of_X": true,
+    "I_four_real_datasets_16_seeds_completed": [
+      "LendingClub",
+      "HMEQ",
+      "UCI_Credit",
+      "PPDai"
+    ],
+    "J_dataset_level_paired_statistics_and_equal_weight_meta_summary": true,
+    "K_Qk_Ck_J_and_prob_Ck_gt_Qk_computed": true,
+    "L_BRP_HRR_computed": true,
+    "M_p3_world_D_conditional_z_and_finite_family_oracle": true,
+    "N_lendingclub_provenance_chain_16566_11910_10624_documented": true,
+    "O_standalone_reproduce_sh_verified": true
+  },
+  "entrypoints": {
+    "fast_verification": "bash reproduce_fast.sh",
+    "full_paper_reproduction": "bash reproduce_full.sh",
+    "default_reproduction": "bash reproduce.sh"
+  }
+}

@@ -1,0 +1,9 @@
+# P0 Exact Small-Pool Benchmark Configuration
+suite: p0_exact
+n_states: 40
+candidate_pool_size_n: 12
+exact_enumeration_threshold: 16
+alpha: 0.10
+bernstein_formula: 'mu_U + sqrt(2 * V_U * log(1/alpha)) + (M/3) * log(1/alpha)'
+magic_scaling_factor: null  # 0.32 factor strictly removed
+seed_range: [500, 539]

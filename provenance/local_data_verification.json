@@ -1,0 +1,32 @@
+{
+  "sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "byte_identity": "PASS",
+  "datasets": {
+    "LendingClub": {
+      "rows": 10624,
+      "features": 6,
+      "default_rate": 0.20698418674698796,
+      "missing_covariates": 0
+    },
+    "HMEQ": {
+      "rows": 5960,
+      "features": 6,
+      "default_rate": 0.199496644295302,
+      "missing_covariates": 2132
+    },
+    "UCI_Credit": {
+      "rows": 30000,
+      "features": 6,
+      "default_rate": 0.2212,
+      "missing_covariates": 0
+    },
+    "PPDai": {
+      "rows": 55596,
+      "features": 6,
+      "default_rate": 0.1291999424419023,
+      "missing_covariates": 0
+    }
+  },
+  "raw_source_provenance": "NOT_INDEPENDENTLY_VERIFIED",
+  "redistribution_rights": "NOT_ESTABLISHED_BY_HASH_CHECK"
+}

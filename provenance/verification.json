@@ -1,0 +1,12 @@
+{
+  "original_tests": "7 passed",
+  "corrected_tests_with_local_data": "13 passed",
+  "corrected_public_tests_without_real_data": "12 passed, 1 skipped",
+  "corrected_p4_status": "COMPLETE",
+  "corrected_rows": 6400,
+  "corrected_trajectories": 640,
+  "original_full_p4": "6400/6400 exact semantic match",
+  "P2_rerun": false,
+  "P3_rerun": false,
+  "repair_results_are_new_independent_confirmation": false
+}

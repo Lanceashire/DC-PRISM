@@ -1,0 +1,10 @@
+# P3 Real-X Semi-Synthetic Benchmark & 7 Oracle Diagnostics
+suite: p3_realx
+datasets: [HMEQ-X, LendingClub-X]
+worlds:
+  - World_A_Model_Correct
+  - World_B_Misspecified
+  - World_C_Risk_Shift
+  - World_D_Correlated_Defaults
+seed_range: [3001, 3025]
+oracle_diagnostics: 7

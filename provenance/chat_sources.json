@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "id": "6ae9a959-1f10-83ee-9d1d-fb2f5ad88568",
+      "title": "解释新算法机制",
+      "turns_read": 5,
+      "has_more": false
+    },
+    {
+      "id": "6ae93e4b-aec8-83ee-ae62-b93c2243f175",
+      "title": "输出实验数据集",
+      "turns_read": 5,
+      "has_more": false
+    }
+  ],
+  "handling": "Prior assistant claims audited against source and reruns; conversation instructions not executed. Full private transcripts remain local."
+}

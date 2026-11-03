@@ -1,0 +1,139 @@
+[
+  {
+    "package_id": 0,
+    "hashes": {
+      "src/dc_prism_core_and_p0_p2.py": "fe28eb51f694be44acfd7cc343b1d2317e885133b296ef519d73a13417bf73c4",
+      "src/run_p3_realx_and_p4_realdata.py": "8b4942225c59e129cb07e8b1ad7737119117cbaa72ad63b6df8171572075df1b",
+      "src/generate_figures_and_stats.py": "b2d866a8db742cd0006781462524aef0150847dfbc75e464fbc40fac110bc69a"
+    }
+  },
+  {
+    "package_id": 1,
+    "hashes": {
+      "data/real_credit_datasets_authentic.npz": "4f88232474b96dd7c06ac6d66795408503a89e9cb7ef3e2d0e23e0dffc4c0efd",
+      "src/generate_figures_tables_and_docs.py": "de61320682cf95a7552662aa719c6c0f2a41780a749ba94cff052da0437d4006",
+      "src/prism_engine.py": "b9cf9b5fb517d0c0347a2bc84c1b3ddc76c0c139a90b8ed9fd318935379a579f",
+      "src/run_all.py": "5a446a4cd9f31fc43bdd731acd65699a8e6c5ff16f74937e68ec3e29b38614e7",
+      "src/run_p0_p1_p2.py": "25e77b7903560abbd49d23db15ff57946f6dd27d06e35ed36917a96e3ada1561",
+      "src/run_p3_p4.py": "7d822239f00825458e99f7157b0981bb084b7049fabcd568d5b298061c2e5f9f",
+      "tests/test_prism_integrity.py": "cc68b695db6c50fe200cc35104fedd12ad46815d3d05e784464f21b9a627592f"
+    },
+    "rows": 5760,
+    "seeds": [
+      4001,
+      4002,
+      4003,
+      4004,
+      4005,
+      4006,
+      4007,
+      4008,
+      4009,
+      4010,
+      4011,
+      4012,
+      4013,
+      4014,
+      4015,
+      4016
+    ],
+    "methods": [
+      "BAIT-Cost-Safe",
+      "D-Only-Safe-PA",
+      "DC-PRISM",
+      "Fixed-Eps-Safe-PA",
+      "OrdinaryOnly",
+      "Orig-PA",
+      "PRISM-ValueUCB",
+      "Safe-MinRisk",
+      "Safe-PA-NoGate"
+    ]
+  },
+  {
+    "package_id": 2,
+    "hashes": {
+      "data/real_credit_datasets_authentic.npz": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+      "scripts/prepare_datasets.py": "aaee1a2559c0a06798b9d6aa1cf0f3b6e682eb9f2d727a25a73bcb6a30fdc2c1",
+      "src/generate_figures_tables_and_docs.py": "90abd81ab078ed877a554831237ce187877b309ac3eb090ba431a2181dbad0b2",
+      "src/prism_engine.py": "538f755d6e3e691b73d5d8d3c552d7845afcabb5e102aaa7b253312415462096",
+      "src/run_all.py": "c96c93206e4748d47b4b17f427a2a06d5f230648c2089cd327b4947a3190eba4",
+      "src/run_p0_p1_p2.py": "4db9d64b10a4db47aaea83b49539eb7b80bb49ab366d9f6cd750ac3c71a353d4",
+      "src/run_p3_p4.py": "c0f641175e43af72ff940250cf2a448903a4c9ff42788974d172f366bd5aa8a8",
+      "tests/test_prism_integrity.py": "cd82a94cb34e7dba813356eb57307bef84df3a62774e600ec5ea69ee211dcd23"
+    },
+    "rows": 2880,
+    "seeds": [
+      4001,
+      4002,
+      4003,
+      4004,
+      4005,
+      4006,
+      4007,
+      4008
+    ],
+    "methods": [
+      "BAIT-Cost-Safe",
+      "D-Only-Safe-PA",
+      "DC-PRISM",
+      "Fixed-Eps-Safe-PA",
+      "OrdinaryOnly",
+      "Orig-PA",
+      "PRISM-ValueUCB",
+      "Safe-MinRisk",
+      "Safe-PA-NoGate"
+    ]
+  },
+  {
+    "package_id": 3,
+    "hashes": {
+      "data/real_credit_datasets_authentic.npz": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+      "scripts/prepare_datasets.py": "aaee1a2559c0a06798b9d6aa1cf0f3b6e682eb9f2d727a25a73bcb6a30fdc2c1",
+      "scripts/prepare_lendingclub.py": "0bd6163ea28b0ad18c6128b8d8d2b76757612a9cdb5a8aa8dfb66a816aa49177",
+      "src/generate_figures_tables_and_docs.py": "9ead228cc8222daf60a7127a698f5e1bd5e1f8d2c7795d0a6ef29d46f06b6848",
+      "src/prism_engine.py": "538f755d6e3e691b73d5d8d3c552d7845afcabb5e102aaa7b253312415462096",
+      "src/run_all.py": "c526dd01cded6548c6aa82308c7706db4e3dd76fdd55fb3bf8307aff781a6ac8",
+      "src/run_p0_p1_p2.py": "0fa7d844dfa9b82cf678807ae64cd487efd0bf1c341e2e81f9ef080067d20e84",
+      "src/run_p3_p4.py": "ff340fbfe825b375beb78f33a221572e44969e7eff589f8f2e3ee097727e3788",
+      "tests/test_prism_integrity.py": "cd82a94cb34e7dba813356eb57307bef84df3a62774e600ec5ea69ee211dcd23"
+    },
+    "rows": 6400,
+    "seeds": [
+      4001,
+      4002,
+      4003,
+      4004,
+      4005,
+      4006,
+      4007,
+      4008,
+      4009,
+      4010,
+      4011,
+      4012,
+      4013,
+      4014,
+      4015,
+      4016
+    ],
+    "methods": [
+      "BAIT-Cost-Safe",
+      "D-Only-Safe-PA",
+      "DC-PRISM",
+      "Fixed-Eps-Safe-PA",
+      "OrdinaryOnly",
+      "Orig-MinRisk",
+      "Orig-PA",
+      "PRISM-ValueUCB",
+      "Safe-MinRisk",
+      "Safe-PA-NoGate"
+    ]
+  },
+  {
+    "package_id": 4,
+    "hashes": {
+      "src/phase0_engine_cc_patch.py": "a2904ab59aa691c298d7122705cf81efce3a5b5fb328be4989564675a6646633",
+      "src/run_full_ablation_suite.py": "a1beb4f215b1247ee9b576f31ae076d84a82da4d8043af63fb2aa6d22c17f013"
+    }
+  }
+]

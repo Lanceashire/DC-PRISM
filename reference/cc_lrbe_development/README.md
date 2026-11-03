@@ -1,0 +1,1 @@
+Historical development source only. Do not import this module into the active experiment. Its FAVE formula, propensity weighting and solver claims differ from the final DC-PRISM implementation. See docs/INTEGRATION.zh.md.

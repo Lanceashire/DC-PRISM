@@ -1,0 +1,35 @@
+# P4 repair-v1: supplied real-label replay; original raw-source provenance not independently certified
+suite: p4_real_labels
+authentic_labels_only: true
+synthetic_binomial_labels_allowed: false
+split_before_preprocess: true
+preprocessing_mode: Option_A_Strictly_Inductive_D0_Only
+historical_d0_size: 68
+std_numerical_floor: 1.0e-3
+n_rounds_per_trajectory: 10
+ordinary_feedback_delay_rounds: 2
+primary_metric: ALC-Brier
+secondary_metric: Round10-Brier
+transfer_check: BoostedTreeTransferLearner
+primary_datasets: [HMEQ, LendingClub, UCI_Credit]
+exploratory_datasets: [PPDai]
+seed_range: [4001, 4016]
+n_seeds_per_dataset: 16
+frozen_policies:
+  - Orig-MinRisk
+  - Orig-PA
+  - Safe-MinRisk
+  - Safe-PA-NoGate
+  - Fixed-Eps-Safe-PA
+  - DC-PRISM
+  - D-Only-Safe-PA
+  - PRISM-ValueUCB
+  - BAIT-Cost-Safe
+  - OrdinaryOnly
+
+protocol_version: dc-prism-integration-v1
+exploration_feedback_delay_rounds: 1
+metric_timing: start_of_round_after_due_releases
+fixed_eps_integer_rule: ceil
+raw_source_provenance_verified: false
+risk_score_has_simultaneous_coverage_certificate: false

@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/Lanceashire/LexiRiskLabel",
+  "commit": "b4f3f2db6788bb8c7bb127a209e4f518fbafe226",
+  "role": "reference_only_not_a_stage_gate",
+  "copied_files": [
+    "LICENSE",
+    "src/phase0_engine.py"
+  ]
+}

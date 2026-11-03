@@ -1,0 +1,31 @@
+{
+  "protocol_version": "dc-prism-integration-v1",
+  "suite": "p4",
+  "mode": "full",
+  "status": "COMPLETE",
+  "python": "3.12.14",
+  "numpy": "2.1.3",
+  "scipy": "1.14.1",
+  "pandas": "2.2.3",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "source_sha256": {
+    "prism_engine.py": "f90c1f1fb727cf4d3b281b3e13bdc4aa7f1ff9f35a69de019acc1ab8e98105fe",
+    "run_p3_p4.py": "2aada41b56214ceb8c96eb2bafc87c1c2a7175973f2294f325bf31b9c44f19da",
+    "run_all.py": "5bb91b4dc90fbfe220f6e756877618e0de6754f9de96300f8fa21846978f99e3"
+  },
+  "script_sha256": {
+    "validate_p4.py": "c940097aa8dc3ce777223152dcef96b099d8c2cc72ffd3dc834244b759036d3f",
+    "verify_local_data.py": "d4ec6488228308568aa91375d38ba3a0de0ca9afae90d1e6d63b02b1ea9d190f"
+  },
+  "metric_timing": "start_of_round_after_due_releases",
+  "confirmation_claim": false,
+  "validation": {
+    "rows": 6400,
+    "trajectories": 640,
+    "first_round_causality": "PASS",
+    "release_schedule": "PASS",
+    "shared_budget": "PASS",
+    "safe_envelope_feasibility": "PASS",
+    "repeat_exploration": "PASS"
+  }
+}

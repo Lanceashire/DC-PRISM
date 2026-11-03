@@ -1,0 +1,12 @@
+# P2 Confirmation Benchmark & Nearest-Neighbor Ablations A1-A5
+suite: p2_confirmation
+n_independent_worlds: 128
+seed_range: [2001, 2128]
+frozen_hyperparameters:
+  alpha: 0.10
+  delta_r: 0.10
+  beta_val: 0.20
+  lambda_K: 0.22
+  delta_gate: 0.08
+multiple_testing_correction: Holm-Bonferroni
+primary_ablations: [A1_Safe-PA-NoGate, A2_Fixed-Eps-Safe-PA, A3_D-Only-Safe-PA, A4_PRISM-ValueUCB, A5_Safe-MinRisk]

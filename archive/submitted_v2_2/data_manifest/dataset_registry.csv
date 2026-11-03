@@ -1,0 +1,5 @@
+dataset,role,raw_source_rows,legacy_registry_rows,n_rows,n_features,default_rate,target_definition,exposure_proxy_field,authentic_labels
+LendingClub,Primary_External_Real,11910,16566,10624,6,0.206984,loan_status: Charged Off (1) vs Fully Paid (0); 1286 unresolved Current/Late/Grace loans excluded,loan_amnt (funded/requested loan principal proxy E_i),True
+HMEQ,Primary_Real,5960,5960,5960,6,0.199497,"BAD (1=default/serious delinquency, 0=paid)",LOAN (requested home-equity loan amount exposure proxy E_i),True
+UCI_Credit,Primary_Real,30000,30000,30000,6,0.2212,default payment next month (1/0),"LIMIT_BAL (credit card limit used as upper exposure proxy E_i, not accounting LGD*EAD)",True
+PPDai,Exploratory_Boundary,55596,55596,55596,6,0.1292,label (1/0),"credit_limit (approved credit line exposure proxy E_i, not accounting LGD*EAD)",True

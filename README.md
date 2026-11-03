@@ -39,4 +39,6 @@ python scripts/validate_p4.py runs/p4-001/p4_real_labels/p4_trajectories_10round
 
 P3 可用 `--suite p3` 单独运行，保留最新版条件概率诊断。P0–P2 原始实现与冻结结果在归档目录，本次没有将其当作修复后的重新确认。统计以数据集内配对 seed 为回放随机性单位；不把轮次当独立样本，也不把四个旧队列重命名为新外部确认。
 
+核对未修改提交版的完整 P4，可运行 `python scripts/reconstruct_submitted_p4.py --data-dir /your/local/data --output-dir runs/submitted-001`。该入口逐列验证公开的语义哈希，不依赖恢复归档表。
+
 模型、采集、风险代理和求解范围的解释见 [方法与理论范围](docs/THEORY.md)。公开具名仓库不是匿名投稿补充材料；本仓库不声称完成投稿验收。

@@ -1,0 +1,222 @@
+[
+  {
+    "name": "DC_PRISM_DASFAA2027_Complete_Package.zip",
+    "size_bytes": 1227736,
+    "mtime_local": "2026-11-03T18:38:07",
+    "ctime_local": "2026-11-03T18:38:07",
+    "archive_latest_naive": [
+      2026,
+      11,
+      3,
+      4,
+      38,
+      14
+    ],
+    "key_entries": [],
+    "birthtime_local": "2026-11-03 18:37:43.771242186 +0800"
+  },
+  {
+    "name": "DC_PRISM_DASFAA2027_Revision_Complete_Package.zip",
+    "size_bytes": 3298899,
+    "mtime_local": "2026-11-03T18:38:05",
+    "ctime_local": "2026-11-03T18:38:05",
+    "archive_latest_naive": [
+      2026,
+      11,
+      3,
+      6,
+      22,
+      16
+    ],
+    "key_entries": [
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/p4_real_labels/p4_trajectories_10rounds.csv",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          6,
+          18,
+          12
+        ]
+      },
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/src/prism_engine.py",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          5,
+          44,
+          40
+        ]
+      },
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/src/run_p3_p4.py",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          6,
+          20,
+          42
+        ]
+      }
+    ],
+    "birthtime_local": "2026-11-03 18:37:37.231972149 +0800"
+  },
+  {
+    "name": "DC_PRISM_DASFAA2027_Revision_Complete_Package(1).zip",
+    "size_bytes": 4216953,
+    "mtime_local": "2026-11-03T18:36:51",
+    "ctime_local": "2026-11-03T18:36:51",
+    "archive_latest_naive": [
+      2026,
+      11,
+      3,
+      8,
+      58,
+      16
+    ],
+    "key_entries": [
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/CHANGELOG_REVISION2.md",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          8,
+          53,
+          34
+        ]
+      },
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/p4_real_labels/p4_trajectories_10rounds.csv",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          8,
+          50,
+          20
+        ]
+      },
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/src/prism_engine.py",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          8,
+          29,
+          6
+        ]
+      },
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/src/run_p3_p4.py",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          8,
+          47,
+          30
+        ]
+      }
+    ],
+    "birthtime_local": "2026-11-03 18:36:27.843269994 +0800"
+  },
+  {
+    "name": "DC_PRISM_DASFAA2027_Revision_Complete_Package(2).zip",
+    "size_bytes": 5229435,
+    "mtime_local": "2026-11-03T18:37:20",
+    "ctime_local": "2026-11-03T18:37:20",
+    "archive_latest_naive": [
+      2026,
+      11,
+      3,
+      10,
+      2,
+      46
+    ],
+    "key_entries": [
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/CHANGELOG_REVISION2.md",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          10,
+          1,
+          36
+        ]
+      },
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/p4_real_labels/p4_trajectories_10rounds.csv",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          9,
+          57,
+          44
+        ]
+      },
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/src/prism_engine.py",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          8,
+          29,
+          6
+        ]
+      },
+      {
+        "path": "DC_PRISM_DASFAA2027_Revision_Complete_Package/src/run_p3_p4.py",
+        "stored_time_naive": [
+          2026,
+          11,
+          3,
+          9,
+          54,
+          18
+        ]
+      }
+    ],
+    "birthtime_local": "2026-11-03 18:36:29.878749774 +0800"
+  },
+  {
+    "name": "Integration_Report_zh.docx",
+    "size_bytes": 57676,
+    "mtime_local": "2026-11-03T18:36:34",
+    "ctime_local": "2026-11-03T18:36:34",
+    "archive_latest_naive": [
+      2026,
+      11,
+      3,
+      3,
+      26,
+      28
+    ],
+    "key_entries": [],
+    "birthtime_local": "2026-11-03 18:36:30.896518870 +0800"
+  },
+  {
+    "name": "LexiRiskLabel_CC_LRBE_Upgrade_Package.zip",
+    "size_bytes": 950754,
+    "mtime_local": "2026-11-03T18:37:36",
+    "ctime_local": "2026-11-03T18:37:36",
+    "archive_latest_naive": [
+      2026,
+      11,
+      3,
+      0,
+      42,
+      56
+    ],
+    "key_entries": [],
+    "birthtime_local": "2026-11-03 18:36:52.049655891 +0800"
+  }
+]

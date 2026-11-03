@@ -1,0 +1,21 @@
+{
+  "rows": 6400,
+  "elapsed_seconds": 100.28039479255676,
+  "exact_match_counts": {
+    "D_ids_hash": 6400,
+    "O_ids_hash": 6400,
+    "C_ids_hash": 6400,
+    "Q_ids_hash": 6400,
+    "selected_ids": 6400,
+    "released_ids": 6400,
+    "budget_hash": 6400,
+    "preprocessing_hash": 6400
+  },
+  "max_abs_diff": {
+    "B_t": 0.0,
+    "brier_t": 0.0,
+    "risk_envelope": 0.0,
+    "realized_loss": 0.0,
+    "k_selected": 0.0
+  }
+}

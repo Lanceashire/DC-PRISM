@@ -1,0 +1,43 @@
+{
+  "protocol_version": "dc-prism-integration-v1",
+  "base_package_sha256": "ddfc7ccaa4d5a06438302e2737cc0ab2d1289e24acbe67ff60ce1d75f4ccab1d",
+  "dataset_names": [
+    "LendingClub",
+    "HMEQ",
+    "UCI_Credit",
+    "PPDai"
+  ],
+  "seeds": [
+    4001,
+    4002,
+    4003,
+    4004,
+    4005,
+    4006,
+    4007,
+    4008,
+    4009,
+    4010,
+    4011,
+    4012,
+    4013,
+    4014,
+    4015,
+    4016
+  ],
+  "rounds": 10,
+  "ordinary_delay": 2,
+  "exploration_delay": 1,
+  "evaluation_timing": "start_of_round_after_due_releases",
+  "primary_metric": "mean_over_rounds_brier",
+  "secondary_metric": "round10_brier",
+  "fixed_eps": 0.25,
+  "fixed_eps_integer_rule": "ceil((1-eps)*K_reference); feasible anchor fallback",
+  "risk_score_scope": "empirical; no simultaneous coverage certificate",
+  "exposure": "D0 percentile-winsorized exposure divided by D0 winsorized mean",
+  "archive_results": "historical results from submitted source, retained unchanged",
+  "corrected_results": "repair rerun of existing seeds; not independent confirmation",
+  "p2_policy": "preserve frozen submitted evidence; active P4 repairs do not revalidate P2 ablation interpretation",
+  "legacy_repository": "reference only",
+  "configuration_role": "human-readable protocol snapshot; runtime numerical values are implemented in the versioned source and recorded source hashes"
+}

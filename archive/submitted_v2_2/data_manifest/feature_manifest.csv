@@ -1,0 +1,33 @@
+dataset,feature_index,raw_column_name,semantic_role,preprocessing_rule
+LendingClub,"X[:,0]",int_rate,Core_Risk_Rate,D0_median_impute + D0_zscore_clip_3.5
+LendingClub,"X[:,1]",dti,Core_Leverage_Ratio,D0_median_impute + D0_zscore_clip_3.5
+LendingClub,"X[:,2]",revol_util,Boundary_Credit_Utilization,D0_median_impute + D0_zscore_clip_3.5
+LendingClub,"X[:,3]",annual_inc (log1p),Boundary_Income_Capacity,D0_median_impute + D0_zscore_clip_3.5
+LendingClub,"X[:,4]",delinq_2yrs,Auxiliary_Tail_Delinquency,D0_tail_hinge_above_tau_aux(>=1.35)_scale_1.85
+LendingClub,"X[:,5]",inq_last_6mths,Auxiliary_Tail_Inquiry,D0_tail_hinge_above_tau_aux(>=1.35)_scale_1.85
+LendingClub,E_i,loan_amnt,Principal_Exposure_Proxy,"D0_p5_p95_winsorized_to_[0.50,1.40]"
+LendingClub,Y_i,loan_status=='Charged Off',Binary_Default_Label,"Authentic binary 0/1 (Fully Paid=0, Charged Off=1)"
+HMEQ,"X[:,0]",DEBTINC,Core_Debt_To_Income,D0_median_impute + D0_zscore_clip_3.5
+HMEQ,"X[:,1]",CLAGE,Core_Credit_Line_Age,D0_median_impute + D0_zscore_clip_3.5
+HMEQ,"X[:,2]",VALUE,Boundary_Property_Value,D0_median_impute + D0_zscore_clip_3.5
+HMEQ,"X[:,3]",MORTDUE,Boundary_Mortgage_Due,D0_median_impute + D0_zscore_clip_3.5
+HMEQ,"X[:,4]",DELINQ,Auxiliary_Tail_Delinquent_Lines,D0_tail_hinge_above_tau_aux(>=1.35)_scale_1.85
+HMEQ,"X[:,5]",DEROG,Auxiliary_Tail_Derogatory_Reports,D0_tail_hinge_above_tau_aux(>=1.35)_scale_1.85
+HMEQ,E_i,LOAN,Requested_Loan_Amount_Exposure_Proxy,"D0_p5_p95_winsorized_to_[0.50,1.40]"
+HMEQ,Y_i,BAD,Binary_Default_Label,Authentic binary 0/1
+UCI_Credit,"X[:,0]",PAY_0,Core_Recent_Repayment_Status,D0_median_impute + D0_zscore_clip_3.5
+UCI_Credit,"X[:,1]",BILL_AMT1 / LIMIT_BAL,Core_Bill_Utilization,D0_median_impute + D0_zscore_clip_3.5
+UCI_Credit,"X[:,2]",PAY_AMT1 (log1p),Boundary_Payment_Capacity,D0_median_impute + D0_zscore_clip_3.5
+UCI_Credit,"X[:,3]",AGE,Boundary_Borrower_Age,D0_median_impute + D0_zscore_clip_3.5
+UCI_Credit,"X[:,4]",PAY_2,Auxiliary_Tail_Lag2_Delinquency,D0_tail_hinge_above_tau_aux(>=1.35)_scale_1.85
+UCI_Credit,"X[:,5]",PAY_3,Auxiliary_Tail_Lag3_Delinquency,D0_tail_hinge_above_tau_aux(>=1.35)_scale_1.85
+UCI_Credit,E_i,LIMIT_BAL,Credit_Limit_Exposure_Proxy,"D0_p5_p95_winsorized_to_[0.50,1.40]"
+UCI_Credit,Y_i,default payment next month,Binary_Default_Label,Authentic binary 0/1
+PPDai,"X[:,0]",historical_repayment_ratio,Core_Repayment_History,D0_median_impute + D0_zscore_clip_3.5
+PPDai,"X[:,1]",borrower_rating_score,Core_Credit_Rating,D0_median_impute + D0_zscore_clip_3.5
+PPDai,"X[:,2]",active_loan_utilization,Boundary_Utilization,D0_median_impute + D0_zscore_clip_3.5
+PPDai,"X[:,3]",borrower_age_tenure,Boundary_Tenure,D0_median_impute + D0_zscore_clip_3.5
+PPDai,"X[:,4]",overdue_count_tail,Auxiliary_Tail_Overdue_Count,D0_tail_hinge_above_tau_aux(>=1.35)_scale_1.85
+PPDai,"X[:,5]",severe_overdue_flag,Auxiliary_Tail_Severe_Overdue,D0_tail_hinge_above_tau_aux(>=1.35)_scale_1.85
+PPDai,E_i,credit_limit,Credit_Line_Exposure_Proxy,"D0_p5_p95_winsorized_to_[0.50,1.40]"
+PPDai,Y_i,label,Binary_Default_Label,Authentic binary 0/1

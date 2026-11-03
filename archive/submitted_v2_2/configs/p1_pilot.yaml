@@ -1,0 +1,11 @@
+# P1 Mechanism Pilot 3x3x3 Cube & Hyperparameter Tuning Configuration
+suite: p1_mechanism
+n_pilot_worlds: 32
+seed_range: [1001, 1032]
+factors:
+  pending_overlap: [Low, Medium, High]
+  risk_info_coupling: [Negative, Neutral, Positive]
+  risk_regime_on_qi: [Calibrated, Optimistic_Bias, Conservative_Bias]
+lambda_K_grid: [0.00, 0.10, 0.22, 0.40]
+selected_lambda_K: 0.22
+selected_delta_gate: 0.08
