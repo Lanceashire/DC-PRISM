@@ -4,6 +4,8 @@
 
 本仓库同时保留提交包原始证据与经过修复的实现。完整版本关系、已修复项、仍有限制的主张见 [严肃代码审查](docs/CODE_AUDIT.zh.md)，两段聊天与整合报告的处理见 [整合决策](docs/INTEGRATION.zh.md)。
 
+第一批补充实验已完成：原 P2 128 世界的固定数量基线修复、新增 128 受控世界、256 真实协变量模拟世界，以及共享候选族的 16 因子组合。见 [补充结果与边界](docs/SUPPLEMENT_V1_RESULTS.zh.md)、[运行方法](experiments/supplement_v1/README.md)及 [全部统计](results/supplement_v1/primary_statistics.csv)。受控整体收益保留，独立组件多数未定，Real-X 未确认稳定收益；原归档和 repair-v1 未覆盖。
+
 - `src/`：修复后的 P3/P4 实现与安全运行入口。
 - `tests/`：原有完整性检查及新增的求解、隔离、动态释放回归测试。
 - `archive/submitted_v2_2/`：按属性、内容和结果覆盖确定的最新提交包原始源码、合成证据和聚合表，保持原样。

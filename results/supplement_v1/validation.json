@@ -1,0 +1,14 @@
+{
+  "world_rows": 8064,
+  "fresh_worlds": 384,
+  "primary_statistics_recomputed": 35,
+  "deterministic_worlds_replayed": 10,
+  "deterministic_rows_replayed": 210,
+  "fixed_round_repair_worlds": 128,
+  "shared_state_budget_and_family": "PASS",
+  "risk_feasibility": "PASS",
+  "cardinality": "PASS",
+  "sampled_optimizer_fits": 212,
+  "sampled_optimizer_non_success": 0,
+  "sampled_optimizer_max_gradient_inf": 9.98725847177473e-06
+}

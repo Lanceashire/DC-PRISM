@@ -1,0 +1,14 @@
+{
+  "worlds": 128,
+  "archived_rows_verified": 512,
+  "fallbacks": 126,
+  "original_fixed_mean": 0.13016112127653756,
+  "repaired_fixed_mean": 0.13672038160469277,
+  "DC_mean": 0.12023419781900295,
+  "gain_repaired_fixed_minus_DC": 0.0164861837856898,
+  "ci95": [
+    0.01097180447548483,
+    0.02200056309589477
+  ],
+  "study_role": "repair reanalysis of already-used worlds, not new confirmation"
+}

@@ -1,0 +1,6 @@
+{
+  "protocol_sha256": "5e3ad5a78adfa029071ca41f4a7e991203dc20fb20e6c74731660659a2bd1bf5",
+  "runner_sha256": "e84fa3cc07d70902b32e7b5729fd37282026d0f03294664796a520f131003534",
+  "status": "FROZEN_BEFORE_FORMAL_RUN",
+  "tests": "engineering-only seeds 90001-90003; no formal outcomes viewed"
+}

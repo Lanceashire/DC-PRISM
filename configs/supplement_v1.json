@@ -1,0 +1,92 @@
+{
+  "version": "supplement-v1",
+  "frozen_at_utc": "2026-11-03T15:18:00.556624+00:00",
+  "study_role": "fixed-size supplemental diagnostic with prespecified comparisons; no power adequacy claim; not new external validation",
+  "base_publication": "a20878695ab99922a8299a873a75418903aff527",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "cohorts": {
+    "Controlled": {
+      "seed_start": 6001,
+      "n_worlds": 128,
+      "generator": "frozen P2 High/Positive; new worlds"
+    },
+    "HMEQ_logistic": {
+      "seed_start": 7001,
+      "n_worlds": 64,
+      "dataset": "HMEQ",
+      "mechanism": "logistic"
+    },
+    "HMEQ_nonlinear": {
+      "seed_start": 7101,
+      "n_worlds": 64,
+      "dataset": "HMEQ",
+      "mechanism": "nonlinear"
+    },
+    "LendingClub_logistic": {
+      "seed_start": 7201,
+      "n_worlds": 64,
+      "dataset": "LendingClub",
+      "mechanism": "logistic"
+    },
+    "LendingClub_nonlinear": {
+      "seed_start": 7301,
+      "n_worlds": 64,
+      "dataset": "LendingClub",
+      "mechanism": "nonlinear"
+    }
+  },
+  "old_world_repair": {
+    "seeds": [
+      2001,
+      2128
+    ],
+    "preserve_round_rule": true,
+    "compare_same_frozen_DC": true,
+    "new_confirmation": false
+  },
+  "factorial": {
+    "pending": [
+      0,
+      1
+    ],
+    "quantile_lower": [
+      0,
+      1
+    ],
+    "quantity_penalty": [
+      0,
+      0.22
+    ],
+    "gate_threshold": [
+      0,
+      0.08
+    ],
+    "fixed_curvature_damping": 0.45,
+    "parameter_draws": 20,
+    "same_O_independent_candidate_family": true,
+    "scope": "controlled rescoring; not full original algorithm"
+  },
+  "primary_contrasts": [
+    "gate",
+    "quantity_penalty",
+    "quantile_only",
+    "pending_rescoring",
+    "fixed_cardinality",
+    "risk_anchor",
+    "fisher_adaptation"
+  ],
+  "primary_metric": "post_settlement_brier on shared state after both O and S settle; not ten-round online ALC",
+  "secondary_metric": "known-p expected Brier, family regret, proxy ranks, count, risk",
+  "primary_family_size": 35,
+  "alpha": 0.05,
+  "multiplicity": "global Holm two-sided paired t tests; Bonferroni simultaneous t intervals",
+  "material_delta": 0.0001,
+  "stopping": "fixed counts; no interim significance looks, no seed additions based on outcome",
+  "bridge": "raw real covariates; D-only median/standardization/clipping; no engineered groups or overwritten coordinates; artificial labels from declared logistic/nonlinear DGP",
+  "limitations": [
+    "fixed real X reused across simulation seeds, conditional on those cohorts",
+    "mean t intervals use world-level normal approximation",
+    "family oracle is offline and conditional on realized training labels, not a deployable acquisition policy",
+    "component effects refer to fixed-family rescoring, not all effects of removing pending information"
+  ]
+}
