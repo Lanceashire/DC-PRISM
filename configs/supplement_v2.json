@@ -1,0 +1,100 @@
+{
+  "version": "supplement-v2-history-coverage",
+  "created_at_utc": "2026-11-03T15:49:45.901858+00:00",
+  "base_publication": "a35fc466b4cfdd4783310a3da39f1ea6e88edd8b",
+  "study_role": "fixed-size paired diagnostic; conditional on reused real covariates; not external validation",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "cohorts": {
+    "HMEQ_logistic": {
+      "dataset": "HMEQ",
+      "mechanism": "logistic",
+      "seed_start": 11001,
+      "n_pairs": 64
+    },
+    "HMEQ_nonlinear": {
+      "dataset": "HMEQ",
+      "mechanism": "nonlinear",
+      "seed_start": 12001,
+      "n_pairs": 64
+    },
+    "LendingClub_logistic": {
+      "dataset": "LendingClub",
+      "mechanism": "logistic",
+      "seed_start": 13001,
+      "n_pairs": 64
+    },
+    "LendingClub_nonlinear": {
+      "dataset": "LendingClub",
+      "mechanism": "nonlinear",
+      "seed_start": 14001,
+      "n_pairs": 64
+    }
+  },
+  "roles": {
+    "history_reservoir": 240,
+    "history_size_per_arm": 80,
+    "O": 22,
+    "C": 24,
+    "Q": 180,
+    "T": 240
+  },
+  "intervention": {
+    "broad": "first 80 rows of random history reservoir",
+    "gap": "80 lowest transformed feature-1 rows within same 240-row reservoir; tie break reservoir index",
+    "shared": "same X, p, labels, O/C/Q/T, preprocessing, empirical q, numerical B, anchor and family across arms",
+    "preprocessing": "fit only once on broad reference history; no intervention-dependent refit; tau_aux=0",
+    "risk_and_family": "computed only once using broad reference history, without O, then frozen for both arms",
+    "interpretation": "fixed reference decision problem; does not estimate full end-to-end pipeline effect with q and family re-estimated"
+  },
+  "DGP": {
+    "logistic": "sigmoid(-0.8 + X@[0.45,0.65,-0.5,0.35,0.2,-0.15])",
+    "nonlinear": "same logit plus 0.5*sin(X1)+0.35*X2*X3",
+    "real_y": "not used"
+  },
+  "selection": {
+    "learner": "existing logistic l2=0.45; existing BFGS",
+    "parameter_draws": 20,
+    "CRN": "same base normal draws across arms; arm-specific Laplace transform",
+    "quantile": 0.2,
+    "curvature_damping": 0.45,
+    "lambda_K": 0.22,
+    "gate": 0.08,
+    "policies": [
+      "Full",
+      "NoPending",
+      "NoGate",
+      "Fixed-ceil",
+      "Safe-MinRisk",
+      "PointValue"
+    ],
+    "scope": "common-family rescoring, not unchanged package DC-PRISM"
+  },
+  "primary_metric": "known-p expected Brier on fixed test covariates after O and S settle",
+  "primary_endpoints": [
+    "headroom_gap_minus_broad",
+    "full_gain_gap_minus_broad",
+    "full_gain_in_gap",
+    "point_value_gain_in_gap"
+  ],
+  "headroom": "anchor expected Brier minus minimum family expected Brier; realized training labels, offline oracle",
+  "gain": "anchor expected Brier minus policy expected Brier",
+  "primary_family_size": 16,
+  "alpha": 0.05,
+  "material_delta": 0.0001,
+  "inference": "paired world-level t, global Holm p-values and Bonferroni simultaneous t intervals; normal approximation; four datasets/DGP cells not four institutions",
+  "stopping": "64 pairs per cell fixed before formal execution; no interim statistical looks, no outcome-dependent additions",
+  "optimizer_acceptance": "record every optimizer call; all fits must report success",
+  "engineering_seeds": [
+    98001,
+    98002,
+    98003
+  ],
+  "limitations": [
+    "same source real X reused across simulations",
+    "post-settlement single-state diagnostic is not delayed online ten-round ALC",
+    "oracle uses hidden training outcomes after selections are locked and is not deployable",
+    "large-pool reference cardinality/risk solver is bounded/heuristic",
+    "historical gap is an intervention on distribution at fixed sample count; not a unique natural transfer mechanism",
+    "broad reference preprocessing and risk model are held fixed; gap arm is not trained exclusively from gap history for these nuisance components"
+  ]
+}

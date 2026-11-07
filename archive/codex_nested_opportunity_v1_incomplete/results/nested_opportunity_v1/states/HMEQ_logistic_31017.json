@@ -1,0 +1,60 @@
+{
+  "cell": "HMEQ_logistic",
+  "seed": 31017,
+  "records": [
+    {
+      "cell": "HMEQ_logistic",
+      "seed": 31017,
+      "arm": "broad",
+      "R_per_bank": 64,
+      "family_size": 16,
+      "anchor_k": 6,
+      "post_headroom": 0.004242050426135581,
+      "crossfit_known_dgp_gain": 0.0014425790295703456,
+      "plugin_pre_gain": 0.0014425790295703733,
+      "crossfit_choices_agree": true,
+      "bankA_choice": 8,
+      "bankB_choice": 8,
+      "full_chooses_anchor": false,
+      "gain_Full": 0.0013052651803469478,
+      "gain_NoPending": 0.0013052651803469478,
+      "gain_NoGate": 0.0013052651803469478,
+      "gain_Fixed-ceil": 0.0013052651803469478,
+      "gain_Safe-MinRisk": 0.0,
+      "gain_PointValue": 0.0012507522792515084,
+      "crossfit_minus_full": 0.00013731384922339778,
+      "post_minus_crossfit": 0.002799471396565235
+    },
+    {
+      "cell": "HMEQ_logistic",
+      "seed": 31017,
+      "arm": "gap",
+      "R_per_bank": 64,
+      "family_size": 16,
+      "anchor_k": 6,
+      "post_headroom": 0.004492461615347326,
+      "crossfit_known_dgp_gain": 0.0013190201490154013,
+      "plugin_pre_gain": 0.001319020149015332,
+      "crossfit_choices_agree": true,
+      "bankA_choice": 2,
+      "bankB_choice": 2,
+      "full_chooses_anchor": false,
+      "gain_Full": 1.3681458098785014e-05,
+      "gain_NoPending": 0.00131902014901537,
+      "gain_NoGate": 1.3681458098785014e-05,
+      "gain_Fixed-ceil": -0.0009266151490400735,
+      "gain_Safe-MinRisk": 0.0,
+      "gain_PointValue": 1.3681458098785014e-05,
+      "crossfit_minus_full": 0.0013053386909166163,
+      "post_minus_crossfit": 0.0031734414663319244
+    }
+  ],
+  "optimizer": {
+    "calls": 4099,
+    "max_gradient_inf": 9.995872517265525e-06
+  },
+  "elapsed_seconds": 6.914490222930908,
+  "family_hash": "8027651aa243159bf1937ec60f06bc0a71b1efbb08f7f63b11c30bfc2524e53e",
+  "budget": 3.4952686923447414,
+  "choices_locked_before_outcomes": true
+}

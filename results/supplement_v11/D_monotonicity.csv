@@ -1,0 +1,7 @@
+sub,dataset,monotone_F,monotone_share,spearman_level_share
+flip,BankMarketing,True,True,1.0
+flip,HMEQ,True,True,1.0
+flip,USPS,True,True,1.0
+pool,BankMarketing,False,False,-1.0
+pool,HMEQ,True,False,-0.5
+pool,USPS,False,False,0.5

@@ -1,0 +1,16 @@
+{
+  "offline_rows": 7040,
+  "offline_envelope_feasible": true,
+  "offline_H_post_ge_H_pre": true,
+  "offline_one_family_per_state": true,
+  "offline_primary_max_abs_error": 1.0230705171920818e-13,
+  "offline_baseline_max_abs_error": 1.8784973576657649e-13,
+  "online_primary_max_abs_error": 1.2101430968414206e-14,
+  "online_envelope_ratio_max": 0.9999979874146492,
+  "offline_replayed_states": 18,
+  "offline_replayed_rows": 198,
+  "offline_replay_max_abs_error": 9.974659986866641e-17,
+  "online_replayed_rows": 1440,
+  "online_replay_max_abs_error": 9.71445146547012e-17,
+  "status": "PASS"
+}

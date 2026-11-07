@@ -1,0 +1,18 @@
+{
+  "file_mismatches": [],
+  "v11_status": "COMPLETE",
+  "v11_saved_rows": 4728,
+  "v11_source_hash_mismatches": [],
+  "family_states": 624,
+  "bad_empirical_bounds": 0,
+  "exact_reference_rows": 88,
+  "v5_H_trajectory_round_rows": 368640,
+  "scope": "Saved-file integrity and stored-result algebra; no complete raw-data experiment rerun.",
+  "manuscript_status": "Working drafts with unresolved issues; see docs/REVIEW_STATUS_20261107.md.",
+  "public_copy_scan": {
+    "scanned_files": 614,
+    "issues": []
+  },
+  "raw_data_included": false,
+  "interrupted_nested_states": 38
+}

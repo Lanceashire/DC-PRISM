@@ -1,0 +1,45 @@
+{
+  "version": "supplement-v9-noise-gradient",
+  "created_at_utc": "2026-11-05T01:04:08.020955+00:00",
+  "base_commit": "23ba1bc (supplement-v8)",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "diabetes_npz_sha256": "0d4e21f0a879c36907d30546a8c0f09a2aab30668afa946803f6337d09e424da",
+  "benchmarks_npz_sha256": "2f5ca1620576d397447172b0cfb659100768a487c5a4789611bed13c5fb39f28",
+  "benchmark_sources": {
+    "Spambase": "UCI 94, spambase.zip sha256 813ac1df..., label spam, PCA10 (unsupervised)",
+    "USPS": "LIBSVM usps.bz2+usps.t.bz2 (CDALBench tabular task), label digit>=5, PCA10 (unsupervised)",
+    "BankMarketing": "UCI 222 bank-full.csv, label subscription, 6 numeric covariates, duration excluded",
+    "exposure": "1 for all three",
+    "excluded_by_user": "biology and chemistry datasets (e.g. Splice/DNA) excluded at the user's request"
+  },
+  "study": {
+    "datasets": [
+      "HMEQ",
+      "LendingClub",
+      "PPDai",
+      "UCI_Credit",
+      "Diabetes",
+      "USPS",
+      "Spambase",
+      "BankMarketing"
+    ],
+    "stream": "natural",
+    "seed_start": 121001,
+    "n_seeds": 48,
+    "family_resamples": 64,
+    "oracle_resamples": 32,
+    "primary_endpoints": [
+      "floor",
+      "test_reuse"
+    ],
+    "primary_family_size": 16,
+    "prediction": "registered before running: (i) the two cohorts with the lowest mean noise index (mean p_hat(1-p_hat) over candidates, computed from p_hat only) have a smaller mean floor share of the greedy-oracle gap than the other six; (ii) across the eight cohorts the floor share increases with the noise index (Spearman > 0); (iii) the closed-form bracket contains the measured group floor for every cohort and learner. Note: a seed-99001 smoke run showed USPS (PCA10, digit>=5) is not low-noise in this representation, so low-noise cohorts are defined by the index rather than named in advance."
+  },
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "paired one-sample t on independent units; Bonferroni simultaneous t intervals and global Holm within each registered family"
+  },
+  "stopping": "fixed sizes; no interim looks; no additional seeds after results"
+}

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "rows": 6400,
+  "trajectories": 640,
+  "first_round_causality": "PASS",
+  "release_schedule": "PASS",
+  "shared_budget": "PASS",
+  "safe_envelope_feasibility": "PASS",
+  "repeat_exploration": "PASS",
+  "primary_global_statistics_recomputed": 12,
+  "new_seed_range": [
+    21001,
+    21016
+  ],
+  "deterministic_trajectories_replayed": 80,
+  "deterministic_rows_replayed": 800,
+  "replay_numeric_columns": 23,
+  "replay_identity_columns": 18,
+  "max_replay_error": 0.0,
+  "all_optimizer_fits": {
+    "total_fits": 14921,
+    "non_success": 0,
+    "max_gradient_inf": 9.999490836187785e-06
+  },
+  "source_and_data_hashes": "PASS"
+}

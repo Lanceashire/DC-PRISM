@@ -1,0 +1,47 @@
+DC-PRISM 中英双版论文交付 / Bilingual manuscript delivery
+2026-11-04
+
+题目：何时更少的标签更有价值：风险约束与延迟反馈下的学习
+Title: When Fewer Labels Are More Valuable: Learning under Risk Constraints and Delayed Feedback
+
+交付内容
+1. 英文论文：16 页（含 2 页参考文献），沿用 Springer LNCS 匿名稿格式。
+2. 中文论文：14 页（含 2 页参考文献），与英文版对应的完整中文阅读稿。
+3. 两版均含 8 个正文部分、18 个编号公式、3 幅图、4 张表、21 条参考文献。
+4. 中文版翻译正文、图注、表格、图内坐标和说明；参考文献题名保留原文，方法名称与英文稿对应。
+5. 本次基于 2026-11-03/ge/outputs/DC_PRISM_DASFAA_20261104_Source/main.tex 的最新底稿完成双版输出；英文中将复杂度说明的 F 明确为 proposed sets，未改动实验数值。
+
+验证
+- 两版公式、十进制数值、引用顺序和交叉引用标签一致。
+- 全部 12 项真实队列回放主要比较的均值及区间，与保存的统计 CSV 逐项一致。
+- 覆盖干预中三种设置确认事后改进空间增大的结论，与保存的 CSV 一致。
+- 编译后渲染并检查英文 16 页、中文 14 页，未发现文字或图表裁切、重叠、公式越界。
+- 本次没有重新运行实验；验证对象为论文、原有统计结果和排版。
+
+论文结论的含义
+- 受控实验确认完整策略的收益，四个单独评分组件的效果仍未确定。
+- 真实队列的 12 项主要比较中，确认的实质性正向收益为 PPDai 相对固定数量策略：0.004139 ALC-Brier；其余 11 个同时区间包含零。
+- 事后最优集合机会与标签揭示前可实现价值分别定义，不相互替代。
+- Fisher-cost 是文中描述的本地 Fisher 信息基准，不是对 BAIT 原实现的完整复现。
+- 四个队列是所提供的处理后数据；这份写作交付没有补齐 PPDai 原始来源链，也不构成新增的数据来源核验。
+- 当前保留匿名作者和机构。英文为投稿格式稿件，中文为阅读和修改对照稿；本次未提交或发布。
+
+源文件目录
+  en/main.tex     英文主文件
+  zh/main.tex     中文主文件
+  en/refs.bib、zh/refs.bib    同一参考文献库
+  en/figures、zh/figures     对应语言的 PDF 矢量图和 PNG
+  evidence/      已有聚合统计及图表数值，无逐条原始信贷数据
+  verification/  本次一致性与数值核验结果
+
+编译
+在相应语言目录内运行：
+  tectonic main.tex
+或使用 TeX Live：
+  xelatex main.tex
+  bibtex main
+  xelatex main.tex
+  xelatex main.tex
+中文依赖 xeCJK、fontspec、Noto Serif CJK SC 和 Noto Sans CJK SC。
+英文使用附带的 llncs.cls 和 splncs04.bst。
+字体与 TeX 版本可能使重新编译后的分页略有变化；本次 PDF 是已检查的交付版本。

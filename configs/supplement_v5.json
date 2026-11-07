@@ -1,0 +1,322 @@
+{
+  "version": "supplement-v5-review-response",
+  "created_at_utc": "2026-11-04T11:32:56.501076+00:00",
+  "base_commit": "c4b296f (supplement-v4)",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "purpose": {
+    "E": "review M2: does the foresight share depend on |F|? diagnostic on the 640 v3 states (same label resamples), v3 family enlarged with 64 random feasible sets",
+    "F": "review M3: does the conservative decision layer add value over the point proxy on the same family and over the TargetVar-greedy set? fresh states; also selection time (M7) and exact envelope-exceedance probability under true p (M6)",
+    "G": "review M4: controlled-world conclusions under generator perturbation (pending overlap x risk-information coupling, no tail regime, doubled pool with K=6 and K=12)",
+    "H": "review M5/M6: power-driven delayed replay with 512 fresh seeds per cohort and stream, plus AUC, log-loss, exploration loss, envelope exceedance"
+  },
+  "development": "execution smoke tests used seed 99001 (offline) and 99001-99002 (online) only; no study seed of F, G or H was run before this freeze; E re-uses v3 states by design (diagnostic)",
+  "power_calculation": "v3 paired SD of comparator-minus-DC ALC-Brier: median 2.1e-3 (natural ~1.7e-3, engineered 1.6-6.9e-3). With Bonferroni over 56 tests and 80% power, n=512 detects 0.4e-3 at SD 1.7e-3 and 1.3e-3 at SD 5.5e-3.",
+  "study_E": {
+    "source_cohorts": {
+      "Controlled": {
+        "seed_start": 31001,
+        "n": 128
+      },
+      "HMEQ_logistic": {
+        "dataset": "HMEQ",
+        "mechanism": "logistic",
+        "seed_start": 41001,
+        "n": 64
+      },
+      "HMEQ_nonlinear": {
+        "dataset": "HMEQ",
+        "mechanism": "nonlinear",
+        "seed_start": 42001,
+        "n": 64
+      },
+      "LendingClub_logistic": {
+        "dataset": "LendingClub",
+        "mechanism": "logistic",
+        "seed_start": 43001,
+        "n": 64
+      },
+      "LendingClub_nonlinear": {
+        "dataset": "LendingClub",
+        "mechanism": "nonlinear",
+        "seed_start": 44001,
+        "n": 64
+      }
+    },
+    "label_resamples": 128,
+    "random_sets": 64,
+    "subfamily_sizes": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      32,
+      48,
+      64,
+      80
+    ],
+    "subfamily_draws": 32,
+    "outputs": "H_post, H_pre (plug-in, cross-fit), foresight share 1-H_pre_plugin/H_post by group and family size; descriptive with bootstrap 95% CI, no tests"
+  },
+  "study_F": {
+    "cohorts": {
+      "Controlled": {
+        "seed_start": 61001,
+        "n": 128
+      },
+      "HMEQ_logistic": {
+        "dataset": "HMEQ",
+        "mechanism": "logistic",
+        "seed_start": 62001,
+        "n": 64
+      },
+      "HMEQ_nonlinear": {
+        "dataset": "HMEQ",
+        "mechanism": "nonlinear",
+        "seed_start": 63001,
+        "n": 64
+      },
+      "LendingClub_logistic": {
+        "dataset": "LendingClub",
+        "mechanism": "logistic",
+        "seed_start": 64001,
+        "n": 64
+      },
+      "LendingClub_nonlinear": {
+        "dataset": "LendingClub",
+        "mechanism": "nonlinear",
+        "seed_start": 65001,
+        "n": 64
+      }
+    },
+    "label_resamples": 128,
+    "family": "F+ = package DC-PRISM family U {TargetVar-greedy set}; evaluation family = common family U all choices",
+    "policies": [
+      "Safe-MinRisk",
+      "DC-PRISM",
+      "Fisher-cost",
+      "TargetVar-Greedy",
+      "BAIT-Greedy",
+      "Uncertainty",
+      "Random-Feasible",
+      "PointValue",
+      "ProxyArgmax-Fpkg",
+      "ProxyArgmax-F+",
+      "Layer-F+",
+      "Layer-F+-median",
+      "Layer-F+-nopenalty-nogate",
+      "PointLayer-F+",
+      "Gated-Greedy"
+    ],
+    "primary_contrasts": [
+      [
+        "Layer-F+",
+        "ProxyArgmax-F+",
+        "layer_over_proxy_argmax_same_family"
+      ],
+      [
+        "Gated-Greedy",
+        "TargetVar-Greedy",
+        "gate_veto_over_greedy"
+      ],
+      [
+        "DC-PRISM",
+        "TargetVar-Greedy",
+        "dc_over_greedy"
+      ]
+    ],
+    "primary_family_size": 27,
+    "secondary_contrasts": [
+      [
+        "DC-PRISM",
+        "ProxyArgmax-Fpkg",
+        "dc_over_proxy_argmax_pkg"
+      ],
+      [
+        "Layer-F+",
+        "DC-PRISM",
+        "family_augmentation"
+      ],
+      [
+        "Layer-F+",
+        "PointLayer-F+",
+        "parameter_draws"
+      ],
+      [
+        "Layer-F+",
+        "Layer-F+-median",
+        "low_quantile"
+      ],
+      [
+        "Layer-F+",
+        "Layer-F+-nopenalty-nogate",
+        "penalty_and_gate"
+      ],
+      [
+        "DC-PRISM",
+        "Safe-MinRisk",
+        "dc_over_anchor"
+      ],
+      [
+        "ProxyArgmax-F+",
+        "Safe-MinRisk",
+        "proxy_over_anchor"
+      ]
+    ],
+    "secondary_family_size": 63,
+    "endpoint": "ex-ante expected Brier (128 shared training-label resamples, test noise exact); contrast = loss(worse) - loss(better), positive favours the first-named policy"
+  },
+  "study_G": {
+    "cells": {
+      "default": {
+        "overlap": "High",
+        "coupling": "Positive",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 70001
+      },
+      "overlap=High,coupling=Neutral": {
+        "overlap": "High",
+        "coupling": "Neutral",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 71001
+      },
+      "overlap=High,coupling=Negative": {
+        "overlap": "High",
+        "coupling": "Negative",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 72001
+      },
+      "overlap=Medium,coupling=Positive": {
+        "overlap": "Medium",
+        "coupling": "Positive",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 73001
+      },
+      "overlap=Medium,coupling=Neutral": {
+        "overlap": "Medium",
+        "coupling": "Neutral",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 74001
+      },
+      "overlap=Medium,coupling=Negative": {
+        "overlap": "Medium",
+        "coupling": "Negative",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 75001
+      },
+      "overlap=Low,coupling=Positive": {
+        "overlap": "Low",
+        "coupling": "Positive",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 76001
+      },
+      "overlap=Low,coupling=Neutral": {
+        "overlap": "Low",
+        "coupling": "Neutral",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 77001
+      },
+      "overlap=Low,coupling=Negative": {
+        "overlap": "Low",
+        "coupling": "Negative",
+        "tail": true,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 78001
+      },
+      "tail_off": {
+        "overlap": "High",
+        "coupling": "Positive",
+        "tail": false,
+        "double": false,
+        "target_k": 6,
+        "seed_start": 79001
+      },
+      "pool48_K6": {
+        "overlap": "High",
+        "coupling": "Positive",
+        "tail": true,
+        "double": true,
+        "target_k": 6,
+        "seed_start": 80001
+      },
+      "pool48_K12": {
+        "overlap": "High",
+        "coupling": "Positive",
+        "tail": true,
+        "double": true,
+        "target_k": 12,
+        "seed_start": 81001
+      }
+    },
+    "worlds_per_cell": 64,
+    "label_resamples": 128,
+    "primary_competitors": [
+      "Safe-MinRisk",
+      "TargetVar-Greedy"
+    ],
+    "primary_family_size": 24,
+    "note": "doubled pool concatenates the candidate groups of a second world (seed+1e6) generated with the same settings; tail_off replaces the regime switch by the logistic link"
+  },
+  "study_H": {
+    "streams": [
+      "engineered",
+      "natural"
+    ],
+    "datasets": [
+      "HMEQ",
+      "LendingClub",
+      "PPDai",
+      "UCI_Credit"
+    ],
+    "seed_start": 81001,
+    "n_seeds": 512,
+    "policies": [
+      "OrdinaryOnly",
+      "Safe-MinRisk",
+      "Fixed-count",
+      "Fisher-cost",
+      "DC-PRISM",
+      "Random-Feasible",
+      "Uncertainty",
+      "BAIT-Greedy",
+      "TargetVar-Greedy"
+    ],
+    "primary_competitors": [
+      "Safe-MinRisk",
+      "Fixed-count",
+      "Fisher-cost",
+      "Random-Feasible",
+      "Uncertainty",
+      "BAIT-Greedy",
+      "TargetVar-Greedy"
+    ],
+    "primary_family_size": 56,
+    "metric": "ALC-Brier as in v3 (primary); ALC-AUC (secondary family, material delta 0.002); log-loss, exploration loss, exceedance descriptive",
+    "auc_material_delta": 0.002,
+    "reproduce_check": "all 9 policies on v3 seeds 51001/51016, both streams, must match archived v3 ALC-Brier to 1e-12"
+  },
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "paired one-sample t on independent units; Bonferroni simultaneous t intervals and global Holm within each registered family"
+  },
+  "stopping": "fixed sizes; no interim looks; no additional seeds after results"
+}

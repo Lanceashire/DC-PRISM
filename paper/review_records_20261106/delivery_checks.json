@@ -1,0 +1,10 @@
+{
+  "en_abstract_words": 183,
+  "en_sections": 9,
+  "zh_sections": 9,
+  "equations_match": false,
+  "installed_claude": 101,
+  "installed_codex": 100,
+  "equations_match_ignoring_sentence_punctuation": true,
+  "equation_difference": "Only original sentence-ending comma after eq:value; mathematical expressions match."
+}

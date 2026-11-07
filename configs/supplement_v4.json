@@ -1,0 +1,23 @@
+{
+  "version": "supplement-v4-selection-gap-localization",
+  "created_at_utc": "2026-11-04T09:57:16.891226+00:00",
+  "role": "diagnostic decomposition on the 640 supplement-v3 states with identical label resamples; not a confirmation of DC-PRISM",
+  "states": "supplement-v3 offline tasks (configs/supplement_v3.json), 128 resamples, same RNG streams; pairing with archived v3 H_pre and anchor loss must hold to 1e-12",
+  "proxy": "target-weighted pending-aware V_theta(S) (paper Eq. value), point evaluation, ranked over F = v3 common family union v3 main-policy choices",
+  "theta_hat": "visible-history l2=0.45 logistic fit (deployable)",
+  "theta_pop": "soft-label logistic KL projection of true p on all state covariates, ridge 5e-4, L-BFGS-B, max|grad|<1e-4 (not deployable)",
+  "primary_endpoints_per_group": [
+    "parameter_effect_gain_pop_minus_hat",
+    "approximation_gap_Hpre_cf_minus_gain_pop"
+  ],
+  "primary_family_size": 18,
+  "secondary": "Spearman rank correlation of V_theta with true ex-ante gain across F (descriptive)",
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "as supplement-v3: paired t, Bonferroni simultaneous t, Holm, material delta 5e-4"
+  },
+  "development": "smoke tests on seeds 99001-99002 only",
+  "stopping": "fixed; no additional states"
+}

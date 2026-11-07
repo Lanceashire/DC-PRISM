@@ -1,0 +1,9 @@
+{
+  "elapsed_seconds": 0.5229601860046387,
+  "optimizer": {
+    "calls": 243,
+    "max_gradient_inf": 9.977312605685684e-06
+  },
+  "family_hash": "78ed4d6b6bfb6de0aebe89bf970394a5cd6e5e8d7be23a578430c6e64f92a7e6"
+}
+family_size 15

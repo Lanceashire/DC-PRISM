@@ -1,0 +1,12 @@
+{
+  "status": "FROZEN_BEFORE_FORMAL_RUN",
+  "frozen_at_utc": "2026-11-03T15:51:50.684126+00:00",
+  "protocol_sha256": "3f3dfda270ea0deb2f06075879ecaad850a8aa6cc78c486975a6f569bdfca37e",
+  "source_sha256": {
+    "experiments/p4_confirmation_v1/run.py": "1c271fd50df31bbc8472e35e521a8601e23f5ea74948258762a9c975ed8dd09f",
+    "src/prism_engine.py": "f90c1f1fb727cf4d3b281b3e13bdc4aa7f1ff9f35a69de019acc1ab8e98105fe",
+    "src/run_p3_p4.py": "2aada41b56214ceb8c96eb2bafc87c1c2a7175973f2294f325bf31b9c44f19da",
+    "scripts/validate_p4.py": "c940097aa8dc3ce777223152dcef96b099d8c2cc72ffd3dc834244b759036d3f"
+  },
+  "design_basis": "complete earlier frozen repair protocol on a fixed fresh split seed range; no confirmation outcomes seen"
+}

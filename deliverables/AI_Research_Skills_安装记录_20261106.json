@@ -1,0 +1,13 @@
+{
+  "source": "https://github.com/Orchestra-Research/AI-Research-SKILLs",
+  "commit": "773a52944ba4747a18bd4ae9ade53fff041adcbc",
+  "skills_per_agent": 98,
+  "destinations": [
+    "<USER_HOME>/.claude/skills",
+    "<USER_HOME>/.codex/skills"
+  ],
+  "verified_skill_files": {
+    "<USER_HOME>/.claude/skills": 98,
+    "<USER_HOME>/.codex/skills": 98
+  }
+}

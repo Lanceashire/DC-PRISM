@@ -1,0 +1,154 @@
+{
+  "version": "supplement-v3-preoutcome-baselines-natural-stream",
+  "created_at_utc": "2026-11-04T09:40:42.003371+00:00",
+  "base_publication": "e21fa6d (supplement-v2 + p4-confirmation-v1 published)",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "purpose": [
+    "A: measure pre-outcome (deployable) headroom H_pre directly with known p, separating foresight from selection gap",
+    "B: compare DC-PRISM against random, uncertainty, BAIT-style and target-variance greedy baselines on an ex-ante endpoint",
+    "C: one-at-a-time sensitivity of DC-PRISM constants (descriptive)",
+    "D: online delayed replay with the new baselines on the original engineered stream and on a natural random stream"
+  ],
+  "development": "execution smoke tests used seeds 99001-99002 only; no study seed was run before this freeze; no constant was changed after smoke tests",
+  "offline": {
+    "cohorts": {
+      "Controlled": {
+        "seed_start": 31001,
+        "n": 128
+      },
+      "HMEQ_logistic": {
+        "dataset": "HMEQ",
+        "mechanism": "logistic",
+        "seed_start": 41001,
+        "n": 64
+      },
+      "HMEQ_nonlinear": {
+        "dataset": "HMEQ",
+        "mechanism": "nonlinear",
+        "seed_start": 42001,
+        "n": 64
+      },
+      "LendingClub_logistic": {
+        "dataset": "LendingClub",
+        "mechanism": "logistic",
+        "seed_start": 43001,
+        "n": 64
+      },
+      "LendingClub_nonlinear": {
+        "dataset": "LendingClub",
+        "mechanism": "nonlinear",
+        "seed_start": 44001,
+        "n": 64
+      }
+    },
+    "states": "Controlled: 128 worlds; Real-X: 4 cells x 64 pairs x {broad, gap} history arms (supplement-v2 construction); 9 analysis groups",
+    "label_resamples": 128,
+    "endpoint": "ex-ante expected Brier E_Y[L_p(S;Y)]: test-label noise integrated exactly with known p_T; hidden O and C training labels resampled from known p (128 shared draws per state)",
+    "family": "common family of supplement-v2 (risk/family frozen on broad history) union all main-policy choices; contains anchor M_K",
+    "H_pre_estimators": "plug-in (upward biased) and two-fold cross-fitted on even/odd resamples (downward biased); foresight_lb = H_post - H_pre_plugin",
+    "primary_competitors": [
+      "Safe-MinRisk",
+      "Fisher-cost"
+    ],
+    "primary_endpoints_per_group": [
+      "H_pre_crossfit",
+      "foresight_lb",
+      "DC_gain_vs_Safe-MinRisk",
+      "DC_gain_vs_Fisher-cost"
+    ],
+    "primary_family_size": 36,
+    "secondary_competitors": [
+      "Random-Feasible",
+      "Uncertainty",
+      "BAIT-Greedy",
+      "TargetVar-Greedy",
+      "Fixed-ceil",
+      "Full"
+    ],
+    "secondary_family_size": 54,
+    "sensitivity": "package DC-PRISM; one constant at a time: quantile {0.1,0.3,0.5}, penalty {0,0.11,0.44}, gate {0,0.04,0.16}, damping {0,0.9}, tanh scale {1.25,5}; descriptive 95% pointwise intervals, no tests"
+  },
+  "online": {
+    "streams": [
+      "engineered",
+      "natural"
+    ],
+    "datasets": [
+      "HMEQ",
+      "LendingClub",
+      "PPDai",
+      "UCI_Credit"
+    ],
+    "seeds": [
+      51001,
+      51002,
+      51003,
+      51004,
+      51005,
+      51006,
+      51007,
+      51008,
+      51009,
+      51010,
+      51011,
+      51012,
+      51013,
+      51014,
+      51015,
+      51016,
+      51017,
+      51018,
+      51019,
+      51020,
+      51021,
+      51022,
+      51023,
+      51024,
+      51025,
+      51026,
+      51027,
+      51028,
+      51029,
+      51030,
+      51031,
+      51032
+    ],
+    "rounds": 10,
+    "policies": [
+      "OrdinaryOnly",
+      "Safe-MinRisk",
+      "Fixed-count",
+      "Fisher-cost",
+      "DC-PRISM",
+      "Random-Feasible",
+      "Uncertainty",
+      "BAIT-Greedy",
+      "TargetVar-Greedy"
+    ],
+    "metric": "ALC-Brier: mean of 10 round-start Brier scores (S delay 1, O delay 2), identical to p4-confirmation-v1",
+    "primary_competitors": [
+      "Safe-MinRisk",
+      "Fixed-count",
+      "Fisher-cost",
+      "Random-Feasible",
+      "Uncertainty",
+      "BAIT-Greedy",
+      "TargetVar-Greedy"
+    ],
+    "primary_family_size": 56,
+    "reproduce_check": "inherited 5 policies on archived seeds 21001 and 21016 must match p4-confirmation-v1 ALC to 1e-12 before the study runs"
+  },
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "paired one-sample t on independent units; Bonferroni simultaneous t intervals and global Holm within each registered family"
+  },
+  "stopping": "fixed sizes; no interim significance looks; no additional seeds after results",
+  "limitations": [
+    "Real-X labels are generated from known p on real covariates; not real outcomes",
+    "natural stream still uses fixed processed cohorts and random (not calendar) order",
+    "BAIT-Greedy is a forward-only adaptation under the envelope, not the full original BAIT",
+    "TargetVar-Greedy is an EPIG-style Laplace approximation, not sampling-based EPIG"
+  ]
+}

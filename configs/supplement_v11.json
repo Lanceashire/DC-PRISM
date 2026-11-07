@@ -1,0 +1,117 @@
+{
+  "version": "supplement-v11-revision",
+  "created_at_utc": "2026-11-05T12:04:34.803196+00:00",
+  "base_commit": "6e1eae4",
+  "responds_to": [
+    "paper/zh/\u5ba1\u7a3f\u610f\u89c1_\u7b2c\u4e8c\u8f6e_oracle\u4e3b\u7ebf.md",
+    "~/\u6587\u6863/Oracle_Gap_Strict_Review.txt"
+  ],
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "diabetes_npz_sha256": "0d4e21f0a879c36907d30546a8c0f09a2aab30668afa946803f6337d09e424da",
+  "benchmarks_npz_sha256": "2f5ca1620576d397447172b0cfb659100768a487c5a4789611bed13c5fb39f28",
+  "excluded_by_user": "biology and chemistry datasets",
+  "seed_start": 151001,
+  "datasets": [
+    "HMEQ",
+    "LendingClub",
+    "PPDai",
+    "UCI_Credit",
+    "Diabetes",
+    "USPS",
+    "Spambase",
+    "BankMarketing"
+  ],
+  "semi_cohorts": {
+    "HMEQ_logistic": {
+      "dataset": "HMEQ",
+      "mechanism": "logistic",
+      "seed_start": 41001,
+      "n": 64
+    },
+    "HMEQ_nonlinear": {
+      "dataset": "HMEQ",
+      "mechanism": "nonlinear",
+      "seed_start": 42001,
+      "n": 64
+    },
+    "LendingClub_logistic": {
+      "dataset": "LendingClub",
+      "mechanism": "logistic",
+      "seed_start": 43001,
+      "n": 64
+    },
+    "LendingClub_nonlinear": {
+      "dataset": "LendingClub",
+      "mechanism": "nonlinear",
+      "seed_start": 44001,
+      "n": 64
+    }
+  },
+  "A": {
+    "R": 32,
+    "n_natural": 24,
+    "n_known": 24,
+    "known_groups": [
+      "Controlled",
+      "HMEQ_logistic",
+      "HMEQ_nonlinear",
+      "LendingClub_logistic",
+      "LendingClub_nonlinear"
+    ],
+    "bounds": "F_lo = mean (d_r-d_b)^+ <= F <= F_up = mean max_S(d_S-mu_S) (exact in sample, any distribution/correlation); G = sigma_max sqrt(2 ln |F|) (Gaussian maximal inequality, any correlation); F_ind recorded only to document failure; stress tests: independent, equicorrelated 0.8, antithetic pairs, skewed lognormal, t3; K in 3,10,30; 200 reps each",
+    "predictions": "(i) F_lo<=F<=F_up in 100% of states; (ii) F<=G in at least 95% of states; (iii) F_ind < F occurs in the antithetic stress structure"
+  },
+  "B": {
+    "R": 16,
+    "n": 24,
+    "pool": 12,
+    "question": "exact ex-post/ex-ante oracles over every feasible subset vs DC-PRISM family oracle vs greedy benchmark oracle, same replicates and test halves; logistic learner; natural stream",
+    "predictions": "greedy deployable gap <= exact deployable gap (greedy under-estimates); report greedy-minus-exact floor with CI"
+  },
+  "C1": {
+    "R": 32,
+    "n": 16,
+    "groups": [
+      "HMEQ_logistic",
+      "HMEQ_nonlinear",
+      "LendingClub_logistic",
+      "LendingClub_nonlinear"
+    ],
+    "variants": "truth, p_hat (boosting), logit temperature 0.5 and 2, logit shift -0.5 and +0.5",
+    "predictions": "unperturbed p_hat floor bias within +-0.5e-3; temperature 0.5 (sharper probabilities, less label variance) lowers F and temperature 2 raises F"
+  },
+  "C2": {
+    "R": 16,
+    "n": 24,
+    "question": "greedy benchmark decomposition from recorded training labels vs p_hat-replicate mean; TOST equivalence within +-0.5e-3 pooled over datasets; p_hat ECE and calibration slope"
+  },
+  "D": {
+    "R": 32,
+    "n": 16,
+    "datasets": [
+      "HMEQ",
+      "BankMarketing",
+      "USPS"
+    ],
+    "flip": [
+      0.0,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "pool": [
+      24,
+      48,
+      96
+    ],
+    "predictions": "family floor and greedy floor share increase with the flip probability in each dataset (descriptive monotonicity); pool size: descriptive"
+  },
+  "E": "exact maximum-cardinality reference for the 88 uncertified supplement-v5 states: experiments/supplement_v11/exact_mk.py",
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "paired one-sample t on independent units; Bonferroni simultaneous t intervals and global Holm within each registered family"
+  },
+  "stopping": "fixed sizes; no interim looks; no additional seeds after results"
+}

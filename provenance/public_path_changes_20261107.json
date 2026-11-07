@@ -1,0 +1,44 @@
+[
+  {
+    "path": "archive/codex_nested_opportunity_v1_incomplete/src/nested_audit.py",
+    "original_sha256": "d039f711de796d83a113bd9b0b4615a3a0a2f6fc14cd9c8aa5e7b987dbe31e58",
+    "public_sha256": "90bd90ed7eb87f57665aa9ed8645ccda3d36e26ec501694d257401166a8e0741",
+    "reason": "personal filesystem prefix replaced; numerical evidence unchanged"
+  },
+  {
+    "path": "deliverables/AI_Research_Skills_安装记录_20261106.json",
+    "original_sha256": "23b7bf782862fefbcd357843b6cda552096012245cbb934790338d16b53dd8e6",
+    "public_sha256": "9d35da8dc2080143a1aa35a6a1d1cb128c1387da5bc79e0f2527c9377cb6d95c",
+    "reason": "personal filesystem prefix replaced; numerical evidence unchanged"
+  },
+  {
+    "path": "deliverables/DC_PRISM_Claude进展审查与本轮修订_20261106.txt",
+    "original_sha256": "9dcc5b1cda723b4ae77af5e0aaf9be5edd29d4c2bf07be755b135b656906e0d6",
+    "public_sha256": "13e462f0aed468dafa3100440f227e8dbb2a03461205c69271b6a1b10d1809e0",
+    "reason": "personal filesystem prefix replaced; numerical evidence unchanged"
+  },
+  {
+    "path": "deliverables/Oracle_Gap_中英源文件与审查记录_20261106.zip",
+    "original_sha256": "75300e23af2ed65dc50dd809d58ddbcf1ffbe812f5f9fc869e1d811dbcc43dfb",
+    "public_sha256": "03e793cb4cf920cf9ff8cd047671a6cc6fa6577b8dc7b503ce9ba72e31e23398",
+    "reason": "personal filesystem prefix replaced; numerical evidence unchanged"
+  },
+  {
+    "path": "paper/history/REVISION_HANDOFF_20261106.txt",
+    "original_sha256": "9dcc5b1cda723b4ae77af5e0aaf9be5edd29d4c2bf07be755b135b656906e0d6",
+    "public_sha256": "13e462f0aed468dafa3100440f227e8dbb2a03461205c69271b6a1b10d1809e0",
+    "reason": "personal filesystem prefix replaced; numerical evidence unchanged"
+  },
+  {
+    "path": "paper/review_records_20261106/report.txt",
+    "original_sha256": "9dcc5b1cda723b4ae77af5e0aaf9be5edd29d4c2bf07be755b135b656906e0d6",
+    "public_sha256": "13e462f0aed468dafa3100440f227e8dbb2a03461205c69271b6a1b10d1809e0",
+    "reason": "personal filesystem prefix replaced; numerical evidence unchanged"
+  },
+  {
+    "path": "paper/review_records_20261106/verify_and_plot.py",
+    "original_sha256": "af295fe369a6d13582f961c4bb619a4a1314645503091b97942c2eca94ea564b",
+    "public_sha256": "0392d5892478a365a90aedb93cc437dddfa05d95863905a1f7cb3ffd8ca6fd6f",
+    "reason": "personal filesystem prefix replaced; numerical evidence unchanged"
+  }
+]

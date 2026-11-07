@@ -1,0 +1,112 @@
+{
+  "version": "supplement-v7-generality",
+  "created_at_utc": "2026-11-04T17:29:20.484175+00:00",
+  "base_commit": "f399f8d (supplement-v6)",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "diabetes_npz_sha256": "0d4e21f0a879c36907d30546a8c0f09a2aab30668afa946803f6337d09e424da",
+  "diabetes_source": {
+    "dataset": "UCI Diabetes 130-US hospitals for years 1999-2008 (id 296)",
+    "zip_sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a",
+    "csv_sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+    "preparation": "scripts/prepare_diabetes.py: first encounter per patient, death/hospice discharges excluded, adverse=readmitted<30, exposure=time_in_hospital, 69,990 rows, adverse rate 0.0898"
+  },
+  "learners": [
+    "logit",
+    "gbdt"
+  ],
+  "learner_spec": {
+    "logit": "UnifiedLogisticLearner(l2=0.45) as in all earlier studies",
+    "gbdt": "sklearn 1.6.1 HistGradientBoostingClassifier(max_iter=50, learning_rate=0.1, max_leaf_nodes=8, min_samples_leaf=10, l2_regularization=1.0, early_stopping=False); constant prediction if a training set has one class"
+  },
+  "study_A": {
+    "offline_cohorts": {
+      "Controlled": {
+        "seed_start": 101001,
+        "n": 64
+      },
+      "HMEQ_logistic": {
+        "dataset": "HMEQ",
+        "mechanism": "logistic",
+        "seed_start": 102001,
+        "n": 32
+      },
+      "HMEQ_nonlinear": {
+        "dataset": "HMEQ",
+        "mechanism": "nonlinear",
+        "seed_start": 102101,
+        "n": 32
+      },
+      "LendingClub_logistic": {
+        "dataset": "LendingClub",
+        "mechanism": "logistic",
+        "seed_start": 102201,
+        "n": 32
+      },
+      "LendingClub_nonlinear": {
+        "dataset": "LendingClub",
+        "mechanism": "nonlinear",
+        "seed_start": 102301,
+        "n": 32
+      }
+    },
+    "streams": [
+      "engineered",
+      "natural"
+    ],
+    "datasets": [
+      "HMEQ",
+      "LendingClub",
+      "PPDai",
+      "UCI_Credit"
+    ],
+    "real_seed_start": 103001,
+    "real_seeds": 64,
+    "label_resamples": 64,
+    "question": "does the EVPI floor and the real-label ordering (information-greedy > DC-PRISM in captured H_pre) hold when the downstream learner is gradient boosting?",
+    "primary": "real-label credit groups, boosting learner: DC selection gap and DC minus TargetVar-greedy; 8 groups x 2 = 16 tests",
+    "primary_family_size": 16,
+    "floor_criterion": "descriptive: range of group-mean EVPI vs range of group-mean H_pre under each learner"
+  },
+  "study_B": {
+    "dataset": "Diabetes",
+    "streams": [
+      "engineered",
+      "natural"
+    ],
+    "seed_start": 104001,
+    "n_seeds": 128,
+    "label_resamples": 64,
+    "primary_learner": "logit",
+    "primary_endpoints": [
+      "H_pre_crossfit",
+      "DC_selection_gap",
+      "DC_minus_TargetVar",
+      "DC_vs_Safe-MinRisk"
+    ],
+    "primary_family_size": 8,
+    "replay_seed_start": 105001,
+    "replay_seeds": 256,
+    "replay_competitors": [
+      "Safe-MinRisk",
+      "Fixed-count",
+      "Fisher-cost",
+      "Random-Feasible",
+      "Uncertainty",
+      "BAIT-Greedy",
+      "TargetVar-Greedy"
+    ],
+    "replay_family_size": 14,
+    "replay_metric": "ALC-Brier, ten rounds, as supplement-v5 study H"
+  },
+  "study_C": {
+    "approximation": "lower side: two-leader normal EVPI s*phi(D/s)-D*Phi(-D/s); upper side: E max over all sets of independent normals with the replicate means and s.d.s minus the best mean (ignores positive correlation); bracket coverage of measured group-mean EVPI reported",
+    "outputs": "state-level Spearman with measured EVPI (H_post - plug-in H_pre), group-level R^2 and ratio range, per learner; descriptive"
+  },
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "paired one-sample t on independent units; Bonferroni simultaneous t intervals and global Holm within each registered family"
+  },
+  "stopping": "fixed sizes; no interim looks; no additional seeds after results"
+}

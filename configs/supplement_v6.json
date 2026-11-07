@@ -1,0 +1,85 @@
+{
+  "version": "supplement-v6-estimated-p-protocol",
+  "created_at_utc": "2026-11-04T16:52:51.819224+00:00",
+  "base_commit": "0155d1e (supplement-v5)",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "purpose": {
+    "V": "validate the opportunity protocol with an estimated p_hat (fitted on auxiliary cohort rows with labels from the known p) against the known-p protocol on the 512 v3 Real-X states (diagnostic re-use of states)",
+    "R": "apply the p_hat protocol to round-1 states of the real-label replay (fresh seeds) to estimate H_post, H_pre, foresight and policy gains on recorded outcomes; model-free realized hindsight headroom as calibration check"
+  },
+  "phat_models": [
+    "gbdt",
+    "logit"
+  ],
+  "phat_spec": {
+    "gbdt": "sklearn 1.6.1 HistGradientBoostingClassifier(max_iter=200, learning_rate=0.05, max_leaf_nodes=15, min_samples_leaf=40, l2_regularization=1.0, early_stopping=False)",
+    "logit": "UnifiedLogisticLearner(l2=1.0) on standardized raw features; missing values (HMEQ) imputed by auxiliary-row medians; GBDT handles missing values natively",
+    "aux_cap": 20000,
+    "R_holdout": "20% of auxiliary rows held out for calibration diagnostics"
+  },
+  "study_V": {
+    "cohorts": {
+      "HMEQ_logistic": {
+        "dataset": "HMEQ",
+        "mechanism": "logistic",
+        "seed_start": 41001,
+        "n": 64
+      },
+      "HMEQ_nonlinear": {
+        "dataset": "HMEQ",
+        "mechanism": "nonlinear",
+        "seed_start": 42001,
+        "n": 64
+      },
+      "LendingClub_logistic": {
+        "dataset": "LendingClub",
+        "mechanism": "logistic",
+        "seed_start": 43001,
+        "n": 64
+      },
+      "LendingClub_nonlinear": {
+        "dataset": "LendingClub",
+        "mechanism": "nonlinear",
+        "seed_start": 44001,
+        "n": 64
+      }
+    },
+    "label_resamples": 128,
+    "adequacy_tolerance": 0.0005,
+    "criterion": "p_hat protocol adequate for a quantity in a group if the 95% CI of (p_hat estimate - known-p estimate) lies within +-5e-4"
+  },
+  "study_R": {
+    "streams": [
+      "engineered",
+      "natural"
+    ],
+    "datasets": [
+      "HMEQ",
+      "LendingClub",
+      "PPDai",
+      "UCI_Credit"
+    ],
+    "seed_start": 91001,
+    "n_seeds": 128,
+    "label_resamples": 128,
+    "primary_model": "gbdt",
+    "primary_endpoints_per_cell": [
+      "H_pre_crossfit",
+      "DC_selection_gap",
+      "DC_minus_TargetVar",
+      "DC_vs_Safe-MinRisk"
+    ],
+    "primary_family_size": 32,
+    "secondary": "realized (recorded-label) DC minus TargetVar and DC vs Safe-MinRisk, 16 tests; calibration H_post(p_hat) - H_post(realized) descriptive",
+    "state": "round 1 of the v3/v5 replay builders: D=D0 (68), O=round-1 ordinary acquisitions (14), C=round-1 candidates (24), Q, T with recorded y_T; budget/reference/family from supplement-v5 reference_context (target_k=6)"
+  },
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "paired one-sample t on independent units; Bonferroni simultaneous t intervals and global Holm within each registered family"
+  },
+  "stopping": "fixed sizes; no interim looks; no additional seeds after results",
+  "environment_note": "scikit-learn 1.6.1 added to the venv for this study; numpy 2.1.3 / scipy 1.14.1 unchanged",
+  "phat_choice": "decided before any study seed: GBDT primary (unknown functional form on real data), logistic reported as sensitivity analysis; smoke on seed 99001 showed logistic p_hat closer to truth in V because V's truth is logistic"
+}

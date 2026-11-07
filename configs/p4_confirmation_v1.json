@@ -1,0 +1,56 @@
+{
+  "version": "p4-confirmation-v1",
+  "frozen_at_utc": "2026-11-03T15:51:50.683934+00:00",
+  "base_publication": "a35fc466b4cfdd4783310a3da39f1ea6e88edd8b",
+  "role": "fresh random-split/stream confirmation on reused fixed real cohorts; not new external data",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "datasets": [
+    "HMEQ",
+    "LendingClub",
+    "PPDai",
+    "UCI_Credit"
+  ],
+  "seeds": [
+    21001,
+    21002,
+    21003,
+    21004,
+    21005,
+    21006,
+    21007,
+    21008,
+    21009,
+    21010,
+    21011,
+    21012,
+    21013,
+    21014,
+    21015,
+    21016
+  ],
+  "rounds": 10,
+  "methods": "all 10 unchanged methods in frozen repaired run_p3_p4.py",
+  "metric_timing": "start of round after due releases, S delay 1, O delay 2",
+  "primary_metric": "mean of 10 online Brier scores per seed",
+  "primary_competitors": [
+    "Safe-MinRisk",
+    "Fixed-Eps-Safe-PA",
+    "BAIT-Cost-Safe"
+  ],
+  "primary_family_size": 12,
+  "alpha": 0.05,
+  "material_delta": 0.0001,
+  "inference": "seed-paired two-sided t p-values, global 12-test Holm and Bonferroni simultaneous t intervals; normal approximation",
+  "secondary": "round10 Brier and inherited nine-comparator per-dataset statistics are descriptive/secondary",
+  "equal_weight_dataset_mean": "descriptive only; do not pool 64 splits as independent institutions",
+  "stopping": "fixed 16 seeds per dataset; no significance interim looks or extra seeds",
+  "parameters": "all active algorithm parameters, q calibration, numerical budgets, feature processing and candidates unchanged from repair-v1",
+  "acceptance": "6400 rows and 640 trajectories; release/first-round/common-budget/feasible-risk/fixed-cardinality/duplicate checks; all optimizer calls audited; optimizer non-success blocks clean acceptance",
+  "limitations": [
+    "source NPZ reused; not new independent real labels or institutions",
+    "random covariate split is not verified real business-time validation",
+    "empirical risk proxy does not guarantee simultaneous true coverage",
+    "BAIT is package Fisher-trace/cost adaptation, not full original external implementation",
+    "GBT secondary is in-package boosted stumps, not XGBoost"
+  ]
+}

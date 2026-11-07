@@ -1,0 +1,22 @@
+f8a71bb24a08505ba3a03e9dbb5bdcf853fead1e Paper generators: deployable lower bound, valid floor bounds, noise-dose panel
+dfe20e0bdfdc8f7a15b0c01ae6bfbd8a9ee5d76e Add supplement-v11 results (valid bounds 624/624, greedy=exact in 12-candidate pools, p_hat floor bias -0.04, noise dose monotone 3/3, pool size)
+6a0a5e0fc0eb6b2933b3fa2dba5652f943a773c1 supplement-v11 part E: exact search proves heuristic M_K optimal in all 88 uncertified states
+40427ed0e1b0d6cc013269bd2ed4cece54980578 Freeze supplement-v11 protocol (revision: valid floor bounds, exact-vs-greedy oracle, p_hat robustness, noise dose, pool size)
+6e1eae47ed0a2600399fcee2bdf36ecb3ceb73a6 Paper figures at print size; budget legend below panels
+223b1f938b1fb50fcef1a49981b50697a9685f13 Add paper table and figure generators for the oracle-gap manuscript
+a96add166bfb1d3a3fdde923114eccfa9d53a062 Add supplement-v10 part A results (MLP learner on GPU: floor material in 9/9, bracket 9/9, calibration 8/9)
+1b8e73d03aa27aaeda95f681080272f3e95cff07 Add supplement-v10 part B results (risk budget lever: floor increases with budget in 8/8 cohorts)
+b34dc0c9e2136ab084db27cba433e090898dc3fe Freeze supplement-v10 protocol for part B (risk budget as a lever on the aleatoric floor)
+b871c8cfafa19b132beafb7e55a8010b2479f4a6 Add supplement-v9 results (noise gradient over 8 cohorts: all three registered predictions hold)
+7dc25893f51047d2c96cd15efb5e52153ac18ca9 Freeze supplement-v9 protocol (oracle-gap decomposition along a label-noise gradient, 8 cohorts)
+23ba1bc91b59a89fcce25942ae7092fd9f99b40a Add supplement-v8 results (greedy-oracle gap: test reuse, aleatoric floor, deployable gap) and figure scripts
+3492a7ca9531f1bb8994bb65502c109b2c6f0277 Freeze supplement-v8 protocol (benchmark-style greedy oracle gap decomposition)
+d5d2bcc143bc8f697cb0ea642815f98fc30751ed Add supplement-v7 results (boosting learner, diabetes cohort, analytic EVPI bracket)
+a32868a36eec15ad1b073fe70ade518da643fabd Freeze supplement-v7 protocol (boosting learner, non-credit cohort, analytic EVPI bracket)
+f399f8d5dbdbef018105870fffb16000406c399c Add supplement-v6 results (estimated-p opportunity protocol: validation and real-label application)
+b986edd9b9875bd49ef90509441ea08f7654cad8 Freeze supplement-v6 protocol (opportunity protocol with estimated p: validation and real-label application)
+0155d1ea597d6daf053b62a13b45dc14d6721dc4 Add supplement-v5 results (family-size dependence, conservative-layer ablation, generator perturbation, 512-seed replay)
+f4daaf39b18b910a30e7e88d6f97f8e91446f88f Freeze supplement-v5 protocol (review response: |F| dependence, conservative-layer ablation, generator perturbation, power-driven replay)
+c4b296f9d9fa9a02b0b686b5a3674d0034352199 Improve opportunity figure legend and labels
+1e097dbc770bd722cca25332da4d26d59826a6ac Add supplement-v3 (pre-outcome opportunity, new baselines, natural stream) and supplement-v4 (selection-gap localisation)
+e21fa6d14ad75d1f8f7251a3be3304507e2aed70 Add supplement-v2 coverage intervention and p4-confirmation-v1 fresh-seed replay

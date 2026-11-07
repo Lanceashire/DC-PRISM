@@ -1,0 +1,100 @@
+diff --git a/experiments/paper_figures.py b/experiments/paper_figures.py
+index 391e74e..51a29dc 100644
+--- a/experiments/paper_figures.py
++++ b/experiments/paper_figures.py
+@@ -1,7 +1,7 @@
+ """Figures of the oracle-gap paper, from committed result files only.
+ Usage: python experiments/paper_figures.py <out_dir>
+-  fig_predict.pdf : (a) measured floor vs closed-form two-leader value, all 87 settings, with the bracket;
+-                    (b) floor share of the benchmark-oracle gap vs label-noise index (logistic, neural).
++  fig_predict.pdf : (a) greedy-residual share of the benchmark-oracle gap vs label-noise index (logistic, neural);
++                    (b) the same share under injected label flips; (c) greedy vs exhaustive-search residual, 12-candidate pools.
+   fig_budget.pdf  : floor (and deployable gap) vs risk budget k, eight cohorts.
+ """
+ import sys
+@@ -27,39 +27,36 @@ cols = ['group', 'learner', 'foresight', 'tl_evpi', 'ind_evpi']
+ allf = pd.concat([v7[cols], v9[cols], v10a[cols], v10b[cols]], ignore_index=True)
+ assert len(allf) == 87
+ 
+-# ---------------------------------------------------------------- fig_predict (revision: valid bounds, noise gradient, noise dose)
+-A = pd.read_csv(R/'supplement_v11/rows.csv.gz'); A = A[A.part == 'A']
++# ---------------------------------------------------------------- fig_predict: (a) noise gradient, (b) injected noise, (c) exact vs greedy
+ def grad(path):
+-    x = pd.read_csv(path); x = x[x.part == 'oracle']; pcs = [c for c in x.columns if c.startswith('prac_')]; rows = []
++    x = pd.read_csv(path); x = x[x.part == 'oracle']; rows = []
+     for ds, y in x.groupby('dataset'):
+-        bb = y[pcs].mean().idxmax(); dp = np.maximum(y.deployable, y[bb])
+-        rows.append((ds, y.noise_index.mean(), (y.ex_post-dp).mean()/y.reported.mean()))
++        rows.append((ds, y.noise_index.mean(), (y.ex_post-y.deployable).mean()/y.reported.mean()))
+     return pd.DataFrame(rows, columns=['ds', 'noise', 'share']).sort_values('noise')
+ g9, g10 = grad(R/'supplement_v9/states.csv.gz'), grad(R/'supplement_v10/partA/states.csv.gz')
+ Dd = pd.read_csv(R/'supplement_v11/D_dose_and_pool.csv'); Dd = Dd[Dd['sub'] == 'flip']
+-fig, (a, b, c) = plt.subplots(1, 3, figsize=(4.8, 1.95), gridspec_kw={'width_ratios': [1.1, 1, 1]})
+-lim = (0.02, 40); a.plot(lim, lim, color='#999999', lw=.7, ls=':')
+-for lr, (lab, col, mk) in [('logit', LEARN['logit']), ('gbdt', LEARN['gbdt'])]:
+-    x = A[A.learner == lr]
+-    a.scatter(x.F*1e3, x.F_up*1e3, s=3, marker='^', color=col, alpha=.55, lw=0)
+-    a.scatter(x.F*1e3, np.maximum(x.F_lo, 2e-5)*1e3, s=3, marker='v', color=col, alpha=.35, lw=0, label=lab)
+-a.set_xscale('log'); a.set_yscale('log'); a.set_xlim(.05, 30); a.set_ylim(.02, 40)
+-a.set_xlabel(r'Measured floor ($\times10^{-3}$)'); a.set_ylabel(r'Bound ($\times10^{-3}$)')
+-a.set_title('(a) $F_{lo}\\leq F\\leq F_{up}$, 624/624', fontsize=6.5)
+-a.text(.07, 18, '$\\blacktriangle$ upper  $\\blacktriangledown$ lower', fontsize=5, color='#444444', va='top')
+-a.legend(frameon=False, fontsize=5, loc='lower right', markerscale=2.5, handletextpad=.1)
++Bx = pd.read_csv(R/'supplement_v11/B_exact_vs_greedy.csv'); Bx = Bx[Bx.dataset != 'ALL']
++fig, (a, b, c) = plt.subplots(1, 3, figsize=(4.8, 1.85))
+ for df, lr in [(g9, 'logit'), (g10, 'mlp')]:
+     lab, col, mk = LEARN[lr]
+-    b.plot(df.noise, 100*df.share, color=col, lw=.7, alpha=.5); b.scatter(df.noise, 100*df.share, color=col, marker=mk, s=9, lw=0, label=lab)
+-b.set_ylim(0, 100); b.set_xlabel('noise index'); b.set_ylabel('floor share (%)'); b.set_title('(b) across cohorts', fontsize=6.5)
+-b.legend(frameon=False, fontsize=5, loc='upper left', handletextpad=.1)
++    a.plot(df.noise, 100*df.share, color=col, lw=.7, alpha=.5); a.scatter(df.noise, 100*df.share, color=col, marker=mk, s=9, lw=0, label=lab)
++a.set_ylim(0, 100); a.set_xlabel('noise index'); a.set_ylabel('residual share of gap (%)')
++a.set_title('(a) across cohorts', fontsize=6.5); a.legend(frameon=False, fontsize=5, loc='upper left', handletextpad=.1)
+ pal = {'HMEQ': '#4c78a8', 'BankMarketing': '#e45756', 'USPS': '#54a24b'}
+ for ds, x in Dd.groupby('dataset'):
+-    x = x.sort_values('level'); c.plot(100*x.level, 100*x.floor_share, marker='o', ms=2.5, lw=.9, color=pal[ds], label={'BankMarketing': 'Bank'}.get(ds, ds))
+-c.set_ylim(0, 100); c.set_xticks([0, 10, 20, 30]); c.set_xlabel('labels flipped (%)'); c.set_ylabel('floor share (%)')
+-c.set_title('(c) injected label noise', fontsize=6.5); c.legend(frameon=False, fontsize=5, loc='upper left', handletextpad=.2)
+-for ax in (b, c): ax.grid(axis='y', color='#eeeeee', lw=.5)
+-fig.tight_layout(w_pad=.6); fig.savefig(out/'fig_predict.pdf'); fig.savefig(out/'fig_predict.png', dpi=200)
++    x = x.sort_values('level'); b.plot(100*x.level, 100*x.floor_share, marker='o', ms=2.5, lw=.9, color=pal[ds], label={'BankMarketing': 'Bank'}.get(ds, ds))
++b.set_ylim(0, 100); b.set_xticks([0, 10, 20, 30]); b.set_xlabel('labels flipped (%)'); b.set_ylabel('residual share of gap (%)')
++b.set_title('(b) injected label noise', fontsize=6.5); b.legend(frameon=False, fontsize=5, loc='lower right', handletextpad=.2)
++lim = (0.5, 2.0); c.plot(lim, lim, color='#999999', lw=.7, ls=':')
++c.scatter(Bx.exact_floor*1e3, Bx.greedy_floor*1e3, s=10, color='#4c78a8', lw=0)
++nm = {'BankMarketing': 'Bank', 'UCI_Credit': 'UCI', 'Diabetes': 'Readm.', 'LendingClub': 'LC', 'Spambase': 'Spam'}
++for _, r in Bx.iterrows():
++    off = {'Spambase': (-14, 3), 'PPDai': (-14, 3), 'UCI_Credit': (-10, 3)}.get(r.dataset, (3, -4))
++    c.annotate(nm.get(r.dataset, r.dataset), (r.exact_floor*1e3, r.greedy_floor*1e3), fontsize=4.3, xytext=off, textcoords='offset points', color='#444444')
++c.set_xlim(*lim); c.set_ylim(*lim); c.set_xlabel(r'exact-search residual ($10^{-3}$)'); c.set_ylabel(r'greedy residual ($10^{-3}$)')
++c.set_title('(c) greedy vs exact search', fontsize=6.5)
++for ax in (a, b): ax.grid(axis='y', color='#eeeeee', lw=.5)
++fig.tight_layout(w_pad=.5); fig.savefig(out/'fig_predict.pdf'); fig.savefig(out/'fig_predict.png', dpi=200)
+ 
+ # ---------------------------------------------------------------- fig_budget
+ fig, (a, b) = plt.subplots(1, 2, figsize=(4.8, 2.35), sharex=True)
+diff --git a/experiments/paper_tables.py b/experiments/paper_tables.py
+index c64d36a..f85e22a 100644
+--- a/experiments/paper_tables.py
++++ b/experiments/paper_tables.py
+@@ -24,17 +24,17 @@ lab = {'controlled': 'Controlled worlds', 'semi-synthetic': 'Semi-synthetic (kno
+ rows = []
+ for cat in lab:
+     x = d[d.cat == cat]; best = x[pc].mean().idxmax()
+-    dep = np.maximum(x.deployable, x[best])          # deployable lower bound: ex-ante greedy oracle or the best fixed strategy
++    dep = x.deployable          # cross-fitted greedy gain (no post-hoc max over strategies: that would add selection optimism)
+     rows.append(f"{lab[cat]} & {len(x)} & {f(x.reported.mean()*1e3)} & {f((x.reported-x.ex_post).mean()*1e3)} & "
+                 f"{f((x.ex_post-dep).mean()*1e3)} & {f(dep.mean()*1e3)} & "
+                 f"{f((x.reported-x[best]).mean()*1e3)}$\\to${f((dep-x[best]).mean()*1e3)} \\\\")
+ (out/'t_known.tex').write_text('\n'.join(rows)+'\n')
+ 
+-# T2: noise gradient, logistic (v9) and MLP (v10 part A), with the deployable lower bound max(ex-ante greedy, best fixed strategy)
++# T2: noise gradient, logistic (v9) and MLP (v10 part A), with the cross-fitted greedy gain
+ def grad_summary(path):
+     x = pd.read_csv(path); x = x[x.part == 'oracle']; pcs = [c for c in x.columns if c.startswith('prac_')]; out_ = {}
+     for ds, y in x.groupby('dataset'):
+-        best = y[pcs].mean().idxmax(); dep = np.maximum(y.deployable, y[best]); rep = y.reported.mean()
++        best = y[pcs].mean().idxmax(); dep = y.deployable; rep = y.reported.mean()
+         out_[ds] = dict(noise=y.noise_index.mean(), rep=rep, reuse=(y.reported-y.ex_post).mean()/rep, floor=(y.ex_post-dep).mean()/rep,
+                         lead_r=(y.reported-y[best]).mean(), lead_d=(dep-y[best]).mean())
+     return out_

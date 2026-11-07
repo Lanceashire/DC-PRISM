@@ -1,0 +1,8 @@
+{
+  "status": "INCOMPLETE_INTERRUPTED",
+  "completed_states": 38,
+  "planned_states": 128,
+  "engineering_state_excluded": true,
+  "used_in_paper_confirmatory_evidence": false,
+  "note": "Archived evidence only. Do not pool with supplements v1-v11. Runner retains historical paths; see README for porting."
+}

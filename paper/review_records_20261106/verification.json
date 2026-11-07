@@ -1,0 +1,8 @@
+{
+  "source_hash_mismatches": [],
+  "manifest_status": "COMPLETE",
+  "family_states": 624,
+  "empirical_inequalities_pass": true,
+  "scope": "aggregate and source audit, no complete raw-data rerun",
+  "important_correction": "Pointwise maxima of noisy held-out policy gains are not certified deployable lower bounds; greedy residual is not the exact family floor."
+}

@@ -1,0 +1,122 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{ash2021fishing}
+Ash, J., Goel, S., Krishnamurthy, A., Kakade, S.: Gone fishing: Neural active
+  learning with {Fisher} embeddings. In: Advances in Neural Information
+  Processing Systems. vol.~34, pp. 8927--8939 (2021),
+  \url{https://proceedings.neurips.cc/paper_files/paper/2021/hash/4afe044911ed2c247005912512ace23b-Abstract.html}
+
+\bibitem{bickfordsmith2023prediction}
+Bickford~Smith, F., Kirsch, A., Farquhar, S., Gal, Y., Foster, A., Rainforth,
+  T.: Prediction-oriented {Bayesian} active learning. In: Proceedings of the
+  26th International Conference on Artificial Intelligence and Statistics.
+  Proceedings of Machine Learning Research, vol.~206, pp. 7331--7348 (2023),
+  \url{https://proceedings.mlr.press/v206/bickfordsmith23a.html}
+
+\bibitem{boucheron2013concentration}
+Boucheron, S., Lugosi, G., Massart, P.: Concentration Inequalities: A
+  Nonasymptotic Theory of Independence. Oxford University Press (2013).
+  \doi{10.1093/acprof:oso/9780199535255.001.0001}
+
+\bibitem{brier1950verification}
+Brier, G.W.: Verification of forecasts expressed in terms of probability.
+  Monthly Weather Review  \textbf{78}(1), ~1--3 (1950).
+  \doi{10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2}
+
+\bibitem{cohn1996active}
+Cohn, D.A., Ghahramani, Z., Jordan, M.I.: Active learning with statistical
+  models. Journal of Artificial Intelligence Research  \textbf{4},  129--145
+  (1996). \doi{10.1613/jair.295}
+
+\bibitem{lendingclubSource}
+{DePaul University Economics Data Archive}: {LendingClub} loan data,
+  \url{https://bigblue.depaul.edu/jlee141/econdata/LendingClub_LoanData/},
+  accessed 4 November 2026
+
+\bibitem{holm1979simple}
+Holm, S.: A simple sequentially rejective multiple test procedure. Scandinavian
+  Journal of Statistics  \textbf{6},  65--70 (1979). \doi{10.2307/4615733}
+
+\bibitem{huang2026loss}
+Huang, Z., Bickford~Smith, F., Rainforth, T.: Loss-driven {Bayesian} active
+  learning. In: Proceedings of the 29th International Conference on Artificial
+  Intelligence and Statistics. Proceedings of Machine Learning Research,
+  vol.~300, pp. 5140--5148 (2026),
+  \url{https://proceedings.mlr.press/v300/huang26b.html}
+
+\bibitem{keswani2024partial}
+Keswani, V., Mehrotra, A., Celis, L.E.: Fair classification with partial
+  feedback: An exploration-based data collection approach. In: Proceedings of
+  the 41st International Conference on Machine Learning. Proceedings of Machine
+  Learning Research, vol.~235, pp. 23547--23576 (2024),
+  \url{https://proceedings.mlr.press/v235/keswani24a.html}
+
+\bibitem{kirsch2019batchbald}
+Kirsch, A., van Amersfoort, J., Gal, Y.: {BatchBALD}: Efficient and diverse
+  batch acquisition for deep {Bayesian} active learning. arXiv:1906.08158
+  (2019). \doi{10.48550/arXiv.1906.08158}
+
+\bibitem{lakkaraju2017selective}
+Lakkaraju, H., Kleinberg, J., Leskovec, J., Ludwig, J., Mullainathan, S.: The
+  selective labels problem: Evaluating algorithmic predictions in the presence
+  of unobservables. In: Proceedings of the 23rd ACM SIGKDD International
+  Conference on Knowledge Discovery and Data Mining. pp. 275--284 (2017).
+  \doi{10.1145/3097983.3098066}
+
+\bibitem{mackay1992practical}
+MacKay, D.J.C.: A practical {Bayesian} framework for backpropagation networks.
+  Neural Computation  \textbf{4}(3),  448--472 (1992).
+  \doi{10.1162/neco.1992.4.3.448}
+
+\bibitem{morato2025conbatch}
+Morato, P.G., Andriotis, C.P., Khademi, S.: {ConBatch-BAL}: Batch {Bayesian}
+  active learning under budget constraints. arXiv:2507.04929 (2025).
+  \doi{10.48550/arXiv.2507.04929}
+
+\bibitem{pham2022latency}
+Pham, T., Kottke, D., Krempl, G., Sick, B.: Stream-based active learning for
+  sliding windows under the influence of verification latency. Machine Learning
+   \textbf{111}(6),  2011--2036 (2022). \doi{10.1007/s10994-021-06099-z}
+
+\bibitem{sasHMEQ}
+{SAS Institute}: Home equity data set. SAS example datasets,
+  \url{https://support.sas.com/documentation/onlinedoc/viya/exampledatasets/home_equity.csv},
+  accessed 4 November 2026
+
+\bibitem{tomanek2010cost}
+Tomanek, K., Hahn, U.: A comparison of models for cost-sensitive active
+  learning. In: Coling 2010: Posters. pp. 1247--1255 (2010),
+  \url{https://aclanthology.org/C10-2143/}
+
+\bibitem{wei2021selective}
+Wei, D.: Decision-making under selective labels: Optimal finite-domain policies
+  and beyond. In: Proceedings of the 38th International Conference on Machine
+  Learning. Proceedings of Machine Learning Research, vol.~139, pp.
+  11035--11046 (2021), \url{https://proceedings.mlr.press/v139/wei21a.html}
+
+\bibitem{wilson1927probable}
+Wilson, E.B.: Probable inference, the law of succession, and statistical
+  inference. Journal of the American Statistical Association  \textbf{22}(158),
+   209--212 (1927). \doi{10.1080/01621459.1927.10502953}
+
+\bibitem{yan2018logged}
+Yan, S., Chaudhuri, K., Javidi, T.: Active learning with logged data. In:
+  Proceedings of the 35th International Conference on Machine Learning.
+  Proceedings of Machine Learning Research, vol.~80, pp. 5521--5530 (2018),
+  \url{https://proceedings.mlr.press/v80/yan18a.html}
+
+\bibitem{yeh2009comparison}
+Yeh, I.C., Lien, C.h.: The comparisons of data mining techniques for the
+  predictive accuracy of probability of default of credit card clients. Expert
+  Systems with Applications  \textbf{36}(2),  2473--2480 (2009).
+  \doi{10.1016/j.eswa.2007.12.020}
+
+\bibitem{yu2006transductive}
+Yu, K., Bi, J., Tresp, V.: Active learning via transductive experimental
+  design. In: Proceedings of the 23rd International Conference on Machine
+  Learning. pp. 1081--1088 (2006). \doi{10.1145/1143844.1143980}
+
+\end{thebibliography}

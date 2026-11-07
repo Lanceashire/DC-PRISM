@@ -1,0 +1,128 @@
+[
+  {
+    "path": "results/p4_confirmation_v1/run_manifest.json",
+    "status": "COMPLETE",
+    "elapsed_seconds": 53.845256090164185
+  },
+  {
+    "path": "results/repair_v1/run_manifest.json",
+    "status": "COMPLETE"
+  },
+  {
+    "path": "results/supplement_v1/run_manifest.json",
+    "status": "COMPLETE",
+    "elapsed_seconds": 49.93579626083374
+  },
+  {
+    "path": "results/supplement_v10/partA/run_manifest.json",
+    "status": "COMPLETE",
+    "part": "A",
+    "smoke": false,
+    "tasks": 288,
+    "rows": 576,
+    "elapsed_seconds": 943.3975367546082
+  },
+  {
+    "path": "results/supplement_v10/partB/run_manifest.json",
+    "status": "COMPLETE",
+    "part": "B",
+    "smoke": false,
+    "tasks": 768,
+    "rows": 1536,
+    "elapsed_seconds": 166.07402181625366
+  },
+  {
+    "path": "results/supplement_v11/run_manifest.json",
+    "status": "COMPLETE",
+    "parts": "A,B,C1,C2,D",
+    "smoke": false,
+    "tasks": 1096,
+    "rows": 4728,
+    "elapsed_seconds": 999.7081701755524
+  },
+  {
+    "path": "results/supplement_v2/run_manifest.json",
+    "status": "COMPLETE",
+    "elapsed_seconds": 18.95097303390503
+  },
+  {
+    "path": "results/supplement_v3/run_manifest.json"
+  },
+  {
+    "path": "results/supplement_v4/run_manifest.json",
+    "status": "COMPLETE",
+    "states": 640,
+    "elapsed_seconds": 91.86581754684448
+  },
+  {
+    "path": "results/supplement_v5/run_manifest_E.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "tasks": 640,
+    "rows": 7563,
+    "elapsed_seconds": 351.5119981765747
+  },
+  {
+    "path": "results/supplement_v5/run_manifest_F.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "tasks": 640,
+    "rows": 9600,
+    "elapsed_seconds": 245.4058940410614
+  },
+  {
+    "path": "results/supplement_v5/run_manifest_G.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "tasks": 768,
+    "rows": 6144,
+    "elapsed_seconds": 326.5877192020416
+  },
+  {
+    "path": "results/supplement_v5/run_manifest_H.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "rows": 368640,
+    "trajectories": 36864,
+    "elapsed_seconds": 115.99477410316467
+  },
+  {
+    "path": "results/supplement_v6/run_manifest_R.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "tasks": 1024,
+    "rows": 3072,
+    "elapsed_seconds": 247.91974139213562
+  },
+  {
+    "path": "results/supplement_v6/run_manifest_V.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "tasks": 512,
+    "rows": 1536,
+    "elapsed_seconds": 231.75369143486023
+  },
+  {
+    "path": "results/supplement_v7/run_manifest.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "tasks": 1600,
+    "elapsed_seconds": 787.084157705307
+  },
+  {
+    "path": "results/supplement_v8/run_manifest.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "tasks": 640,
+    "rows": 640,
+    "elapsed_seconds": 104.58752655982971
+  },
+  {
+    "path": "results/supplement_v9/run_manifest.json",
+    "status": "COMPLETE",
+    "smoke": false,
+    "tasks": 384,
+    "rows": 1152,
+    "elapsed_seconds": 391.5558168888092
+  }
+]

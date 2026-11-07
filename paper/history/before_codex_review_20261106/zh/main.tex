@@ -1,0 +1,236 @@
+\documentclass[runningheads]{llncs}
+\usepackage{fontspec,xeCJK}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\usepackage{amsmath,amssymb,booktabs,graphicx,multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,shapes.geometric,decorations.pathreplacing,calc,shadows}
+\usepackage[hidelinks]{hyperref}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\keywordname}{关键词：}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\refname}{参考文献}
+\setlength{\emergencystretch}{1.5em}
+\begin{document}
+\title{Oracle 差距存在下限：\\标签获取评价中偶然性空间与可部署空间的分离}
+\titlerunning{Oracle 差距存在下限}
+\author{匿名作者}
+\authorrunning{匿名作者}
+\institute{匿名机构}
+\maketitle
+\begin{abstract}
+主动学习研究常用事后挑选标签的 oracle 来界定可达到的性能上限，并把 oracle 相对实用策略的领先当作“还能提升的空间”。我们证明，当结果本身带噪声时，这一领先的很大一部分是不可达到的。我们把 oracle 差距拆分为测试集复用、由所获标签的随机性造成的偶然性下限，以及可部署差距三部分，并借助在不相交记录上拟合的概率模型，在真实数据上估计这三部分。在信贷、再入院、营销、邮件与手写数字共八个数据集、三种学习器（逻辑回归、梯度提升与神经网络）上，偶然性下限几乎在每个数据集上都达到实质水平，且其占比随标签噪声上升：在近期基准使用的原始像素手写数字任务上，oracle 的领先大部分是真实的；而在带噪声的信贷与再入院结果上，其中 58--100\% 来自测试集复用与偶然性下限。由近乎并列的领先集合构造的闭式上下界，在我们考察的全部 87 个设定中都包住了实测下限；在风险预算下，下限在每个数据集上都随预算放宽而升高。剩余的可部署差距能被哪种策略拿到，取决于其信息代理是否与学习器匹配；风险保守策略 DC-PRISM 同时展示了两种结果。
+\keywords{主动学习 \and 评价 \and Oracle 上界 \and 偶然性不确定性 \and 风险约束获取}
+\end{abstract}
+
+\section{引言}
+\label{sec:intro}
+一个获取策略还能好多少？主动学习研究越来越多地用 \emph{oracle} 来回答：oracle 与任何可部署策略不同，它可以查看自己所获的标签以及评价集，从而描绘出可达到的最佳学习曲线。近期基准构造了贪心 oracle，逐步加入其\emph{实现}标签最能提升测试性能的候选~\cite{werner2023comparable,werner2024cdalbench}；还有 best-of-strategies oracle，在每一批中挑出所标注批次最有帮助的策略~\cite{huseljic2026boss}。oracle 与实用策略之间的差距随后被解读为提升空间：有研究报告，最先进的策略“明显落后于 oracle 性能，在大规模数据集上尤为明显”~\cite{huseljic2026boss}。这与让主动学习评价更可靠的更广泛努力相互呼应~\cite{luth2023navigating,ji2023randomness}。
+
+依据实现标签做选择的 oracle 是一种\emph{事后}（ex-post）基准，它的一部分优势从构造上就不可达到：当给定协变量后结果仍是随机的，总有某个可行标签集合会“碰巧”表现最好，而只有事后才能找到它。事前与事后遗憾的区分在决策导向学习与鲁棒优化中广为人知~\cite{schutte2023robust}；在 bandit 中，期望遗憾与伪遗憾之差随各臂的噪声增大~\cite{bubeck2012regret,audibert2010regret}。但对于标签获取中的 oracle 上界，这一差距尚未被测量过，而它恰恰决定了“oracle 差距”反映的是更好策略的空间，还是仅仅是结果噪声。信贷、医疗与营销中的标签记录的是随机结果，而非近乎确定的类别，因此当标签需要通过有后果的行动来获取时，这个问题最为关键。
+
+\paragraph{贡献。}
+\begin{itemize}
+\item \textbf{分解与估计。}我们把 oracle 报告的领先拆分为测试集复用、任何可部署策略都无法弥合的\emph{偶然性下限}，以及\emph{可部署差距}；并通过从在不相交记录上拟合的概率模型中重抽隐藏标签（图~\ref{fig:framework}），在真实数据上估计这三部分。该估计在已知概率时经过验证，并以不依赖模型的实现结果做了校准（第~\ref{sec:protocol}、\ref{sec:validation} 节）。
+\item \textbf{可预测的下限。}下限由近乎并列的领先集合之间的标签噪声决定：闭式上下界在我们考察的全部 87 个设定中都包住了它；如运行前所预测，它在八个数据集上的占比随标签噪声上升；在风险预算下，它在每个数据集上都随预算升高（第~\ref{sec:findings} 节）。
+\item \textbf{剩余部分。}在低噪声基准数据上，oracle 的领先大部分是真实的；在带噪声的结果上，58--100\% 是复用与下限。剩余的可部署部分能被谁拿到，取决于策略的信息代理是否与学习器匹配；为风险约束获取设计的保守策略 DC-PRISM 在一个领域胜出、在另一个领域落败，功效充足的延迟回放印证了这一排序（第~\ref{sec:findings}、\ref{sec:replay} 节）。
+\end{itemize}
+
+\begin{figure}[t]
+ \centering
+ \resizebox{\linewidth}{!}{\input{figures/framework.tex}}
+ \caption{总体框架。(1) 在风险约束获取中，预算界定了可行的标签集合。(2) 事前 oracle 按标签重复样本上的期望损失挑选最优集合；事后 oracle 像基准中的 oracle 一样，在看到实现标签后才挑选最优集合。(3) 报告的 oracle 差距可拆分为测试集复用、任何策略都无法达到的偶然性下限，以及可部署差距。(4) 下限服从闭式上下界并随标签噪声增大；可部署差距只有在策略的信息代理与学习器匹配时才能被拿到。重复样本来自在不相交记录上拟合的 $\hat p$，并以已知概率与实现结果加以检验。条形比例取自表~\ref{tab:known} 的真实标签行。}
+ \label{fig:framework}
+\end{figure}
+
+\section{问题设定}
+\label{sec:setting}
+在第 $t$ 轮，学习者持有有标签历史 $D_t$、待反馈获取（已选择但尚未结算）的协变量 $O_t$、无标签候选池 $C_t$ 与目标协变量 $Q_t$。候选 $i$ 具有可见敞口 $e_i\ge0$ 与二元结果 $Y_i$，后者仅在获取后揭晓。策略依据可见信息 $\mathcal H_t$ 选择 $S_t\subseteq C_t$。学习效果用下游学习器（$\ell_2$ 逻辑回归、梯度提升或单隐层网络）的 Brier 分数~\cite{brier1950verification}度量；$L(S;Y)$ 为其在 $D\cup O\cup S$ 上拟合后的测试损失，其中 $Y$ 汇集 $O$ 与 $S$ 的隐藏训练结果。
+
+\paragraph{风险预算。}获取一个标签是一次有敞口的行动，例如放贷机构批准申请人以观察其还款~\cite{lakkaraju2017selective,wei2021selective}。给定风险分数 $q_i$、$\ell=\log(1/\alpha)$，当 $q\le\frac12$ 时 $\phi(q)=q(1-q)$，否则为 $\frac14$，可行集合满足
+\begin{equation}
+ R_\alpha(S)=\sum_{i\in S}e_iq_i+\Big(2\ell\sum_{i\in S}e_i^2\phi(q_i)\Big)^{1/2}+\frac{\ell}{3}\max_{i\in S}e_i\le B_t,
+ \label{eq:envelope}
+\end{equation}
+这是一个次伽马界~\cite{boucheron2013concentration}：若 $p_i\le q_i$，实际不利敞口超过 $R_\alpha(S)$ 的概率至多为 $\alpha=0.1$。我们的分数 $q_i$（拟合 logit 的 40 个 Laplace 抽样经 Wilson 平移~\cite{wilson1927probable}后的高分位数）不保证 $p_i\le q_i$，因此式~\eqref{eq:envelope} 是所有策略共享的操作性可行域。预算 $B_t$ 取风险最低的 $k$ 个候选之包络的 $1.03$ 倍（除非另行说明，$k=6$）；\emph{数量参照} $M_K$ 为最大的可行集合，候选不超过 16 个时穷举，否则采用按敞口分层的搜索，其在 1{,}408 个状态中的 1{,}320 个认证了基数，其余情形仅差一个标签。对于没有天然敞口的基准数据集，令 $e_i=1$。
+
+\section{分解 Oracle 差距}
+\label{sec:protocol}
+\paragraph{族 oracle。}固定 $\mathcal H$ 以及由可见信息构造、包含 $M=M_K$ 的可行集合族 $\mathcal F$。记 $\bar L$ 为积分掉测试标签噪声后的测试损失，
+\begin{align}
+ H_{\mathrm{post}}&=\mathbb E\big[\bar L(M;Y)-\min_{S\in\mathcal F}\bar L(S;Y)\mid\mathcal H\big],\\
+ H_{\mathrm{pre}}&=\mathbb E[\bar L(M;Y)\mid\mathcal H]-\min_{S\in\mathcal F}\mathbb E[\bar L(S;Y)\mid\mathcal H].
+\end{align}
+$H_{\mathrm{post}}$ 是看到隐藏训练标签后再挑最佳集合的 oracle 的领先；$H_{\mathrm{pre}}$ 是最佳固定选择的领先。二者之差，即\emph{偶然性下限} $F=H_{\mathrm{post}}-H_{\mathrm{pre}}\ge0$（因为 $\mathbb E\min\le\min\mathbb E$），是任何可部署策略都无法达到的，它就是关于训练结果的完全信息期望值~\cite{howard1966information}。对期望收益为 $\Gamma_\pi$ 的策略，$H_{\mathrm{post}}-\Gamma_\pi=F+(H_{\mathrm{pre}}-\Gamma_\pi)$，只有第二项即\emph{选择差距}可以被弥合。
+
+\paragraph{基准 oracle。}基准使用贪心 oracle：逐步加入其实现标签最能降低评价集损失的可行候选，并在同一评价集上打分~\cite{werner2023comparable,werner2024cdalbench}。我们把测试标签分为两半 $T_1,T_2$，并在训练标签的重复样本 $Y^{(r)}$ 上报告三个量：\emph{报告}差距（oracle 在 $T_1$ 上挑选并在 $T_1$ 上打分）、\emph{事后}差距（同一 oracle 在 $T_2$ 上打分），以及事前贪心 oracle 的\emph{可部署}差距（按一半重复样本上的平均 $T_1$ 损失挑选，在另一半上于 $T_2$ 打分）。于是
+\[
+\text{报告}=\underbrace{(\text{报告}-\text{事后})}_{\text{测试集复用}}+\underbrace{(\text{事后}-\text{可部署})}_{\text{偶然性下限}}+\text{可部署}.
+\]
+事前 oracle 本身也是贪心的，因此可部署差距可能被低估、复用加下限的占比可能被高估；我们因而把这一占比视为上界。
+
+\paragraph{下限的闭式上下界。}令 $d_S=\bar L(M;Y)-\bar L(S;Y)$，其在重复样本上的均值为 $\mu_S$、标准差为 $\sigma_S$。若按 $\mu$ 排序的两个领先集合 $b,r$ 之差 $D=d_b-d_r\sim\mathcal N(\Delta,s^2)$，则借助事后信息在二者间选择的价值为
+\begin{equation}
+ F_{\mathrm{two}}=s\,\varphi(\Delta/s)-\Delta\,\Phi(-\Delta/s),\label{eq:two}
+\end{equation}
+它是族下限的下界，因为 oracle 还在其他集合之间选择。把所有集合视为独立正态，$F_{\mathrm{ind}}=\mathbb E\max_S(\mu_S+\sigma_SZ_S)-\max_S\mu_S$ 忽略了它们之间的正相关，因而高估下限。当领先集合近乎并列（$\Delta\approx0$）时，$F_{\mathrm{two}}\approx s/\sqrt{2\pi}$：下限与标签噪声引起的离散度 $s$ 成比例，而 $s$ 随结果方差 $p(1-p)$、所获结果的数量以及学习器对单个标签的敏感度增大。这是 bandit 中期望遗憾与伪遗憾之间 $\sqrt{n\log K}$ 差距~\cite{audibert2010regret}在有限候选族上的对应物。
+
+\paragraph{不知道真实概率时的估计。}给定结果概率 $p$，我们抽取 $R$ 组隐藏训练标签的重复样本，并以公共随机数在所有重复样本上评估每个集合。插值估计 $\widehat H_{\mathrm{pre}}$ 因在噪声上做选择而向上偏~\cite{smith2006optimizer,cawley2010overfitting}，两折交叉拟合估计~\cite{chernozhukov2018double}向下偏，二者夹住 $H_{\mathrm{pre}}$。真实数据上 $p$ 未知；我们用在与状态不相交的数据集记录（至多 20{,}000 条）上拟合的梯度提升模型 $\hat p$ 代替它，并用记录的测试标签计算测试损失。记录的训练结果给出每个集合损失的一次实现，因此实现的事后差距 $\bar L(M;y)-\min_S\bar L(S;y)$ 不依赖模型，其均值必须与基于 $\hat p$ 的 $H_{\mathrm{post}}$ 一致。
+
+\section{被评价的策略}
+\label{sec:policy}
+所有策略共享状态、$q$、预算与式~\eqref{eq:envelope}。\emph{Safe-MinRisk} 返回 $M_K$；\emph{固定数量}按点价值选取 $K$ 的固定比例；\emph{Fisher-cost} 按单标签方差下降与敞口之比装填。另有四个规则贪心装填直到没有可行候选：\emph{Random}、\emph{Uncertainty}~\cite{lewis1994sequential}、对 $\operatorname{tr}(F_Q(H_{D+O}+A_S)^{-1})$ 的 \emph{BAIT-greedy}~\cite{ash2021fishing}，以及对目标加权代理
+\begin{equation}
+ V_\theta(S)=\operatorname{tr}\big[W_Q\{H_{D+O}^{-1}-(H_{D+O}+A_S)^{-1}\}\big]\label{eq:value}
+\end{equation}
+做贪心的 \emph{TargetVar-greedy}，其中 $H_{D+O}$ 为历史与待反馈协变量的逻辑 Fisher 信息，$A_S$ 为 $S$ 的 Fisher 信息，$W_Q$ 按 Brier 敏感度对目标方向加权~\cite{yu2006transductive,bickfordsmith2023prediction}。\emph{Proxy-argmax} 在评估族上取 $\arg\max V_{\hat\theta}$。\emph{DC-PRISM} 是为带待反馈结果的风险约束获取设计的保守策略：它在以 $M_K$ 为锚的族上、于 20 个 Laplace 参数抽样~\cite{mackay1992practical}下评估式~\eqref{eq:value}，以 $\tanh\{(V_m(S)-V_m(M_K))/2.5V_m(M_K)\}$ 的 0.2 分位数减去数量惩罚 $0.22(K-|S|)_+/K$ 为每个集合打分，除非最佳得分超过 $0.08$，否则返回 $M_K$。24 个候选时一次选择约需 50\,ms。这里所有信息代理都由逻辑模型推出。
+
+\section{协议的验证}
+\label{sec:validation}
+\paragraph{研究设置。}每项研究在运行前固定状态、种子、比较族以及 $5\times10^{-4}$ Brier 的实质效应阈值，协议与代码在版本库中冻结；我们报告配对均值、95\% Bonferroni 同时区间与 Holm 校正检验~\cite{holm1979simple}。所有数值单位为 $10^{-3}$ Brier。数据集包括：四个信贷数据集（HMEQ、LendingClub、PPDai、UCI Credit~\cite{sasHMEQ,lendingclubSource,ppdaiSource,he2018ensemble,yeh2009comparison}）、以住院天数为敞口的 30 天再入院~\cite{strack2014impact}、银行营销认购、Spambase，以及 USPS 手写数字（$\ge5$ 对 $<5$），后者分别以原始像素与 10 个主成分表示。每个状态是延迟回放的第一轮，含 68 个历史标签、14 个待反馈记录与 24 个候选；候选随机抽取（\emph{自然}流），对信贷与再入院数据还另有\emph{工程}流，按协变量排序提供低风险、与待反馈对齐、互补与尾部候选。受控世界与\emph{半合成}状态（真实协变量、由已知 logit 生成结果）提供已知的 $p$。
+
+\paragraph{估计概率能复原已知概率下的结果。}在 512 个半合成状态上，用在以真实 $p$ 标注的辅助记录上拟合的梯度提升 $\hat p$，其估计相对已知 $p$ 协议的偏差在 96 项检查（8 组 $\times$ 12 个量）中有 95 项落在 $\pm0.5$ 以内；$H_{\mathrm{post}}$、$H_{\mathrm{pre}}$、下限与主要策略收益的平均偏差至多 $0.20$，$H_{\mathrm{pre}}$ 的状态层面相关为 $0.73$--$0.95$。逻辑回归 $\hat p$ 在真值为非线性时把 $H_{\mathrm{pre}}$ 低估 $0.26$--$0.28$，因此估计需要灵活的 $\hat p$。
+
+\paragraph{估计在记录结果上经过校准。}在逻辑回归与梯度提升学习器下，基于 $\hat p$ 的 $H_{\mathrm{post}}$ 与不依赖模型的实现差距均值在八个数据集的全部 16 个“数据集—学习器”格子中一致，在另一批独立的 128 种子研究中全部 8 个信贷格子也一致（每个 95\% 区间都含 0）。在神经网络学习器下，9 个数据集中有 8 个一致；在 PPDai 上它高估了实现差距（$7.4$ 对 $5.0$，差 $2.4$，区间 $[0.6,4.2]$），这是替换做法的一个局限，我们在结果中予以标注。
+
+\paragraph{分解不依赖候选族。}为每个族加入 64 个随机可行集合（从 22--27 个扩大到 81--88 个），可部署占比 $H_{\mathrm{pre}}/H_{\mathrm{post}}$ 基本不变：受控世界中，在 2 到 80 的每种子族大小下都为 80--83\%；半合成分支为 6--38\%，且随 $|\mathcal F|$ 略升而非下降。
+
+\section{发现}
+\label{sec:findings}
+\paragraph{在带噪声的结果上，基准 oracle 的领先大部分来自复用与下限。}表~\ref{tab:known} 把基准 oracle 用于已知 $p$ 的设定以及信贷与再入院的真实标签状态（逻辑回归学习器）。在已知 $p$ 且 oracle 确实更好的受控世界中，校正后它相对最佳固定策略的领先减半（$15.8\to7.8$）。在保留真实协变量的半合成状态上，领先消失（$6.9\to0.0$）：复用（$2.9$）与下限（$3.9$）占报告差距的 95\%。在记录结果上，仅下限就占报告差距的 52\%，oracle 相对最佳固定策略的领先从 $4.5$ 缩小到 $1.3$，区间 $[0.9,1.6]$。下限在 19 个组中有 18 个达到实质水平。
+
+\begin{table}[t]
+\caption{风险预算下的基准贪心 oracle，逻辑回归学习器（$\times10^{-3}$ Brier）。报告差距 $=$ 测试集复用 $+$ 偶然性下限 $+$ 可部署差距。最后一列：相对最佳固定实用策略的领先，即报告值 $\to$ 去除复用与下限后的值。}
+\label{tab:known}
+\centering\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+设定 & 状态数 & 报告 & 复用 & 下限 & 可部署 & 相对最佳的领先 \\
+\midrule
+受控世界 & 64 & 29.5 & 4.5 & 3.5 & 21.5 & 15.8$\to$7.8 \\
+半合成（已知 $p$） & 256 & 7.2 & 2.9 & 3.9 & 0.3 & 6.9$\to$0.0 \\
+信贷，工程流 & 128 & 8.0 & 0.6 & 4.1 & 3.3 & 6.7$\to$2.0 \\
+信贷，自然流 & 128 & 3.4 & 0.8 & 1.7 & 0.9 & 3.2$\to$0.6 \\
+再入院，两种流 & 64 & 2.3 & 0.3 & 1.4 & 0.5 & 2.0$\to$0.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{下限占比随标签噪声上升。}在运行八数据集研究之前，我们登记了两项预测：噪声指标（候选上 $\hat p(1-\hat p)$ 的均值）最低的两个数据集，下限在 oracle 差距中的占比更小；且该占比随噪声指标上升。两项都成立（表~\ref{tab:gradient}）：噪声最低的 Spambase 与 USPS 下限占比为 14\%，其余六个为 59\%；噪声指标与下限占比的 Spearman 相关为 $0.83$（逻辑回归学习器）与 $0.67$（神经网络学习器）。在原始像素 USPS 加神经网络学习器这一近期基准所用的设定~\cite{werner2024cdalbench}上，下限只占 oracle 差距的 10\%，校正后 oracle 的领先仍有 $8.0$：在那里，基准“策略仍有空间”的结论基本成立。在信贷、再入院与营销结果上，领先中有 58--100\%（逻辑回归）和 67--93\%（神经网络）来自复用与下限。测试集复用是一种与噪声无关的独立偏差：在 Spambase 上它至多占报告差距的三分之一，在神经网络学习器下更大。
+
+\begin{table}[t]
+\caption{沿标签噪声梯度的基准 oracle（自然流；逻辑回归每个数据集 48 个状态，神经网络 32 个；$\times10^{-3}$ Brier）。噪声：$\hat p(1-\hat p)$ 的均值。复用与下限：占报告差距的百分比。领先：相对最佳固定策略，报告值 $\to$ 可部署值。}
+\label{tab:gradient}
+\centering\scriptsize
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+& & \multicolumn{4}{c}{逻辑回归学习器} & \multicolumn{4}{c}{神经网络学习器（MLP）} \\
+\cmidrule(lr){3-6}\cmidrule(lr){7-10}
+数据集 & 噪声 & 差距 & 复用 & 下限 & 领先 & 差距 & 复用 & 下限 & 领先 \\
+\midrule
+USPS，原始像素 & 0.036 & \multicolumn{4}{c}{--} & 18.7 & 32 & 10 & 15.9$\to$8.0 \\
+Spambase & 0.054 & 7.5 & 32 & 16 & 5.1$\to$1.5 & 14.1 & 25 & 29 & 11.4$\to$3.8 \\
+USPS，10 个主成分 & 0.065 & 10.8 & 12 & 13 & 7.7$\to$5.0 & 16.6 & 23 & 29 & 15.0$\to$6.4 \\
+再入院 & 0.081 & 1.3 & 29 & 66 & 1.1$\to$$-$0.1 & 4.8 & 23 & 54 & 4.0$\to$0.3 \\
+银行营销 & 0.091 & 4.5 & 15 & 39 & 4.1$\to$1.7 & 11.9 & 34 & 29 & 10.3$\to$2.8 \\
+HMEQ & 0.101 & 3.4 & 15 & 42 & 3.0$\to$1.0 & 7.8 & 26 & 39 & 7.2$\to$2.1 \\
+PPDai & 0.108 & 2.8 & 17 & 60 & 2.7$\to$0.5 & 10.4 & 20 & 38 & 9.1$\to$3.0 \\
+UCI Credit & 0.136 & 3.4 & 15 & 67 & 3.2$\to$0.4 & 8.2 & 47 & 38 & 7.8$\to$0.8 \\
+LendingClub & 0.144 & 2.7 & 8 & 79 & 2.8$\to$0.4 & 8.5 & 39 & 53 & 8.6$\to$0.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{下限可以预测。}在所有研究中，实测的族下限都落在两领先者下界式~\eqref{eq:two} 与独立正态上界之间，覆盖全部 87 个“数据集—学习器—预算”设定（图~\ref{fig:floor}a）。下界在一个近乎恒定的因子内是紧的：实测下限约为式~\eqref{eq:two} 的 2.7 倍，组层面 $R^2=0.92$（逻辑回归）与 $0.97$（梯度提升），状态层面 Spearman 相关为 $0.68$ 与 $0.85$。如上下界通过 $s$ 所预测的那样，下限依赖于学习器：在相同状态与标签下，逻辑回归学习器的下限为 $0.7$--$4.4$，梯度提升为 $0.9$--$8.3$；基准 oracle 的下限在逻辑回归下为 $0.8$--$2.3$，在神经网络下为 $1.8$--$4.9$。可部署差距在各设定间相差两个数量级，而下限的变化不超过一个数量级，因此当真实差异较小时，事后比较最具误导性。图~\ref{fig:floor}b 展示了两种学习器下登记过的噪声排序。
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\linewidth]{figures/fig_predict.pdf}
+ \caption{(a) 全部 87 个“数据集—学习器—预算”设定中，实测族下限对比两领先者闭式值式~\eqref{eq:two}；竖条为上下界 $[F_{\mathrm{two}},F_{\mathrm{ind}}]$，它包住了每一个实测值。实线为中位比值 2.7（对数尺度上 $R^2=0.89$）。(b) 基准 oracle 报告差距中的下限占比对比标签噪声指标，逻辑回归（每个数据集 48 个状态）与神经网络学习器（32 个）。}
+ \label{fig:floor}
+\end{figure}
+
+\paragraph{风险预算抬高下限。}上下界表明，纳入更多随机结果会抬高下限。我们登记了“下限随风险预算升高”的预测，并把 $B_t$ 中的 $k$ 依次设为 3、6、12（图~\ref{fig:budget}）。下限在全部八个数据集上单调上升，从 $k=3$ 时的 $0.32$--$0.87$ 升到 $k=12$ 时的 $0.91$--$1.90$（汇总配对增量 $0.74$，区间 $[0.67,0.82]$），且在每档预算下上下界都成立。参照集合的平均结果方差在同一数据集内变化至多 $0.02$，因此增量来自获取了更多随机结果，而非风险更高的结果。在风险约束获取中，预算因而决定了 oracle 比较在多大程度上可信。
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\linewidth]{figures/fig_budget.pdf}
+ \caption{风险预算作为杠杆（逻辑回归学习器，每个数据集每档预算 32 个状态）。预算按风险最低的 $k$ 个候选确定。(a) 偶然性下限在全部八个数据集上单调上升。(b) 可部署差距（对数尺度）的变化远不如下限一致。}
+ \label{fig:budget}
+\end{figure}
+
+\paragraph{谁能弥合可部署差距取决于学习器。}表~\ref{tab:who} 在相同的真实标签状态上，报告两种学习器下的可部署差距与三种策略的收益。在逻辑回归学习器下，由该模型推出的信息代理在可部署差距最大的地方弥合了其中很大一部分：在工程流 HMEQ 与 LendingClub 上，TargetVar-greedy 与 Proxy-argmax 拿到了 $3.2$--$3.4$ 中的 $1.5$--$2.1$（在另一批独立的 128 种子研究中为 $4.9$--$5.7$ 中的 $2.5$--$2.9$，且 DC-PRISM 在 LendingClub 上落后 TargetVar-greedy $2.8$，区间 $[0.0,5.6]$）。在梯度提升学习器下，可部署差距仍有 $0.7$--$2.7$，DC-PRISM 的选择差距在八个信贷格子中有六个达到实质水平，但没有任何策略拿到超过 $0.65$：与逻辑模型匹配的代理无法迁移到梯度提升学习器。在再入院数据上，可部署差距很小（$0.7$--$0.9$），各策略之间没有决定性差异。
+
+\begin{table}[t]
+\caption{真实标签状态上的可部署差距 $H_{\mathrm{pre}}$（交叉拟合）与相对 $M_K$ 的收益（信贷每格 64 个状态，再入院每格 128 个；$\times10^{-3}$ Brier）。DC：DC-PRISM；TV：TargetVar-greedy；Proxy：Proxy-argmax。}
+\label{tab:who}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+& \multicolumn{4}{c}{逻辑回归学习器} & \multicolumn{4}{c}{梯度提升学习器} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+状态 & $H_{\mathrm{pre}}$ & DC & TV & Proxy & $H_{\mathrm{pre}}$ & DC & TV & Proxy \\
+\midrule
+HMEQ，工程 & 3.21 & 0.09 & 1.51 & 1.64 & 2.32 & 0.48 & 0.15 & 0.44 \\
+LC，工程 & 3.37 & 1.15 & 2.01 & 2.12 & 1.53 & 0.05 & $-$0.42 & $-$0.19 \\
+PPDai，工程 & 1.87 & 0.37 & 0.04 & 0.07 & 1.18 & 0.33 & 0.17 & 0.11 \\
+UCI，工程 & 0.16 & $-$0.08 & $-$0.08 & $-$0.08 & 0.84 & 0.36 & 0.42 & 0.34 \\
+HMEQ，自然 & 1.26 & $-$0.22 & 0.21 & 0.12 & 2.66 & 0.24 & 0.64 & 0.65 \\
+LC，自然 & 0.91 & $-$0.04 & $-$0.20 & $-$0.05 & 1.45 & $-$0.07 & 0.04 & $-$0.04 \\
+PPDai，自然 & 0.59 & 0.10 & $-$0.17 & 0.02 & 1.17 & $-$0.03 & $-$0.18 & $-$0.10 \\
+UCI，自然 & 0.92 & 0.07 & 0.19 & 0.32 & 1.60 & 0.03 & 0.13 & 0.08 \\
+再入院，工程 & 0.84 & 0.09 & $-$0.14 & $-$0.34 & 0.92 & $-$0.01 & $-$0.25 & $-$0.28 \\
+再入院，自然 & 0.67 & 0.06 & 0.30 & 0.36 & 0.72 & 0.00 & $-$0.10 & $-$0.07 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{受控世界中的 DC-PRISM。}在围绕方向性待反馈信息构造的世界中，83\% 的事后提升空间可部署，DC-PRISM 拿到了其中三分之二：它相对 Safe-MinRisk 的收益为 $12.2$，区间 $[7.6,16.8]$，所用标签为 $3.1$ 个而非 6 个；在我们尝试的全部十二种生成器变体中（待反馈重叠、风险—信息耦合、无误设尾部、48 个候选且 $K=12$），该收益都保持实质水平（$10.8$--$31.4$）。共同族消融把这一收益归因于在锚定族上评估的代理（仅 Proxy-argmax 就收益 $13.1$，区间 $[6.1,20.2]$）；保守层只多出未经证实的 $3.0$（区间 $[-0.2,6.2]$），而考虑待反馈信息的作用在我们的证据中未被单独分离出来。
+
+\section{结局核验：延迟回放}
+\label{sec:replay}
+协议评价的是单轮。为检验其排序在动态过程中是否成立，我们进行了十轮回放（探索标签一轮后到达，常规标签两轮后到达；ALC-Brier 为十个轮初分数的平均），每个信贷格子 512 个新种子、每个再入院流 256 个，种子数依据前一批的方差预先登记。表~\ref{tab:replay} 呈现了协议所预测的排序。在信息贪心规则拿到了可部署差距而 DC-PRISM 没有的地方（工程流 HMEQ 与 LendingClub），DC-PRISM 显著不如 Fisher-cost、BAIT-greedy 与 TargetVar-greedy（$2.5$--$3.8$）；在其相对数量参照的收益显著之处，它胜过 Safe-MinRisk 与固定数量（$2.2$--$3.1$）；在工程流再入院上，它胜过 BAIT-greedy 与 TargetVar-greedy（$1.3$、$1.4$）；在可部署差距很小之处（自然流、工程流 UCI），没有任何比较达到实质水平。实际不利敞口超过包络的次数：信贷每个策略 40{,}960 个采集回合中为 0--4 次，再入院 5{,}120 个回合中为 0 次。
+
+\begin{table}[t]
+\caption{延迟回放：对照策略减 DC-PRISM 的 ALC-Brier（$\times10^{-3}$；正值有利于 DC-PRISM；加粗为在登记检验族下达到实质水平）。}
+\label{tab:replay}
+\centering\scriptsize
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+& \multicolumn{4}{c}{信贷，工程流} & \multicolumn{4}{c}{信贷，自然流} & \multicolumn{2}{c}{再入院} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}\cmidrule(lr){10-11}
+对照策略 & HMEQ & LC & PPDai & UCI & HMEQ & LC & PPDai & UCI & 工程 & 自然 \\
+\midrule
+Safe-MinRisk & \textbf{2.4} & 0.4 & \textbf{3.1} & $-$0.1 & 0.2 & 0.2 & 0.4 & 0.1 & 0.0 & 0.2 \\
+固定数量 & \textbf{2.2} & 0.4 & \textbf{2.4} & $-$0.1 & 0.1 & 0.1 & 0.3 & 0.0 & 0.4 & 0.2 \\
+Random & 0.6 & $-$0.3 & \textbf{2.4} & 0.0 & 0.3 & 0.5 & 0.6 & 0.4 & 0.8 & 0.5 \\
+Uncertainty & 0.5 & 1.4 & 0.7 & 0.0 & 0.4 & 0.4 & 0.1 & 0.1 & 0.4 & 0.0 \\
+Fisher-cost & \textbf{$-$3.8} & \textbf{$-$3.3} & 0.8 & $-$0.1 & $-$0.3 & $-$0.1 & 0.1 & $-$0.1 & 1.0 & 0.0 \\
+BAIT-greedy & \textbf{$-$3.6} & \textbf{$-$2.7} & 0.3 & 0.1 & $-$0.2 & 0.0 & 0.1 & 0.0 & \textbf{1.3} & 0.1 \\
+TargetVar-greedy & \textbf{$-$3.5} & \textbf{$-$2.5} & 0.0 & 0.0 & $-$0.2 & $-$0.1 & 0.0 & $-$0.1 & \textbf{1.4} & 0.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{相关工作}
+\label{sec:related}
+\paragraph{主动学习的评价。}近期研究表明，主动学习的收益在现实评价下很脆弱~\cite{luth2023navigating}，对不受控的随机性敏感~\cite{ji2023randomness}，并在不同领域间不一致~\cite{werner2023comparable,werner2024cdalbench}，并用 oracle 界定可达到的性能~\cite{werner2024cdalbench,huseljic2026boss}。Werner 等指出其贪心 oracle 会在测试集上过拟合~\cite{werner2023comparable}。我们量化了这种复用，并补充了去除复用后仍然存在的偶然性成分。
+
+\paragraph{遗憾概念与不确定性。}决策导向学习与鲁棒优化区分事前与事后遗憾~\cite{schutte2023robust}；在 bandit 中，期望遗憾比伪遗憾多出一个噪声项~\cite{bubeck2012regret,audibert2010regret}；Brier 分数等 proper scoring rule 能把偶然性与认知不确定性分开~\cite{hofman2024quantifying}；在带噪声的估计中挑选最优会产生乐观偏差~\cite{smith2006optimizer,cawley2010overfitting}，完全信息价值则是经典概念~\cite{howard1966information,raiffa1961applied}。我们把这些思想带到标签获取的 oracle 上界中，并使其中的偶然性部分在真实数据上可测量、可预测。
+
+\paragraph{风险与延迟下的获取。}获取准则从不确定性与转导式设计，到 Fisher 信息、互信息与预测信息以及决策损失~\cite{cohn1996active,settles2009active,lewis1994sequential,yu2006transductive,ash2021fishing,kirsch2019batchbald,bickfordsmith2023prediction,huang2026loss,chaloner1995bayesian}；预算与背包约束通过贪心选择处理~\cite{krause2005near,sviridenko2004note,tomanek2010cost}。选择性标签~\cite{lakkaraju2017selective,wei2021selective,kilbertus2020fair,keswani2024partial,crook2004reject}、安全探索与安全主动学习~\cite{sui2015safe,schreiter2015safe,wu2016conservative}以及延迟反馈~\cite{joulani2013delayed,chapelle2014delayed,pham2022latency}，构成了我们研究下限所处的风险约束场景。
+
+\section{讨论与结论}
+\label{sec:conclusion}
+oracle 的领先是衡量获取策略还能提升多少的一把自然尺子。我们的分解表明，这把尺子带有一个偶然性下限（由近乎并列的领先集合之间的标签噪声决定），以及测试集复用。下限可以用闭式公式预测，随结果噪声和风险预算升高，并依赖于学习器。在低噪声基准数据上，oracle 的领先大部分是真实的；在带噪声的结果上，大部分不是，而剩余部分只有当策略的信息代理与学习器匹配时才能被拿到。我们建议：在留出的评价数据上报告 oracle 差距，并在能用不相交记录估计结果概率时，同时报告下限上下界式~\eqref{eq:two} 或完整分解。
+
+\paragraph{局限。}学习器与候选池规模较小（逻辑回归、小型梯度提升与单隐层网络；24 个候选，6--256 个特征），未研究大型预训练模型。可部署差距由事前贪心 oracle 度量，因此复用加下限的占比是上界。真实数据上的估计需要来自不相交记录的灵活 $\hat p$；它有一次未通过校准（PPDai，神经网络学习器），且在信贷中这些记录只包含已批准的申请人~\cite{crook2004reject}。多分类基准被转为二分类，数据按随机而非时间划分，BAIT-greedy 与 TargetVar-greedy 是适配版本，包络的概率保证也不由我们的风险分数蕴含，尽管实际超出远低于 $\alpha$。代码、带提交哈希的冻结协议、汇总结果与核验脚本见匿名仓库。
+
+\bibliographystyle{splncs04}
+\bibliography{refs}
+\end{document}

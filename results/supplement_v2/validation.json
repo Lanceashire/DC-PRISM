@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "independent_pairs": 256,
+  "arm_states": 512,
+  "method_rows": 3072,
+  "family_rows": 9676,
+  "all_family_choices_and_risk": "PASS",
+  "shared_pair_state_q_budget_family": "PASS",
+  "primary_statistics_recomputed": 16,
+  "deterministic_pairs_replayed": 8,
+  "deterministic_rows_replayed": 96,
+  "max_replay_error": 8.881784197001252e-16,
+  "all_optimizer_fits": {
+    "total_fits": 10444,
+    "non_success": 0,
+    "max_gradient_inf": 9.997181113524656e-06
+  },
+  "source_hashes": "PASS"
+}

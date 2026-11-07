@@ -1,0 +1,64 @@
+{
+  "version": "supplement-v10-mlp-and-budget-lever",
+  "created_at_utc": "2026-11-05T01:23:51.561563+00:00",
+  "base_commit": "b871c8c (supplement-v9)",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "diabetes_npz_sha256": "0d4e21f0a879c36907d30546a8c0f09a2aab30668afa946803f6337d09e424da",
+  "benchmarks_npz_sha256": "2f5ca1620576d397447172b0cfb659100768a487c5a4789611bed13c5fb39f28",
+  "usps_raw_npz_sha256": "d1d1076665d7190b4b44fa0796b32b11b94c2a3e9fee9eaae7a8650068cac78b",
+  "excluded_by_user": "biology and chemistry datasets",
+  "part_A": {
+    "learner": "MLP, one hidden ReLU layer of 32 units, sigmoid output, weight decay 1e-3, full-batch Adam lr 0.01, 300 steps, one shared initialization per state; trained in GPU batches (PyTorch, CUDA)",
+    "datasets": [
+      "HMEQ",
+      "LendingClub",
+      "PPDai",
+      "UCI_Credit",
+      "Diabetes",
+      "USPS",
+      "Spambase",
+      "BankMarketing",
+      "USPSraw"
+    ],
+    "seed_start": 131001,
+    "n_seeds": 32,
+    "family_resamples": 32,
+    "oracle_resamples": 16,
+    "primary_endpoints": "aleatoric floor of the greedy-oracle gap per dataset",
+    "primary_family_size": 9,
+    "prediction": "registered: (i) the closed-form bracket contains the measured family floor for every dataset; (ii) the floor share of the greedy-oracle gap increases with the noise index across datasets (Spearman > 0); (iii) the p_hat-based H_post agrees with model-free realized hindsight (95% intervals contain zero) in every dataset"
+  },
+  "part_B": {
+    "learner": "l2-logistic (0.45) as in all earlier studies",
+    "datasets": [
+      "HMEQ",
+      "LendingClub",
+      "PPDai",
+      "UCI_Credit",
+      "Diabetes",
+      "USPS",
+      "Spambase",
+      "BankMarketing"
+    ],
+    "target_k": [
+      3,
+      6,
+      12
+    ],
+    "seed_start": 141001,
+    "n_seeds": 32,
+    "family_resamples": 32,
+    "oracle_resamples": 16,
+    "budget": "B = 1.03 x envelope of the target_k lowest-risk candidates (supplement-v2 rule); target_k 3, 6, 12",
+    "primary_endpoints": "family floor at target_k 12 minus target_k 3, paired by seed, per dataset",
+    "primary_family_size": 8,
+    "prediction": "registered: the aleatoric floor increases with the risk budget: (i) pooled paired difference floor(k=12) - floor(k=3) > 0; (ii) monotone increase over k=3,6,12 in at least 6 of 8 datasets; (iii) bracket coverage at every budget"
+  },
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "paired one-sample t on independent units; Bonferroni simultaneous t intervals and global Holm within each registered family"
+  },
+  "stopping": "fixed sizes; no interim looks; no additional seeds after results"
+}

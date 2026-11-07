@@ -1,0 +1,131 @@
+% =====================================================================
+% Framework figure (TikZ, editable). Scaled to \linewidth by \resizebox in main.tex.
+% Needs: \usepackage{tikz}
+%        \usetikzlibrary{arrows.meta,shapes.geometric,decorations.pathreplacing,calc,shadows}
+% Colour code used throughout the paper:
+%   blue  = deployable (ex-ante) part, orange = aleatoric floor, gray = test-set reuse.
+% Bar proportions follow the real-label row of Table 1 (12% reuse, 52% floor, 36% deployable).
+% =====================================================================
+\definecolor{dep}{HTML}{4C78A8}\definecolor{flo}{HTML}{F58518}\definecolor{reu}{HTML}{9D9D9D}
+\definecolor{lowr}{HTML}{54A24B}\definecolor{midr}{HTML}{EECA3B}\definecolor{highr}{HTML}{E45756}
+\begin{tikzpicture}[
+  font=\sffamily\footnotesize, >={Stealth[length=2mm]},
+  panel/.style={draw=#1!55, fill=#1!6, rounded corners=6pt, line width=0.7pt},
+  ptitle/.style={font=\sffamily\small\bfseries, anchor=north west, text=black!85},
+  step/.style={circle, fill=#1, text=white, font=\sffamily\scriptsize\bfseries, inner sep=1.4pt},
+  flow/.style={->, line width=1.1pt, draw=black!55},
+  thin/.style={draw=black!45, line width=0.5pt},
+  card/.style={draw=black!25, fill=white, rounded corners=3pt, drop shadow={opacity=0.15, shadow xshift=0.4pt, shadow yshift=-0.4pt}},
+]
+% ---------------------------------------------------------------- helpers
+\newcommand{\die}[3]{% x, y, size : a small die showing five pips
+  \draw[card] (#1,#2) rectangle ++(#3,#3);
+  \foreach \dx/\dy in {0.25/0.25,0.75/0.25,0.5/0.5,0.25/0.75,0.75/0.75}
+    \fill[black!70] ($(#1,#2)+(\dx*#3,\dy*#3)$) circle (0.045*#3/0.35);}
+\newcommand{\eye}[2]{% x, y : an open eye (the oracle that sees outcomes)
+  \draw[line width=0.8pt, fill=white] (#1-0.42,#2) .. controls (#1-0.15,#2+0.30) and (#1+0.15,#2+0.30) .. (#1+0.42,#2)
+     .. controls (#1+0.15,#2-0.30) and (#1-0.15,#2-0.30) .. (#1-0.42,#2);
+  \fill[flo] (#1,#2) circle (0.15); \fill[black] (#1,#2) circle (0.07);}
+
+% ================================================================ PANEL 1
+\draw[panel=gray] (0,0) rectangle (3.9,5.4);
+\node[step=black!70] at (0.32,5.08) {1};
+\node[ptitle] at (0.55,5.28) {Acquisition state};
+% candidate pool: size = exposure, colour = risk
+\foreach \x/\y/\r/\c in {0.65/3.95/0.10/lowr, 1.15/4.35/0.13/lowr, 1.55/3.70/0.09/lowr, 2.05/4.20/0.16/midr,
+                          2.65/3.85/0.12/lowr, 3.20/4.30/0.18/highr, 0.85/3.20/0.15/midr, 1.45/2.85/0.11/lowr,
+                          2.10/3.15/0.10/lowr, 2.80/2.95/0.20/highr, 3.30/3.40/0.12/midr, 0.70/2.40/0.12/lowr,
+                          1.30/2.10/0.17/highr, 1.95/2.35/0.12/lowr, 2.55/2.10/0.10/midr, 3.25/2.30/0.14/highr}
+  \fill[\c, opacity=0.85] (\x,\y) circle (\r);
+\draw[dashed, line width=0.8pt, draw=dep] plot[smooth cycle, tension=0.8] coordinates
+  {(0.40,3.95) (0.95,4.65) (1.85,4.30) (2.40,3.45) (2.35,2.75) (1.75,2.55) (0.95,2.95)};
+\node[font=\sffamily\scriptsize, text=dep, align=center] at (1.95,1.68) {feasible sets under risk budget\\[-1pt] $R_\alpha(S)\le B$};
+% legend
+\fill[lowr] (0.40,0.95) circle (0.08); \fill[midr] (0.62,0.95) circle (0.08); \fill[highr] (0.84,0.95) circle (0.08);
+\node[anchor=west, font=\sffamily\scriptsize, text=black!70] at (0.98,0.95) {risk};
+\fill[black!40] (1.70,0.95) circle (0.06); \fill[black!40] (1.98,0.95) circle (0.11);
+\node[anchor=west, font=\sffamily\scriptsize, text=black!70] at (2.15,0.95) {exposure};
+\node[font=\sffamily\scriptsize, text=black!70, align=center] at (1.95,0.42) {history\,+\,pending\,+\,pool};
+
+% ================================================================ PANEL 2
+\draw[panel=violet] (4.35,0) rectangle (8.95,5.4);
+\node[step=black!70] at (4.67,5.08) {2};
+\node[ptitle] at (4.90,5.28) {Two oracles};
+% ex-ante (top): dice -> expected-loss bars
+\node[anchor=west, font=\sffamily\small\bfseries, text=dep] at (4.55,4.45) {ex-ante};
+\die{4.65}{3.25}{0.38}\die{5.10}{3.50}{0.38}\die{5.10}{3.02}{0.38}
+\draw[flow] (5.60,3.45) -- (6.15,3.45);
+\foreach \i/\h in {0/0.95,1/0.62,2/0.80,3/1.05} {
+  \fill[dep!70] (6.35+\i*0.42,2.95) rectangle ++(0.28,\h);
+  \draw[black!55] (6.49+\i*0.42,2.95+\h-0.12) -- ++(0,0.24);}
+\draw[line width=1pt, dep] (6.70,2.85) -- (6.98,2.85); \node[font=\sffamily\scriptsize, text=dep] at (6.84,2.68) {pick};
+\node[font=\sffamily\scriptsize, text=black!70, align=center] at (7.45,4.42) {best by \emph{expected} loss\\[-1pt] over label replicates};
+% divider
+\draw[violet!30, line width=0.6pt] (4.55,2.32) -- (8.75,2.32);
+% ex-post (bottom): eye looking at realized outcomes
+\node[anchor=west, font=\sffamily\small\bfseries, text=flo] at (4.55,1.95) {ex-post};
+\eye{5.20}{1.18}
+\foreach \x/\ok in {6.15/1,6.65/0,7.15/1,7.65/1,8.15/0} {
+  \fill[white] (\x,1.18) circle (0.18); \draw[black!40] (\x,1.18) circle (0.18);
+  \ifnum\ok=1 \node[text=lowr, font=\small] at (\x,1.18) {$\checkmark$};\else \node[text=highr, font=\small] at (\x,1.18) {$\times$};\fi}
+\draw[->, dashed, draw=flo, line width=0.8pt] (5.65,1.18) -- (5.90,1.18);
+\node[font=\sffamily\scriptsize, text=black!70, align=center] at (6.95,0.48) {best after seeing the \emph{realized}\\[-1pt] labels (and the evaluation set)};
+
+% ================================================================ PANEL 3
+\draw[panel=orange] (9.40,0) rectangle (13.05,5.4);
+\node[step=black!70] at (9.72,5.08) {3};
+\node[ptitle] at (9.95,5.28) {Decompose the gap};
+\def\bx{9.95}\def\bw{0.75}
+\fill[reu] (\bx,0.55) rectangle ++(\bw,0.47);
+\fill[flo] (\bx,1.02) rectangle ++(\bw,2.03);
+\fill[dep] (\bx,3.05) rectangle ++(\bw,1.40);
+\draw[white, line width=1pt] (\bx,1.02) -- ++(\bw,0) (\bx,3.05) -- ++(\bw,0);
+\node[font=\sffamily\scriptsize\bfseries, text=black!75] at (\bx+0.37,4.70) {reported};
+\draw[decorate, decoration={brace, amplitude=4pt}, thin] (\bx+\bw+0.08,4.45) -- (\bx+\bw+0.08,3.07);
+\draw[decorate, decoration={brace, amplitude=4pt}, thin] (\bx+\bw+0.08,3.03) -- (\bx+\bw+0.08,1.04);
+\draw[decorate, decoration={brace, amplitude=3pt}, thin] (\bx+\bw+0.08,1.00) -- (\bx+\bw+0.08,0.57);
+\node[anchor=west, align=left, font=\sffamily\scriptsize] at (\bx+\bw+0.25,3.76) {\textbf{\textcolor{dep}{deployable gap}}\\ strategies can\\ still gain this};
+\node[anchor=west, align=left, font=\sffamily\scriptsize] at (\bx+\bw+0.25,2.04) {\textbf{\textcolor{flo}{aleatoric floor}}\\ unreachable:\\ luck in the\\ realized labels};
+\node[anchor=west, align=left, font=\sffamily\scriptsize] at (\bx+\bw+0.25,0.78) {\textbf{\textcolor{black!60}{test reuse}}};
+
+% ================================================================ PANEL 4
+\draw[panel=teal] (13.50,0) rectangle (17.70,5.4);
+\node[step=black!70] at (13.82,5.08) {4};
+\node[ptitle] at (14.05,5.28) {Predict and act};
+% mini plot: floor share vs label noise
+\draw[->, thin] (14.00,2.85) -- (16.15,2.85) node[below left, font=\sffamily\scriptsize, text=black!65, xshift=4pt] {label noise};
+\draw[->, thin] (14.00,2.85) -- (14.00,4.65) node[above right, font=\sffamily\scriptsize, text=black!65, xshift=-2pt, yshift=-3pt] {floor share};
+\draw[flo, line width=1.2pt] plot[smooth, tension=0.6] coordinates {(14.15,3.05) (14.65,3.20) (15.15,3.65) (15.65,4.10) (16.05,4.35)};
+\foreach \x/\y in {14.25/3.02,14.70/3.28,15.05/3.55,15.35/3.95,15.70/4.05,15.95/4.40} \fill[flo!80!black] (\x,\y) circle (0.05);
+\node[card, align=center, inner sep=3pt, font=\sffamily\scriptsize] at (16.75,3.80) {closed\\ form\\ bracket};
+% formula
+\node[font=\scriptsize, text=black!80, align=center] at (15.60,2.15) {$F_{\mathrm{two}}\le F\le F_{\mathrm{ind}}$\\[1pt] \tiny $F_{\mathrm{two}}=s\,\varphi(\Delta/s)-\Delta\,\Phi(-\Delta/s)$};
+% proxy <-> learner match
+\begin{scope}[shift={(15.60,1.10)}]
+  \fill[dep!25, opacity=0.9] (-0.48,0) circle (0.55); \fill[lowr!30, opacity=0.9] (0.48,0) circle (0.55);
+  \draw[dep, line width=0.8pt] (-0.48,0) circle (0.55); \draw[lowr!80!black, line width=0.8pt] (0.48,0) circle (0.55);
+  \node[font=\sffamily\scriptsize, text=dep!80!black] at (-0.62,0) {proxy};
+  \node[font=\sffamily\scriptsize, text=lowr!50!black] at (0.64,0) {learner};
+\end{scope}
+\node[font=\sffamily\scriptsize, text=black!70] at (15.60,0.28) {match $\Rightarrow$ deployable gap closed};
+
+% ================================================================ flows between panels
+\draw[flow] (3.90,2.70) -- (4.35,2.70);
+\draw[flow, draw=dep]  (8.95,3.75) -- (9.40,3.75);
+\draw[flow, draw=flo]  (8.95,1.95) -- (9.40,1.95);
+\draw[flow] (13.05,2.70) -- (13.50,2.70);
+
+% ================================================================ bottom strip: estimation on real data
+\draw[panel=gray] (0,-1.75) rectangle (17.70,-0.40);
+\node[font=\sffamily\small\bfseries, anchor=west, text=black!80] at (0.20,-1.07) {Estimation on real data};
+\node[cylinder, shape border rotate=90, aspect=0.25, draw=black!55, fill=white, minimum height=0.85cm, minimum width=0.62cm] (db) at (4.45,-1.07) {};
+\node[anchor=west, font=\sffamily\scriptsize, align=left] at (4.85,-1.07) {disjoint\\ records};
+\draw[flow] (5.85,-1.07) -- (6.35,-1.07);
+\node[card, font=\sffamily\scriptsize, inner sep=3pt] at (7.10,-1.07) {$\hat p$ (boosting)};
+\draw[flow] (7.85,-1.07) -- (8.35,-1.07);
+\die{8.45}{-1.27}{0.38}\die{8.92}{-1.27}{0.38}
+\node[anchor=west, font=\sffamily\scriptsize, align=left] at (9.40,-1.07) {label replicates $Y^{(r)}$\\ feed both oracles};
+\node[anchor=west, font=\sffamily\scriptsize, text=lowr!70!black] at (14.30,-0.85) {$\checkmark$ recovers known-$p$ values};
+\node[anchor=west, font=\sffamily\scriptsize, text=lowr!70!black] at (14.30,-1.30) {$\checkmark$ matches realized hindsight};
+\draw[->, dashed, draw=black!45, line width=0.8pt] (6.55,-0.40) -- (6.55,-0.05);
+\end{tikzpicture}

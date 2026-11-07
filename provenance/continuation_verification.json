@@ -1,0 +1,11 @@
+{
+  "baseline_publication": "a35fc466b4cfdd4783310a3da39f1ea6e88edd8b",
+  "baseline_files_verified": 119,
+  "baseline_changes": [
+    "README.md"
+  ],
+  "prior_source_and_results_preserved": true,
+  "tests": "20 passed with local real data",
+  "compute": "CPU; GPU devices were not mapped into this execution environment",
+  "gpu_attempt": "nvidia-smi could not communicate with driver; no /dev/nvidia*; host GPU state not inferred"
+}

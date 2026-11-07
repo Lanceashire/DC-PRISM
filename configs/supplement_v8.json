@@ -1,0 +1,70 @@
+{
+  "version": "supplement-v8-greedy-oracle-gap",
+  "created_at_utc": "2026-11-04T17:57:00.360286+00:00",
+  "base_commit": "d5d2bcc (supplement-v7)",
+  "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+  "diabetes_npz_sha256": "0d4e21f0a879c36907d30546a8c0f09a2aab30668afa946803f6337d09e424da",
+  "purpose": "decompose a benchmark-style greedy oracle gap (Werner et al. 2023/2024; Huseljic et al. 2026) into test-reuse optimism, aleatoric floor and deployable gap, under the risk envelope, in controlled, semi-synthetic and real-label (credit, diabetes) states",
+  "oracle": "greedy: add the feasible candidate that most reduces Brier on test half T1 (stop when none improves or K labels); ex-post oracle uses each replicate's realized training labels; ex-ante oracle uses the mean over half of the replicates and is scored on the other half (two-fold cross-fit); downstream learner l2-logistic (0.45)",
+  "study": {
+    "offline_cohorts": {
+      "Controlled": {
+        "seed_start": 111001,
+        "n": 64
+      },
+      "HMEQ_logistic": {
+        "dataset": "HMEQ",
+        "mechanism": "logistic",
+        "seed_start": 112001,
+        "n": 32
+      },
+      "HMEQ_nonlinear": {
+        "dataset": "HMEQ",
+        "mechanism": "nonlinear",
+        "seed_start": 112101,
+        "n": 32
+      },
+      "LendingClub_logistic": {
+        "dataset": "LendingClub",
+        "mechanism": "logistic",
+        "seed_start": 112201,
+        "n": 32
+      },
+      "LendingClub_nonlinear": {
+        "dataset": "LendingClub",
+        "mechanism": "nonlinear",
+        "seed_start": 112301,
+        "n": 32
+      }
+    },
+    "streams": [
+      "engineered",
+      "natural"
+    ],
+    "datasets": [
+      "HMEQ",
+      "LendingClub",
+      "PPDai",
+      "UCI_Credit",
+      "Diabetes"
+    ],
+    "real_seed_start": 113001,
+    "real_seeds": 32,
+    "label_resamples": 32,
+    "test_split": "recorded (real) or drawn-once (known p) test labels, random halves T1/T2 per state",
+    "primary_endpoints": [
+      "test_reuse",
+      "floor",
+      "gap_vs_best_deployable"
+    ],
+    "primary_family_size": 57,
+    "note": "19 groups (1 controlled, 8 semi-synthetic, 8 credit real-label, 2 diabetes real-label) x 3 endpoints"
+  },
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "legacy_delta": 0.0001,
+    "method": "paired one-sample t on independent units; Bonferroni simultaneous t intervals and global Holm within each registered family"
+  },
+  "stopping": "fixed sizes; no interim looks; no additional seeds after results"
+}

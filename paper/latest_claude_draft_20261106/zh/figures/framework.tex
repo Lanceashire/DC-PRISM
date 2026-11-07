@@ -1,0 +1,150 @@
+% =====================================================================
+% Framework figure with characters (TikZ, editable). Scaled to \linewidth by \resizebox in main.tex.
+% Needs: \usepackage{tikz}
+%        \usetikzlibrary{arrows.meta,shapes.geometric,decorations.pathreplacing,calc,shadows}
+% Colour code used throughout the paper:
+%   blue = deployable (ex-ante) part, orange = aleatoric floor, gray = test-set reuse.
+% Bar proportions follow the real-label row of Table 1 (12% reuse, 52% floor, 36% deployable).
+% Coordinates are in cm. Characters: \person{x}{y-feet}{scale}{shirt}{hair};
+% candidates: \applicant{x}{y}{size}{risk colour}. Previous version: framework_v1_no_characters.tex
+% =====================================================================
+\definecolor{dep}{HTML}{4C78A8}\definecolor{flo}{HTML}{F58518}\definecolor{reu}{HTML}{9D9D9D}
+\definecolor{lowr}{HTML}{54A24B}\definecolor{midr}{HTML}{EECA3B}\definecolor{highr}{HTML}{E45756}
+\colorlet{shirtB}{dep!80}\colorlet{shirtC}{flo!85}\colorlet{shirtD}{teal!75}\colorlet{neutral}{black!45}
+\definecolor{skin}{HTML}{F2C9A0}\definecolor{hairA}{HTML}{3B2F2F}\definecolor{hairB}{HTML}{8C5A3C}\definecolor{hairC}{HTML}{2E2E3A}
+\begin{tikzpicture}[
+  font=\sffamily\small, >={Stealth[length=2mm]},
+  panel/.style={draw=#1!55, fill=#1!6, rounded corners=6pt, line width=0.7pt},
+  ptitle/.style={font=\sffamily\normalsize\bfseries, anchor=north west, text=black!85},
+  step/.style={circle, fill=#1, text=white, font=\sffamily\footnotesize\bfseries, inner sep=1.4pt},
+  flow/.style={->, line width=1.1pt, draw=black!55},
+  thin/.style={draw=black!45, line width=0.5pt},
+  card/.style={draw=black!25, fill=white, rounded corners=3pt, drop shadow={opacity=0.15, shadow xshift=0.4pt, shadow yshift=-0.4pt}},
+  bubble/.style={draw=black!35, fill=white, ellipse, inner sep=1pt, drop shadow={opacity=0.12, shadow xshift=0.3pt, shadow yshift=-0.3pt}},
+]
+% ---------------------------------------------------------------- characters and icons
+\newcommand{\person}[5]{% x, y (feet), scale, shirt colour, hair colour
+  \begin{scope}[shift={(#1,#2)}, scale=#3]
+    \fill[#4] (-0.40,0) .. controls (-0.42,0.50) and (-0.26,0.70) .. (0,0.70) .. controls (0.26,0.70) and (0.42,0.50) .. (0.40,0) -- cycle;
+    \fill[#4!70!black] (-0.06,0.70) -- (0,0.55) -- (0.06,0.70) -- cycle;
+    \fill[skin] (-0.07,0.66) rectangle (0.07,0.78);
+    \fill[skin] (0,0.98) circle (0.24);
+    \fill[#5] (-0.25,1.00) .. controls (-0.25,1.30) and (0.25,1.30) .. (0.25,1.00)
+              .. controls (0.12,1.10) and (-0.12,1.12) .. (-0.25,1.00) -- cycle;
+    \fill[black!80] (-0.08,0.97) circle (0.025); \fill[black!80] (0.08,0.97) circle (0.025);
+    \draw[black!60, line width=0.35pt] (-0.06,0.88) .. controls (-0.02,0.85) and (0.02,0.85) .. (0.06,0.88);
+  \end{scope}}
+\newcommand{\applicant}[4]{% x, y, size r, colour : small person icon (applicant)
+  \fill[#4, opacity=0.9] ($(#1,#2)+(-#3,-1.05*#3)$) arc (180:0:#3 and 0.85*#3) -- cycle;
+  \fill[#4!80!black] ($(#1,#2)+(0,0.25*#3)$) circle (0.52*#3);}
+\newcommand{\die}[3]{% x, y, size
+  \draw[card] (#1,#2) rectangle ++(#3,#3);
+  \foreach \dx/\dy in {0.25/0.25,0.75/0.25,0.5/0.5,0.25/0.75,0.75/0.75}
+    \fill[black!70] ($(#1,#2)+(\dx*#3,\dy*#3)$) circle (0.045*#3/0.35);}
+\newcommand{\padlock}[3]{% x, y, size
+  \draw[white, line width=1.3pt] ($(#1,#2)+(-0.26*#3,0.28*#3)$) -- ++(0,0.22*#3) arc (180:0:0.26*#3) -- ++(0,-0.22*#3);
+  \fill[white, rounded corners=1pt] ($(#1,#2)+(-0.42*#3,-0.30*#3)$) rectangle ($(#1,#2)+(0.42*#3,0.30*#3)$);
+  \fill[flo] ($(#1,#2)+(0,0.04*#3)$) circle (0.08*#3);}
+
+% ================================================================ PANEL 1: acquisition
+\draw[panel=gray] (0,0) rectangle (4.2,5.6);
+\node[step=black!70] at (0.32,5.28) {1};
+\node[ptitle] at (0.55,5.48) {Acquire under risk};
+\foreach \x/\y/\r/\c in {1.55/4.45/0.13/lowr, 2.05/4.65/0.15/lowr, 2.55/4.40/0.11/lowr, 3.05/4.70/0.18/midr, 3.60/4.35/0.20/highr,
+                         1.70/3.80/0.17/midr, 2.25/3.95/0.12/lowr, 2.80/3.75/0.13/lowr, 3.35/3.85/0.22/highr,
+                         1.60/3.10/0.12/lowr, 2.15/3.20/0.19/highr, 2.70/3.05/0.13/midr, 3.25/3.15/0.12/lowr, 3.75/3.30/0.16/midr}
+  {\applicant{\x}{\y}{\r}{\c}}
+\draw[dashed, line width=0.9pt, draw=dep, rounded corners=8pt] (1.25,4.05) -- (1.28,4.95) -- (2.85,5.00) -- (3.05,4.18) -- (3.05,3.50) -- (2.45,3.40) -- (1.32,3.48) -- cycle;
+\node[font=\sffamily\footnotesize, text=dep, anchor=west] at (1.10,2.62) {feasible: $R_\alpha(S)\le B$};
+\person{0.62}{0.95}{1.05}{dep}{hairA}
+\draw[card] (0.98,1.25) rectangle (1.32,1.70); \foreach \yy in {1.36,1.46,1.56} {\draw[black!40] (1.04,\yy) -- (1.26,\yy);}
+\node[font=\sffamily\footnotesize, text=black!70, align=left, anchor=west] at (1.45,1.62) {lender buys labels\\ by approving};
+\applicant{1.25}{0.66}{0.09}{lowr}\applicant{1.50}{0.66}{0.09}{midr}\applicant{1.75}{0.66}{0.09}{highr}
+\node[anchor=west, font=\sffamily\footnotesize, text=black!65] at (1.86,0.66) {risk};
+\applicant{2.62}{0.66}{0.07}{neutral}\applicant{2.88}{0.66}{0.13}{neutral}
+\node[anchor=west, font=\sffamily\footnotesize, text=black!65] at (3.02,0.66) {size};
+\node[font=\sffamily\footnotesize, text=black!55] at (2.10,0.24) {history $+$ pending $+$ pool};
+
+% ================================================================ PANEL 2: two oracles
+\draw[panel=violet] (4.65,0) rectangle (9.75,5.6);
+\node[step=black!70] at (4.97,5.28) {2};
+\node[ptitle] at (5.20,5.48) {Two oracles};
+\person{5.45}{3.05}{0.95}{shirtB}{hairB}
+\node[anchor=west, font=\sffamily\small\bfseries, text=dep] at (5.00,2.72) {ex-ante};
+\node[bubble, minimum width=3.15cm, minimum height=1.55cm] (tb) at (7.75,3.95) {};
+\fill[white, draw=black!35] (6.20,3.55) circle (0.07); \fill[white, draw=black!35] (6.02,3.40) circle (0.045);
+\die{6.65}{3.70}{0.30}\die{6.95}{3.95}{0.30}\die{6.95}{3.47}{0.30}
+\draw[->, black!55, line width=0.8pt] (7.35,3.88) -- (7.62,3.88);
+\foreach \i/\h in {0/0.62,1/0.38,2/0.52,3/0.70} {\fill[dep!75] (7.75+\i*0.27,3.45) rectangle ++(0.18,\h);}
+\draw[line width=1pt, dep] (7.98,3.38) -- (8.20,3.38);
+\node[font=\sffamily\footnotesize, text=black!70, align=left, anchor=west] at (6.45,2.68) {best by \emph{expected} loss\\ over label replicates};
+\draw[violet!30, line width=0.6pt] (4.85,2.32) -- (9.55,2.32);
+\person{5.45}{0.45}{0.95}{shirtC}{hairC}
+\node[anchor=west, font=\sffamily\small\bfseries, text=flo] at (5.00,0.18) {ex-post};
+\fill[flo!35] (6.55,0.40) -- (7.25,0.40) -- (7.10,0.62) -- (6.70,0.62) -- cycle;
+\shade[inner color=white, outer color=violet!40] (6.90,1.15) circle (0.50); \draw[violet!60] (6.90,1.15) circle (0.50);
+\node[text=lowr!80!black, font=\small] at (6.75,1.25) {$\checkmark$};
+\node[text=highr, font=\small] at (7.05,1.02) {$\times$};
+\draw[flo, line width=0.8pt, dashed, ->] (5.95,1.45) .. controls (6.15,1.70) and (6.30,1.65) .. (6.42,1.45);
+\node[font=\sffamily\footnotesize, text=black!70, align=left, anchor=west] at (7.50,1.20) {best after\\ seeing the\\ \emph{realized} labels};
+
+% ================================================================ PANEL 3: decomposition
+\draw[panel=orange] (10.20,0) rectangle (13.50,5.6);
+\node[step=black!70] at (10.52,5.28) {3};
+\node[ptitle] at (10.75,5.48) {Split the gap};
+\def\bx{10.50}\def\bw{0.62}
+\fill[reu] (\bx,0.55) rectangle ++(\bw,0.50);
+\fill[flo] (\bx,1.05) rectangle ++(\bw,2.15);
+\fill[dep] (\bx,3.20) rectangle ++(\bw,1.48);
+\draw[white, line width=1pt] (\bx,1.05) -- ++(\bw,0) (\bx,3.20) -- ++(\bw,0);
+\padlock{\bx+0.31}{2.12}{0.46}
+\node[font=\sffamily\scriptsize\bfseries, text=black!75] at (\bx+0.31,4.84) {reported};
+\draw[decorate, decoration={brace, amplitude=4pt}, thin] (\bx+\bw+0.08,4.66) -- (\bx+\bw+0.08,3.22);
+\draw[decorate, decoration={brace, amplitude=4pt}, thin] (\bx+\bw+0.08,3.18) -- (\bx+\bw+0.08,1.07);
+\draw[decorate, decoration={brace, amplitude=3pt}, thin] (\bx+\bw+0.08,1.03) -- (\bx+\bw+0.08,0.57);
+\node[anchor=west, align=left, font=\sffamily\footnotesize] at (\bx+\bw+0.25,3.94) {\textbf{\textcolor{dep}{deployable}}\\ \textbf{\textcolor{dep}{gap}}\\ (gainable)};
+\node[anchor=west, align=left, font=\sffamily\footnotesize] at (\bx+\bw+0.25,2.12) {\textbf{\textcolor{flo}{aleatoric}}\\ \textbf{\textcolor{flo}{floor}}\\ (luck in\\ the labels)};
+\node[anchor=west, align=left, font=\sffamily\footnotesize] at (\bx+\bw+0.25,0.80) {\textbf{\textcolor{black!60}{test reuse}}};
+
+% ================================================================ PANEL 4: predict and act
+\draw[panel=teal] (13.95,0) rectangle (18.10,5.6);
+\node[step=black!70] at (14.27,5.28) {4};
+\node[ptitle] at (14.50,5.48) {Audit and act};
+\draw[->, thin] (15.35,3.05) -- (17.80,3.05) node[above left, font=\sffamily\footnotesize, text=black!65, xshift=2pt, yshift=1pt] {noise};
+\draw[->, thin] (15.35,3.05) -- (15.35,4.85) node[right, font=\sffamily\footnotesize, text=black!65, xshift=1pt, yshift=-4pt] {floor share};
+\draw[flo, line width=1.2pt] plot[smooth, tension=0.6] coordinates {(15.50,3.25) (16.05,3.40) (16.60,3.85) (17.15,4.30) (17.60,4.55)};
+\foreach \x/\y in {15.60/3.22,16.10/3.48,16.50/3.75,16.85/4.15,17.20/4.25,17.50/4.60} {\fill[flo!80!black] (\x,\y) circle (0.05);}
+\person{14.55}{2.95}{0.85}{shirtD}{hairB}
+\draw[black!70, line width=1.4pt] (14.92,3.72) -- (15.06,3.88);
+\draw[black!70, line width=1pt, fill=white, fill opacity=0.6] (15.18,4.02) circle (0.18);
+\node[font=\footnotesize, text=black!80, align=center] at (16.10,2.20) {$F_{\mathrm{lo}}\le F\le F_{\mathrm{up}}$\\[1pt]
+  \scriptsize distribution-free floor bounds};
+\begin{scope}[shift={(16.05,1.12)}]
+  \fill[dep!25, opacity=0.9] (-0.50,0) circle (0.62); \fill[lowr!30, opacity=0.9] (0.50,0) circle (0.62);
+  \draw[dep, line width=0.8pt] (-0.50,0) circle (0.62); \draw[lowr!80!black, line width=0.8pt] (0.50,0) circle (0.62);
+  \node[font=\sffamily\footnotesize, text=dep!80!black] at (-0.60,0) {proxy};
+  \node[font=\sffamily\footnotesize, text=lowr!50!black] at (0.58,0) {learner};
+\end{scope}
+\node[font=\sffamily\footnotesize, text=black!70] at (16.05,0.28) {match $\Rightarrow$ gap closed};
+
+% ================================================================ flows between panels
+\draw[flow] (4.20,2.80) -- (4.65,2.80);
+\draw[flow, draw=dep]  (9.75,3.95) -- (10.20,3.95);
+\draw[flow, draw=flo]  (9.75,1.20) -- (10.20,1.20);
+\draw[flow] (13.50,2.80) -- (13.95,2.80);
+
+% ================================================================ bottom strip: estimation on real data
+\draw[panel=gray] (0,-1.75) rectangle (18.10,-0.40);
+\node[font=\sffamily\small\bfseries, anchor=west, text=black!80] at (0.20,-1.07) {Estimation on real data};
+\node[cylinder, shape border rotate=90, aspect=0.25, draw=black!55, fill=white, minimum height=0.85cm, minimum width=0.62cm] (db) at (4.45,-1.07) {};
+\foreach \yy in {-1.25,-1.08,-0.91} {\draw[black!30] (4.17,\yy) -- (4.73,\yy);}
+\node[anchor=west, font=\sffamily\footnotesize, align=left] at (4.80,-1.07) {disjoint\\ records};
+\draw[flow] (6.05,-1.07) -- (6.40,-1.07);
+\node[card, font=\sffamily\footnotesize, inner sep=3pt] at (7.35,-1.07) {$\hat p$ (boosting)};
+\draw[flow] (8.32,-1.07) -- (8.62,-1.07);
+\die{8.72}{-1.27}{0.38}\die{9.18}{-1.27}{0.38}
+\node[anchor=west, font=\sffamily\footnotesize, align=left] at (9.70,-1.07) {label replicates $Y^{(r)}$\\ feed both oracles};
+\node[anchor=west, font=\sffamily\footnotesize, text=lowr!70!black] at (13.55,-0.85) {$\checkmark$ recovers known-$p$ values};
+\node[anchor=west, font=\sffamily\footnotesize, text=lowr!70!black] at (13.55,-1.30) {$\checkmark$ greedy $\approx$ exact search};
+\draw[->, dashed, draw=black!45, line width=0.8pt] (7.35,-0.40) -- (7.35,-0.05);
+\end{tikzpicture}

@@ -1,0 +1,28 @@
+{
+  "status": "COMPLETE",
+  "smoke": false,
+  "protocol_sha256": "aff0ae34e089cb73b9ac1bd4b57862e5d39d2eb31e098c886595674f62e128fb",
+  "source_sha256": {
+    "experiments/supplement_v8/run.py": "213c9327262358d61188803731d6e852ca87f9d43dae28da4d16445f11c0f723",
+    "experiments/supplement_v8/stats_v8.py": "90d35eb1b474c444390e2fdb376db9360ad367326e874f5e1b07479b3d6aabcc",
+    "experiments/supplement_v7/run.py": "5bcde5e9210f42a39c1db97ec399263e044548ed038808d21bbe36dd0408f0cd",
+    "scripts/prepare_diabetes.py": "3a0e8af7df1b0b1dad9764af08831e787e2598718d27c5c22bf7426e93a6d83c",
+    "experiments/supplement_v6/run.py": "b9a4f2735a37c98033313beed3ebde56f146b57b96ed9d78d9032d610bd1bc76",
+    "experiments/supplement_v5/run_online.py": "d803e9aa708bc8c2594a03815fb5ee2b15c0a5955db5c252f78e203356dd747a",
+    "experiments/supplement_v5/run_offline.py": "f23aef60330a7aeb16414db5d16b479d7c8ddf2dd36cc24dcc32cebaeda0bacd",
+    "experiments/supplement_v3/run_offline.py": "8d751feaeaf27766d6fc154b253bace4f8189fa3223eae948091e64f64b870de",
+    "experiments/supplement_v3/baselines.py": "fd1bcc5dac538d2b1716239a1c925e71a308c66ccab52119f3348b5dc742f90c",
+    "experiments/supplement_v3/stats.py": "58692a1e209c38341c1dfa6df55133359058866afeb8370a59c18ae2f14f7c5b",
+    "experiments/supplement_v1/run.py": "e84fa3cc07d70902b32e7b5729fd37282026d0f03294664796a520f131003534",
+    "experiments/supplement_v2/run.py": "16c9a4e083df47263bdd64cfae508c482bdaa67dff4d475f1822f44be32c28e8",
+    "src/prism_engine.py": "f90c1f1fb727cf4d3b281b3e13bdc4aa7f1ff9f35a69de019acc1ab8e98105fe",
+    "archive/submitted_v2_2/src/run_p0_p1_p2.py": "0fa7d844dfa9b82cf678807ae64cd487efd0bf1c341e2e81f9ef080067d20e84",
+    "experiments/supplement_v3/run_online.py": "a7d90486e3c94fdad8fbb247ae2912ec2f54930bf310fbcea66a7e8efac897b4",
+    "src/run_p3_p4.py": "2aada41b56214ceb8c96eb2bafc87c1c2a7175973f2294f325bf31b9c44f19da"
+  },
+  "python": "3.12.16",
+  "numpy": "2.1.3",
+  "tasks": 640,
+  "rows": 640,
+  "elapsed_seconds": 104.58752655982971
+}

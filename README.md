@@ -1,46 +1,56 @@
-# DC-PRISM
+# DC-PRISM — label-acquisition experiments and oracle-gap evaluation
 
-独立的新实验仓库：研究延迟选择性反馈下，风险保护、Pending-aware 信息选择和标签数量控制的作用。以本次提供的新源码为主线；[LexiRiskLabel](https://github.com/Lanceashire/LexiRiskLabel/tree/b4f3f2db6788bb8c7bb127a209e4f518fbafe226) 仅作方法与历史证据参考。
+**2026-11-07 consolidated research snapshot / 研究工作汇总。** This repository now includes the local Claude and Codex work through supplement v11, both bilingual manuscript branches, saved experimental rows and trajectories, frozen protocols, code, and review records. The prior public head was `a35fc466b4cfdd4783310a3da39f1ea6e88edd8b` (supplement v1); the local Claude checkout was based on `f8a71bb` plus two uncommitted generator changes. Local historical commit IDs are recorded as provenance; the consolidated public commit does not recreate those historical Git objects.
 
-本仓库同时保留提交包原始证据与经过修复的实现。完整版本关系、已修复项、仍有限制的主张见 [严肃代码审查](docs/CODE_AUDIT.zh.md)，两段聊天与整合报告的处理见 [整合决策](docs/INTEGRATION.zh.md)。
+## Start here / 阅读入口
 
-第一批补充实验已完成：原 P2 128 世界的固定数量基线修复、新增 128 受控世界、256 真实协变量模拟世界，以及共享候选族的 16 因子组合。见 [补充结果与边界](docs/SUPPLEMENT_V1_RESULTS.zh.md)、[运行方法](experiments/supplement_v1/README.md)及 [全部统计](results/supplement_v1/primary_statistics.csv)。受控整体收益保留，独立组件多数未定，Real-X 未确认稳定收益；原归档和 repair-v1 未覆盖。
+- [中文完整工作说明](docs/WORK_SUMMARY_20261107.zh.md) · [English work summary](docs/WORK_SUMMARY_20261107.en.md)
+- [Manuscript versions, PDF links and scientific status / 论文版本与状态](paper/README.md)
+- [Current review and remaining problems / 当前审查与待解决问题](docs/REVIEW_STATUS_20261107.md)
+- [Experiment manifest index](provenance/experiment_status_index_20261107.json) · [Unique run evidence and duplicate mapping](provenance/runtime_output_index_20261107.json)
+- [Publication file hashes](provenance/publication_manifest_20261107.json) · [Local verification](provenance/publication_checks_20261107.json)
 
-- `src/`：修复后的 P3/P4 实现与安全运行入口。
-- `tests/`：原有完整性检查及新增的求解、隔离、动态释放回归测试。
-- `archive/submitted_v2_2/`：按属性、内容和结果覆盖确定的最新提交包原始源码、合成证据和聚合表，保持原样。
-- `results/repair_v1/`：修复后按原 16 seeds 重跑的聚合结果。属于协议修复后的再运行，不是新的独立确认。
-- `provenance/`：输入 SHA-256、本地文件属性、ZIP 内时间、版本差异、原结果重建证据与运行清单。
-- `reference/`：旧仓库固定提交的参考文件；不向新项目施加旧研究的阶段规则。
+研究主题由风险预算、延迟选择性反馈下的 DC-PRISM 策略研究，发展为 oracle 差距的评估研究：区分隐藏结果的事后信息价值、评估集复用，以及指定事前选择器的收益。完整实验同时保留正向、负向和未确定的结果。固定族的完全信息价值与贪心基准的残差具有不同含义；当前证据尚不能把所有贪心残差解释成不可消除的偶然性下限。
 
-原提交 P4 已在 NumPy 2.1.3 / SciPy 1.14.1 / pandas 2.2.3 下完整重新生成：6,400 行的选择、释放与状态哈希逐行匹配，Brier、风险值和实现损失最大绝对差为零。早先聊天在不同 NumPy 环境中发现的候选池不匹配，不能用来断言这份提交源码无法复现。
+The central question is how much of an acquisition oracle's lead represents attainable improvement. For a fixed feasible family and information set, perfect-information value is distinct from test-set reuse and practical selector performance. The project includes a conservative policy, DC-PRISM, whose observed performance is heterogeneous. This snapshot is a research archive and working manuscript collection; the scientific status is described in the review notes.
 
-可复现性通过仍需与协议有效性区分。提交版的在线评价提前用了下一轮才释放的探索标签；固定数量诊断有可行性缺陷；固定 ε 基线也未可靠达到自身目标。修复和证据详见审查报告。经验风险评分不提供现实数据同时覆盖证明，基线名称和消融归因也有解释边界。
+## Results / 结果
 
-## 运行
+| Stage | Evidence and purpose |
+|---|---|
+| repair-v1, supplement-v1 | Original implementation audit, protocol repair and frozen follow-up; [audit](docs/CODE_AUDIT.zh.md), [v1 report](docs/SUPPLEMENT_V1_RESULTS.zh.md) |
+| supplement-v2, P4 confirmation | Shared-family coverage diagnostic and fresh delayed-replay confirmation; [report](docs/CONTINUATION_RESULTS.zh.md) |
+| supplement-v3–v4 | Additional baselines, pre/post-outcome opportunity, natural replay and proxy/parameter diagnosis; [v3](docs/SUPPLEMENT_V3_RESULTS.zh.md), [v4](docs/SUPPLEMENT_V4_RESULTS.zh.md) |
+| supplement-v5 | Candidate-family enlargement, offline and large fresh replay; [results](results/supplement_v5), [protocol](configs/supplement_v5.json). The archived H replay includes 36,864 trajectories / 368,640 round rows. |
+| supplement-v6 | Probability-model recovery and recorded-outcome diagnostics; [results](results/supplement_v6) |
+| supplement-v7 | Learner dependence, calibration, replay and analytic approximations; [results](results/supplement_v7) |
+| supplement-v8 | Greedy benchmark accounting: reuse, residual and cross-fitted gain; [results](results/supplement_v8) |
+| supplement-v9 | Eight-cohort noise-gradient diagnostics; [results](results/supplement_v9) |
+| supplement-v10 | MLP learner and budget sensitivity; [results](results/supplement_v10) |
+| supplement-v11 | Distribution-free sample inequalities, 12-candidate exact search, probability sensitivity, label flips, pool size and exact cardinality reference; [results](results/supplement_v11) |
+| Codex nested diagnostic | [Interrupted 38/128-state study](archive/codex_nested_opportunity_v1_incomplete), stored separately with `INCOMPLETE_INTERRUPTED` status |
 
-使用 Python 3.12：
+Later corrections supersede broad interpretations in earlier reports. In particular, the old independent-normal construction is not a universal upper bound; empirical inequality checks do not establish population confidence coverage; cross-fitted greedy gains are the performance of that selector, not the optimal deployable value. See the current review before quoting historical headlines.
+
+## Code, data and reproduction / 代码、数据与复核
+
+- `src/`, `tests/`: repaired acquisition/replay implementation and regression checks.
+- `experiments/`, `configs/`: frozen study runners, inference, plotting and configuration.
+- `results/`: committed saved evidence, with study-specific manifests and freezes.
+- `paper/`: latest Claude draft, separate Codex-reviewed snapshot, historical versions and reviews.
+- `archive/`: submitted originals, distinct historical work, incomplete/stopped records.
+- `deliverables/`: dated bilingual PDFs, source packages and handoff notes.
+
+Use Python 3.12 and the appropriate study instructions. The core pinned dependencies are in `requirements-lock.txt`; study-specific learners may require additional dependencies visible in their imports. The published integrity check below uses only the Python standard library:
 
 ```bash
+python scripts/verify_publication_20261107.py
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
 python src/run_all.py --suite checks
 ```
 
-公开测试不需要信用数据；缺少本地 NPZ 时，仅真实数据专属测试跳过，合成动态管线仍会运行。真实数据没有随本仓库再次分发，见 [数据说明](data/README.md)。
+Detailed execution instructions: [v1](experiments/supplement_v1/README.md), [v2](experiments/supplement_v2/README.md), [P4](experiments/p4_confirmation_v1/README.md), [v3](experiments/supplement_v3/README.md), [v4](experiments/supplement_v4/README.md), [v5](experiments/supplement_v5/README.md). Later runners expose `--help`; use their frozen `configs/` and disjoint new output directories. Code/row verification does not imply that all experiments were rerun at publication time.
 
-```bash
-python scripts/verify_local_data.py /your/local/data/real_credit_datasets_authentic.npz
-python src/run_all.py --suite p4 --smoke --data-dir /your/local/data --output-dir runs/smoke-001
-python src/run_all.py --suite p4 --data-dir /your/local/data --output-dir runs/p4-001
-python scripts/validate_p4.py runs/p4-001/p4_real_labels/p4_trajectories_10rounds.csv
-```
-
-输出目录必须是新目录。程序从当轮已释放标签训练模型，当前选中标签进入下一轮队列。正式 P4 为四数据集 × 16 seeds × 10 轮 × 10 方法；`--smoke` 仅 HMEQ、seed 4001。所有结果都记录来源和状态；不会恢复归档表来冒充新运行。
-
-P3 可用 `--suite p3` 单独运行，保留最新版条件概率诊断。P0–P2 原始实现与冻结结果在归档目录，本次没有将其当作修复后的重新确认。统计以数据集内配对 seed 为回放随机性单位；不把轮次当独立样本，也不把四个旧队列重命名为新外部确认。
-
-核对未修改提交版的完整 P4，可运行 `python scripts/reconstruct_submitted_p4.py --data-dir /your/local/data --output-dir runs/submitted-001`。该入口逐列验证公开的语义哈希，不依赖恢复归档表。
-
-模型、采集、风险代理和求解范围的解释见 [方法与理论范围](docs/THEORY.md)。公开具名仓库不是匿名投稿补充材料；本仓库不声称完成投稿验收。
+Original third-party input datasets, local environments and account material are outside this publication. Saved derived experimental evidence is included. Data sources and acquisition boundaries are in [data/README.md](data/README.md) and `scripts/prepare_*.py`; the exposure score is an operational constraint unless its additional probability assumptions hold. The earlier repository introduction remains [archived here](docs/README_BEFORE_CONSOLIDATION_20261107.zh.md).

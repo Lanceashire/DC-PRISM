@@ -1,0 +1,9 @@
+policy,sum,count
+BAIT-Greedy,0,5120
+DC-PRISM,0,5120
+Fisher-cost,0,5120
+Fixed-count,0,5120
+Random-Feasible,0,5120
+Safe-MinRisk,0,5120
+TargetVar-Greedy,0,5120
+Uncertainty,0,5120
