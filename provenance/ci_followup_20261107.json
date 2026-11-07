@@ -1,0 +1,16 @@
+{
+  "initial_publication_commit": "ab565090e9afe1aea3b4e6d68745b780ab30f729",
+  "initial_actions_run": "https://github.com/Lanceashire/DC-PRISM/actions/runs/42382429478",
+  "failure_stage": "actions/setup-python pip cache discovery, before dependencies and tests",
+  "cause": "Workflow used automatic **/requirements.txt or **/pyproject.toml discovery; project uses requirements-dev.txt and requirements-lock.txt.",
+  "fix": "Set cache-dependency-path to both existing requirements files.",
+  "local_checks": {
+    "passed": 23,
+    "skipped": 1,
+    "seconds": 3.05,
+    "command": "python src/run_all.py --suite checks",
+    "skip_reason": "real-data-specific test without redistributed original input"
+  },
+  "experiment_results_modified": false,
+  "remote_ci_after_fix": "Check the follow-up commit Actions run."
+}

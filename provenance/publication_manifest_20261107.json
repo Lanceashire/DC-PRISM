@@ -5,9 +5,9 @@
   "files": [
     {
       "path": ".github/workflows/tests.yml",
-      "bytes": 418,
-      "sha256": "7625ea619db8278bf7ee4e0d75031b7c2716d30226c5ff96c729a2d77ab79729",
-      "git_blob_sha": "a519d2fb720820ebeba6163b737dc7a9faa80586"
+      "bytes": 520,
+      "sha256": "33832e93c838b9f0b356be6de5beb31f89a98467c07cbefc29c5417af464c4fd",
+      "git_blob_sha": "77cd9e117a63116a15eb3c252256d06a88ebb2fa"
     },
     {
       "path": ".gitignore",
@@ -88,6 +88,12 @@
       "git_blob_sha": "5bbc53762575c328449f806ae8d76ed3686e387f"
     },
     {
+      "path": "archive/codex_nested_opportunity_v1_incomplete/engineering.log",
+      "bytes": 230,
+      "sha256": "64cfdacbfb50cd633fdcf80afdf95f93b0f968e38e232dddce82685163809005",
+      "git_blob_sha": "9525722762d74d7b318af037960e26b8a212cf0e"
+    },
+    {
       "path": "archive/codex_nested_opportunity_v1_incomplete/engineering/states/HMEQ_logistic_99021.json",
       "bytes": 1843,
       "sha256": "46b7d080161834147d9ac18699cc28b7fe7468e00e419ce699b8034ad9d78257",
@@ -98,12 +104,6 @@
       "bytes": 3806,
       "sha256": "45a7bcaabaeb97ca34cc6420bffc58da2c7bbff07e7f31700ac6e7328d3d35c6",
       "git_blob_sha": "22ebb90238fb4661082b8853d58a0a4c5e2636c8"
-    },
-    {
-      "path": "archive/codex_nested_opportunity_v1_incomplete/engineering.log",
-      "bytes": 230,
-      "sha256": "64cfdacbfb50cd633fdcf80afdf95f93b0f968e38e232dddce82685163809005",
-      "git_blob_sha": "9525722762d74d7b318af037960e26b8a212cf0e"
     },
     {
       "path": "archive/codex_nested_opportunity_v1_incomplete/nested_run.log",
@@ -592,12 +592,6 @@
       "git_blob_sha": "0777498e86b4b5589201f1c2afecc46928284e17"
     },
     {
-      "path": "archive/run_records_20261107/v10-A/progress.txt",
-      "bytes": 21,
-      "sha256": "f8222a363357a305a4771c86fd4236855f922eb6d875e706952c5a1e0a71ad14",
-      "git_blob_sha": "9c1ae1c2efcbca9326cb1fb516ad4ce6a846a585"
-    },
-    {
       "path": "archive/run_records_20261107/v10-A-stopped-for-class/progress.txt",
       "bytes": 17,
       "sha256": "aa2b2b825a88ad01549bbf1c7fe824c62c3f66b3a071a0e2b2b5217041e8b783",
@@ -608,6 +602,12 @@
       "bytes": 2502,
       "sha256": "125a7723201a0e1c0bf68b52ebe25f86d6baca86e664257f9c9ccdfe71b8d484",
       "git_blob_sha": "bc9f38f4758c9f9d8f46429936e3ff0cf8c318b8"
+    },
+    {
+      "path": "archive/run_records_20261107/v10-A/progress.txt",
+      "bytes": 21,
+      "sha256": "f8222a363357a305a4771c86fd4236855f922eb6d875e706952c5a1e0a71ad14",
+      "git_blob_sha": "9c1ae1c2efcbca9326cb1fb516ad4ce6a846a585"
     },
     {
       "path": "archive/run_records_20261107/v3-offline-001/run_manifest.json",
@@ -2614,6 +2614,12 @@
       "git_blob_sha": "48c21efd4e8ce1c97d9d2b991500814bd9ef63ba"
     },
     {
+      "path": "provenance/ci_followup_20261107.json",
+      "bytes": 819,
+      "sha256": "a5118182912601d1382e156ab75d38549fc4645745de08759a7577580bf7f779",
+      "git_blob_sha": "22eaa42539cb8c4864cd05349044fa5899aef0e7"
+    },
+    {
       "path": "provenance/claude_local_commit_history_20261107.txt",
       "bytes": 3044,
       "sha256": "681842af685499c7cafe85adb225dde603f9de07100907cfc6f012b4e217e509",
@@ -3695,5 +3701,6 @@
     }
   ],
   "self_excluded": true,
-  "verification_scope": "saved output integrity, not complete raw-data rerun"
+  "verification_scope": "saved output integrity, not complete raw-data rerun",
+  "publication_followup": "CI cache discovery fix; research outputs unchanged."
 }
