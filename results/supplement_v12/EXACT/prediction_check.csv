@@ -1,0 +1,15 @@
+,0
+E4_pool16_greedy_max_abs_diff,8.380580727157184e-05
+E4_pool16_greedy_all_within,True
+E4_pool16_local_max_abs_diff,7.030696881046573e-05
+E4_pool16_local_all_within,True
+E4_pool16_restarts_max_abs_diff,8.586457601483731e-06
+E4_pool16_restarts_all_within,True
+E4_pool16_exact_share_res_cf,0.37405656761352385
+E4_pool20_greedy_max_abs_diff,0.0001042395142948584
+E4_pool20_greedy_all_within,True
+E4_pool20_local_max_abs_diff,0.00011091277655755011
+E4_pool20_local_all_within,True
+E4_pool20_restarts_max_abs_diff,2.0939756588055174e-05
+E4_pool20_restarts_all_within,True
+E4_pool20_exact_share_res_cf,0.3424448826658888
