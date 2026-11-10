@@ -1,0 +1,9 @@
+dataset,oracle-exante,oracle-split,oracle-test
+BankMarketing,False,False,True
+Diabetes,False,True,True
+HMEQ,False,False,True
+LendingClub,False,True,True
+PPDai,False,True,True
+Spambase,False,True,True
+UCI_Credit,False,True,True
+USPS,True,True,True
