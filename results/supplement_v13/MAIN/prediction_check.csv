@@ -1,0 +1,9 @@
+,0
+P1_noisiest4,"LendingClub,UCI_Credit,PPDai,HMEQ"
+P1_luck_material_in_noisiest4,2
+P1_luck_material_all,3
+P1_spearman_noise_luck_share_of_split_lead,0.19047619047619052
+P2_reuse_share_late_gt_early_count,8
+P3_all_short_oracle-test_count,8
+P3_all_short_oracle-split_count,6
+P3_all_short_oracle-exante_count,1
