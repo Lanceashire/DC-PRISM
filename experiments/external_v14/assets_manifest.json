@@ -1,0 +1,51 @@
+{
+  "started_utc": "2026-11-10T17:00:50.324677+00:00",
+  "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "torch": "2.11.0+cu128",
+  "assets": {
+    "sentence-transformers/all-MiniLM-L6-v2": {
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"
+    },
+    "fancyzhx/ag_news": {
+      "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+      "url": "https://huggingface.co/datasets/fancyzhx/ag_news"
+    },
+    "timm/mobilenetv3_small_100.lamb_in1k": {
+      "revision": "76b303ec28c466e9df37f4745dfb7aef20ab87ae",
+      "url": "https://huggingface.co/timm/mobilenetv3_small_100.lamb_in1k"
+    },
+    "uoft-cs/cifar10": {
+      "revision": "0b2714987fa478483af9968de7c934580d0bb9a2",
+      "url": "https://huggingface.co/datasets/uoft-cs/cifar10"
+    }
+  },
+  "scope": "Frozen pretrained encoders; no end-to-end fine-tuning. Binary subsets, not full multiclass CDALBench.",
+  "agnews_business_scitech": {
+    "rows": 12000,
+    "features": 384,
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "sha256": "8ee593ed02d44da198a7efacdc23e2b430584e8855795685d84386577c81aef2",
+    "classes": {
+      "0": "Business",
+      "1": "Sci/Tech"
+    },
+    "parameters": 22713216,
+    "max_length": 128,
+    "exact_duplicates_removed": 2
+  },
+  "elapsed_complete_utc": "2026-11-10T17:09:06.360220+00:00",
+  "peak_gpu_memory_bytes": 256470528,
+  "cifar10_cat_dog": {
+    "rows": 12000,
+    "features": 1024,
+    "model": "timm/mobilenetv3_small_100.lamb_in1k",
+    "sha256": "1590682acbc288fd99817cb4af04e07ac9ba207cdcb4c3ba134354d3eb023492",
+    "classes": {
+      "0": "cat",
+      "1": "dog"
+    },
+    "parameters": 1517856,
+    "image_size": 224
+  }
+}

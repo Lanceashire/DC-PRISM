@@ -1,0 +1,71 @@
+{
+  "version": "external-v14-frozen-deep-encoders-nonlinear-head",
+  "origin": "supplement-v13 complete acquisition curves",
+  "datasets": [
+    "cifar10_cat_dog",
+    "agnews_business_scitech"
+  ],
+  "seeds": [
+    181001,
+    181002,
+    181003,
+    181004,
+    181005,
+    181006,
+    181007,
+    181008,
+    181009,
+    181010,
+    181011,
+    181012
+  ],
+  "steps": 30,
+  "pool": 40,
+  "batch": 10,
+  "replicates": 32,
+  "initial_labels": 68,
+  "test_size": 512,
+  "validation_size": 512,
+  "aux_size": 2000,
+  "reference_size": 256,
+  "pca_dim": 32,
+  "head_hidden": 32,
+  "head_epochs": 60,
+  "fit_chunk": 1536,
+  "phat": "gbdt",
+  "inference": {
+    "alpha": 0.05,
+    "material_delta": 0.0005,
+    "families": {
+      "whole_components": 4,
+      "early_and_early_minus_late_luck": 4,
+      "strategy_shortfalls": 18
+    },
+    "method": "paired t over trajectory seeds; Bonferroni simultaneous two-sided CIs and Holm one-sided p-values within each family"
+  },
+  "predictions": {
+    "H1": "Whole-curve test reuse is positive in each of the two tasks (simultaneous lower CI > 0).",
+    "H2": "Early outcome-luck contrast is positive and early-minus-late contrast is positive in each task (four simultaneous lower CIs > 0).",
+    "H3": "In each task all three strategies are materially short of oracle-test, while at least one strategy is certified not materially short of oracle-exante (its simultaneous upper CI <= 0.0005). Mere failure to reject a shortfall does NOT satisfy the second clause."
+  },
+  "stopping": "Fixed 12 seeds per task; no interim endpoint inspection or seed expansion; failures retained. Development uses only 99001; synthetic timing only 99003.",
+  "scope": [
+    "Frozen pretrained deep encoders plus retrained nonlinear 32-hidden-unit ReLU head; not end-to-end backbone fine-tuning.",
+    "Binary subsets of CIFAR-10 and AG News; not full multiclass benchmark reproduction.",
+    "V13 pool/batch/steps/R retained; evaluation split sizes, 12 seeds, baseline set and neural learner are external adaptations.",
+    "Outcome-luck contrast is conditional on an estimated GBDT outcome model and on greedy search; not a population irreducibility certificate.",
+    "Own-trajectory contrasts include downstream trajectory changes; significance changes do not establish equivalence."
+  ],
+  "search": "Greedy search picks exactly 10. Each lookahead fit retrains the same nonlinear head for 60 full-batch Adam steps; common seed and initialization across all fits. Ex-ante sees only synthetic candidate labels; actual labels revealed after selection.",
+  "preprocessing": "Official test set only used for intentional oracle-test selection and shared scoring. Other roles drawn disjointly from official train per seed. PCA/whitening fitted only to auxiliary features. GBDT uses only auxiliary labels. Text exact dedup across official splits before embedding.",
+  "baselines": [
+    "Random",
+    "Uncertainty",
+    "CoreSet"
+  ],
+  "development": {
+    "smoke_seed": 99001,
+    "timing_seed": 99003,
+    "formal_seeds_unseen": true
+  }
+}

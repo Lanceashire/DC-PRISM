@@ -1,0 +1,18 @@
+{
+  "frozen_at_utc": "2026-11-10T17:12:03.186942+00:00",
+  "protocol_sha256": "0fc6d178aab343b57ad71c89f00d10ad394946563e2e03c59eea31cca7427df7",
+  "sources": {
+    "prepare.py": "3010ca2e28a10dc877f18d9654c1c532ffe6255c05d6aaca3cf7bb0dc3618c6e",
+    "gpu_head.py": "91e43765afe807d3a527792068f84ee8737d0b20775ef2b654eee3bfab935f78",
+    "run.py": "8c23d65e05b6c0aa9599f332ce7c590a3863e69f587f2acf2b451543b7df01a3",
+    "stats.py": "fc3e43316bef63df38412e802c97d3b427ce7696b5ffaf46baa6d91fb1d2e973",
+    "check_search.py": "4bba7695c33ed5884f676351efc4cbb9e54b7e47b5ccab11a13fba8c5a102662",
+    "assets_manifest.json": "959ef2ec9e5f745ccb7720d00ab518fd841ee7da7e20e01eebf59660dcd882b4"
+  },
+  "data_sha256": {
+    "cifar10_cat_dog.npz": "1590682acbc288fd99817cb4af04e07ac9ba207cdcb4c3ba134354d3eb023492",
+    "agnews_business_scitech.npz": "8ee593ed02d44da198a7efacdc23e2b430584e8855795685d84386577c81aef2"
+  },
+  "development": "Only development seed 99001 and synthetic timing seed 99003 were used before freezing. No formal seed metrics inspected. Full-search two-step timing: 4.65595 seconds. Both tasks have complete two-step smoke runs.",
+  "scope": "External adaptation of v13 on frozen deep representations and nonlinear heads. Full 30-step/40-candidate/10-label/R32 curves; two binary tasks, 12 seeds each."
+}
