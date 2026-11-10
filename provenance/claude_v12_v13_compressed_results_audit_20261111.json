@@ -1,0 +1,381 @@
+{
+  "scope": "Full decompression and schema/type validation of EVERY row. These are experiment-level aggregated metrics, NOT source dataset rows. No features, personal IDs, source record IDs, free-form text, or individual predictions are stored. Numeric seeds identify simulation runs. Each v13 row is the average Brier/selection statistic for a complete evaluation split or acquisition batch. Each v12 row is an aggregate over label worlds/search variants.",
+  "files": [
+    {
+      "path": "results/supplement_v12/BENCH/rows.csv.gz",
+      "sha256": "18e0b9ae5d4c9fc0b3c1cfcf29dbd971efa6e10b4842e8d642511e808c41d1ab",
+      "rows": 640,
+      "columns": [
+        "part",
+        "learner",
+        "dataset",
+        "seed",
+        "n_hist",
+        "K",
+        "noise_index",
+        "R",
+        "reported",
+        "hold",
+        "cf",
+        "plug",
+        "k_post",
+        "k_plug",
+        "prac_T2_DC-PRISM",
+        "prac_T1_DC-PRISM",
+        "prac_T2_Fisher-cost",
+        "prac_T1_Fisher-cost",
+        "prac_T2_TargetVar-Greedy",
+        "prac_T1_TargetVar-Greedy",
+        "prac_T2_BAIT-Greedy",
+        "prac_T1_BAIT-Greedy",
+        "prac_T2_Uncertainty",
+        "prac_T1_Uncertainty",
+        "prac_T2_Random-Feasible",
+        "prac_T1_Random-Feasible"
+      ],
+      "categorical_values": {
+        "part": [
+          "BENCH"
+        ],
+        "learner": [
+          "logit"
+        ],
+        "dataset": [
+          "BankMarketing",
+          "HMEQ",
+          "LendingClub",
+          "Spambase",
+          "USPS"
+        ]
+      },
+      "all_other_nonempty_fields_numeric": true
+    },
+    {
+      "path": "results/supplement_v12/BENCHMLP/rows.csv.gz",
+      "sha256": "69cba8432101056147a35dd2c9bb5ddd2bc4a2edfc6883ad82851aadc23286de",
+      "rows": 768,
+      "columns": [
+        "part",
+        "learner",
+        "dataset",
+        "seed",
+        "n_hist",
+        "K",
+        "noise_index",
+        "R",
+        "reported",
+        "hold",
+        "cf",
+        "plug",
+        "k_post",
+        "k_plug",
+        "prac_T2_DC-PRISM",
+        "prac_T1_DC-PRISM",
+        "prac_T2_Fisher-cost",
+        "prac_T1_Fisher-cost",
+        "prac_T2_TargetVar-Greedy",
+        "prac_T1_TargetVar-Greedy",
+        "prac_T2_BAIT-Greedy",
+        "prac_T1_BAIT-Greedy",
+        "prac_T2_Uncertainty",
+        "prac_T1_Uncertainty",
+        "prac_T2_Random-Feasible",
+        "prac_T1_Random-Feasible"
+      ],
+      "categorical_values": {
+        "part": [
+          "BENCHMLP"
+        ],
+        "learner": [
+          "mlp"
+        ],
+        "dataset": [
+          "BankMarketing",
+          "HMEQ",
+          "LendingClub",
+          "Spambase",
+          "USPS",
+          "USPSraw"
+        ]
+      },
+      "all_other_nonempty_fields_numeric": true
+    },
+    {
+      "path": "results/supplement_v12/CORE/rows.csv.gz",
+      "sha256": "4b9a1c75786dc02d625fa0d00fc1197e7868c99a24812bd86320edc2dee0bdb0",
+      "rows": 7296,
+      "columns": [
+        "part",
+        "dataset",
+        "seed",
+        "K",
+        "family_size",
+        "cal_a",
+        "cal_b",
+        "cal_b_lo",
+        "cal_b_hi",
+        "ece",
+        "variant",
+        "noise_index",
+        "kind",
+        "method",
+        "R",
+        "H_post",
+        "H_pre_plugin",
+        "H_pre_cf",
+        "F_plugin",
+        "F_cf",
+        "F_lo",
+        "F_up",
+        "reported",
+        "hold",
+        "cf",
+        "plug",
+        "k_post",
+        "k_plug",
+        "prac_T2_DC-PRISM",
+        "prac_T1_DC-PRISM",
+        "prac_T2_Fisher-cost",
+        "prac_T1_Fisher-cost",
+        "prac_T2_TargetVar-Greedy",
+        "prac_T1_TargetVar-Greedy",
+        "prac_T2_BAIT-Greedy",
+        "prac_T1_BAIT-Greedy",
+        "prac_T2_Uncertainty",
+        "prac_T1_Uncertainty",
+        "prac_T2_Random-Feasible",
+        "prac_T1_Random-Feasible",
+        "fits_last_variant"
+      ],
+      "categorical_values": {
+        "part": [
+          "CORE"
+        ],
+        "dataset": [
+          "BankMarketing",
+          "Diabetes",
+          "HMEQ",
+          "LendingClub",
+          "PPDai",
+          "Spambase",
+          "UCI_Credit",
+          "USPS"
+        ],
+        "variant": [
+          "gbdt",
+          "mlp_phat",
+          "recal_hi",
+          "recal_lo",
+          "recal_point"
+        ],
+        "kind": [
+          "family",
+          "oracle"
+        ],
+        "method": [
+          "family",
+          "greedy",
+          "local",
+          "restarts"
+        ]
+      },
+      "all_other_nonempty_fields_numeric": true
+    },
+    {
+      "path": "results/supplement_v12/EXACT/rows.csv.gz",
+      "sha256": "b84355ab3d74b4749acf8a79a8e1c2ef81c1727deba07da8d8da3ff09f53010f",
+      "rows": 3072,
+      "columns": [
+        "part",
+        "dataset",
+        "seed",
+        "K",
+        "n_space",
+        "pool",
+        "noise_index",
+        "method",
+        "R",
+        "reported",
+        "hold",
+        "cf",
+        "plug",
+        "k_post",
+        "k_plug",
+        "prac_T2_DC-PRISM",
+        "prac_T1_DC-PRISM",
+        "prac_T2_Fisher-cost",
+        "prac_T1_Fisher-cost",
+        "prac_T2_TargetVar-Greedy",
+        "prac_T1_TargetVar-Greedy",
+        "prac_T2_BAIT-Greedy",
+        "prac_T1_BAIT-Greedy",
+        "prac_T2_Uncertainty",
+        "prac_T1_Uncertainty",
+        "prac_T2_Random-Feasible",
+        "prac_T1_Random-Feasible"
+      ],
+      "categorical_values": {
+        "part": [
+          "EXACT"
+        ],
+        "dataset": [
+          "BankMarketing",
+          "Diabetes",
+          "HMEQ",
+          "LendingClub",
+          "PPDai",
+          "Spambase",
+          "UCI_Credit",
+          "USPS"
+        ],
+        "method": [
+          "exact",
+          "greedy",
+          "local",
+          "restarts"
+        ]
+      },
+      "all_other_nonempty_fields_numeric": true
+    },
+    {
+      "path": "results/supplement_v12/LATER/rows.csv.gz",
+      "sha256": "380772293576001402661618f22e492f6eb743484e754586e21702ac70a95a31",
+      "rows": 1152,
+      "columns": [
+        "part",
+        "dataset",
+        "seed",
+        "n_hist",
+        "K",
+        "noise_index",
+        "kind",
+        "R",
+        "H_post",
+        "H_pre_plugin",
+        "H_pre_cf",
+        "F_plugin",
+        "F_cf",
+        "F_lo",
+        "F_up",
+        "reported",
+        "hold",
+        "cf",
+        "plug",
+        "k_post",
+        "k_plug",
+        "prac_T2_DC-PRISM",
+        "prac_T1_DC-PRISM",
+        "prac_T2_Fisher-cost",
+        "prac_T1_Fisher-cost",
+        "prac_T2_TargetVar-Greedy",
+        "prac_T1_TargetVar-Greedy",
+        "prac_T2_BAIT-Greedy",
+        "prac_T1_BAIT-Greedy",
+        "prac_T2_Uncertainty",
+        "prac_T1_Uncertainty",
+        "prac_T2_Random-Feasible",
+        "prac_T1_Random-Feasible"
+      ],
+      "categorical_values": {
+        "part": [
+          "LATER"
+        ],
+        "dataset": [
+          "BankMarketing",
+          "Diabetes",
+          "HMEQ",
+          "LendingClub",
+          "PPDai",
+          "Spambase",
+          "UCI_Credit",
+          "USPS"
+        ],
+        "kind": [
+          "family",
+          "oracle"
+        ]
+      },
+      "all_other_nonempty_fields_numeric": true
+    },
+    {
+      "path": "results/supplement_v13/BIGV/rows.csv.gz",
+      "sha256": "972e3355e166e24bcc4b25023c5dbb24eae207607929306ab5724cd665cd7e32",
+      "rows": 15872,
+      "columns": [
+        "dataset",
+        "seed",
+        "v_mult",
+        "noise_index",
+        "n_aux",
+        "step",
+        "method",
+        "n_labels",
+        "brier_T",
+        "brier_V",
+        "picked_pos_rate",
+        "picked_noise"
+      ],
+      "categorical_values": {
+        "dataset": [
+          "BankMarketing",
+          "LendingClub",
+          "PPDai",
+          "UCI_Credit"
+        ],
+        "method": [
+          "BAIT-Greedy",
+          "Fisher-cost",
+          "Random",
+          "TargetVar-Greedy",
+          "Uncertainty",
+          "oracle-exante",
+          "oracle-split",
+          "oracle-test"
+        ]
+      },
+      "all_other_nonempty_fields_numeric": true
+    },
+    {
+      "path": "results/supplement_v13/MAIN/rows.csv.gz",
+      "sha256": "8371af4028e4eb1bb738727aaf3b15709ee2f54c3e342cad33d4b477028c305f",
+      "rows": 63488,
+      "columns": [
+        "dataset",
+        "seed",
+        "v_mult",
+        "noise_index",
+        "n_aux",
+        "step",
+        "method",
+        "n_labels",
+        "brier_T",
+        "brier_V",
+        "picked_pos_rate",
+        "picked_noise"
+      ],
+      "categorical_values": {
+        "dataset": [
+          "BankMarketing",
+          "Diabetes",
+          "HMEQ",
+          "LendingClub",
+          "PPDai",
+          "Spambase",
+          "UCI_Credit",
+          "USPS"
+        ],
+        "method": [
+          "BAIT-Greedy",
+          "Fisher-cost",
+          "Random",
+          "TargetVar-Greedy",
+          "Uncertainty",
+          "oracle-exante",
+          "oracle-split",
+          "oracle-test"
+        ]
+      },
+      "all_other_nonempty_fields_numeric": true
+    }
+  ]
+}
