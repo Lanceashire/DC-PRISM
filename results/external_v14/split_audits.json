@@ -1,0 +1,578 @@
+[
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181001,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "c83387a6f66f8f34ff4b6b6748ed4025febce2d4910206b44c28de80f2337da0",
+      "validation": "aa3b3c7c3db3314cc8075c730c67d48013410f4d4ee82a40461bc0273eb55c90",
+      "reference": "589436ca177b309b3ac415aad9225488048de83c0e1331c344ed09420c7bf728",
+      "history": "1fe8b10f2987cc7c4ebe647091b84d356c0beed53f0072c93edce845961e9777",
+      "stream": "ad1e975e72b44d3820546401f0d700763d74cde64c98415da34a7bf9bafbcf9e",
+      "test": "07cd6c2e5627deab7cb900d98d6028875aff2d6ff89b4f637f4135c16a11d528"
+    },
+    "phat_aux_holdout_brier": 0.13648108114986307,
+    "phat_aux_holdout_accuracy": 0.815,
+    "noise_index": 0.08463200899128906
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181002,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "ebd10c3414c887239c3b0a0c52c02ded55552e8270c13d53341431bb82f0eef8",
+      "validation": "f9e7d628976d944f6b173b0190953de017ae308092d74347376771c394e72223",
+      "reference": "962509d6a49a73ca823fabc64237b4985741be56908ea903c3e89347846872c4",
+      "history": "18c112759c4c00ec8a895026bad5296f85b5de47e1816a1533dee6810d875d1a",
+      "stream": "e92835b56f9600c558ee0fb77a66f4d4d2b42fef8afff289d601d2359640c0c1",
+      "test": "0ab64d30154793ada813187d3b1285b3a39fbecc1453be49c26a692bebf5db43"
+    },
+    "phat_aux_holdout_brier": 0.12123112782127896,
+    "phat_aux_holdout_accuracy": 0.845,
+    "noise_index": 0.09218392257460836
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181003,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "fb1e8cf471b958cdcfebac8f139e253352bd2ea7d646f7553f8f4bbf80048c6c",
+      "validation": "f8d16f0e02be6f7216867153dd5f777d4daf63ebb08de2557848cb3c790dc56e",
+      "reference": "d12ef785883c1e1fae6bfc18d38746fc69c19e3af5f6c3e5ecfaa336079a6083",
+      "history": "986811464eaf97be05e0339668956baf0cf841d342cbd36315d1d3877b501256",
+      "stream": "af6486030800ba5c749ee05c7951cd77e6f605150562d6ad46f46f20da332a8b",
+      "test": "4e97b0e9f5eef845035a230752df760af066ad5fec6092a64871d31620a55445"
+    },
+    "phat_aux_holdout_brier": 0.12641299717023538,
+    "phat_aux_holdout_accuracy": 0.7975,
+    "noise_index": 0.08748660235104459
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181004,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "4c2d853f7cafec7fcea472717b734e5b7cad1df23ccdcc9d5ed190fe313c2603",
+      "validation": "2fe594eb2a74f1227d22bc581394e3af76401ee6591a049f0b12f66024c77544",
+      "reference": "373a1b8d65c2a1956c359f3fef426f8f19554b59a64a37e020378e214204d27d",
+      "history": "f7f8523285a62704a6b2d41544be21fea1fb1033b38339675682a1f6e992107c",
+      "stream": "b31e5bf8a0b3562b7ba3755ec6173b1a98f1b83055e054c58c9ef3bbf13413e6",
+      "test": "ad6ed5e81343f08d73e1b12d915b178249eccf06e3f388e49477a3446698cdf9"
+    },
+    "phat_aux_holdout_brier": 0.11625676025521421,
+    "phat_aux_holdout_accuracy": 0.84,
+    "noise_index": 0.08545514236644244
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181005,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "e8ef9e9d90e1152fe7fcfe70f1fd2db3a2afb069e9305bb28511dc49373d5482",
+      "validation": "27b45e7515c3236c3a001eedc543899d55fb8c6a65e323054d11278e846bdc9f",
+      "reference": "4500a94924c387272074e70e883afd1f4178b3a08ea2501cfa041ff045685d5b",
+      "history": "42b9c75f211a63c24111334454c5601438827ad20fb9d8d45cd62165f4d91d7f",
+      "stream": "58bff53fc8d4b6ab4011bd11678215d006ad2bbcbf3a89ff267c6a20db19f7b5",
+      "test": "c4fd52ca6f911ea4e45e02396fcd8cee8e0e83a9988e7d6ffe9c4afd32391f90"
+    },
+    "phat_aux_holdout_brier": 0.10761276743756042,
+    "phat_aux_holdout_accuracy": 0.855,
+    "noise_index": 0.08603186471813996
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181006,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "2dab8179bc0d207b1b78650d32df207d6274c3130c07832fb72926402cb4c217",
+      "validation": "e1866bb67fa5af931a2af2012a9585149e11f814e1ee2d4b94f7b2949e919837",
+      "reference": "3c436139706ffd3cc261a972d54c5380269c4ab19e45c8cabe7ef547e92be64d",
+      "history": "0610c8d071473463e5831e53bbc288778f5df0a0f295ffdfad7c4eeec5c7918d",
+      "stream": "0f51af565c083ec91e1d315ce2d186d0dc70617c08b59cce142fffd486585bd5",
+      "test": "deb7b191d9532be333c25758cbd5fab76e5bdb9c761db6a1b6007d5754f7c94b"
+    },
+    "phat_aux_holdout_brier": 0.10361155762232876,
+    "phat_aux_holdout_accuracy": 0.8425,
+    "noise_index": 0.0842938055138943
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181007,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "6464665f623df44773f5ddace5650dc2e1c5e317ef9b86a571e6e5bf0df22997",
+      "validation": "9aea80d965e46ac5b6d59c0dd2745b30c39bafbdc528ad5adff3f4368e88592a",
+      "reference": "1064d85f402e505f11fa5920fffbd472ea30a6b10e70594116d2547bb5e85c86",
+      "history": "e9b67439c28e6c9e6aa6cb01695df5e2160b738c0a0bc1e0bcd355e29f6bab7e",
+      "stream": "9addd504c66c109a8b6005d10abe84f6b78a0dc36e6a5e4e9df2889fe8b9dfd4",
+      "test": "9f35aabf8c268689baf1f8e7495bed9386e3b87d26e2687e0baf0d7d16d44785"
+    },
+    "phat_aux_holdout_brier": 0.09088662192223572,
+    "phat_aux_holdout_accuracy": 0.8875,
+    "noise_index": 0.08848918105435692
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181008,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "814ab5058eac7834ea256e8f6519be924a8749fdb485aafca1bdb8070e5d68c0",
+      "validation": "3195722a2ed9810c08f3e930d71c7e2fc83cd9d56ec6b2240bf98ee17699e684",
+      "reference": "84a4cae6e6a1b3af2d2c136750542e7d72dfa6cf4e5ab904a4ba37254307f82e",
+      "history": "3c09b51cdde96c50105281d537d7df7bdafa967b7af80f55553754b7f630b65f",
+      "stream": "ff520d305d25fef3e1ec42910699932263feb1b1d75fb3ac239c516ca34f2370",
+      "test": "578f94a4d9bacf034ded7d0a99abfce44442ba5b27ea11c4a43c9bf3247a83f2"
+    },
+    "phat_aux_holdout_brier": 0.094010130590152,
+    "phat_aux_holdout_accuracy": 0.8675,
+    "noise_index": 0.08619268954930763
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181009,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "f5141b1fc5d391676267585ed1e4a12491ed982cef9a3c37158a9e23ebef69f6",
+      "validation": "4deed2669e04e5f0ea34ff8626128805882e52dcfc313456b686ede19b1d0e91",
+      "reference": "bc9a0995ab0935d658f878d3ca60fd56ebe63db15a2bf49193c6219ae90c5556",
+      "history": "f8cd10b97e54b3cc7267801facdd06bd8ea7e0611842d5cf32c29ac45cbcb5dc",
+      "stream": "3878172e4ee6efe4b7e98fc0f93f0bccc952158bedff4d368e91237b476b8b90",
+      "test": "5b556bfdaefaf62edf52aaf5e059f3bf603f8d3f838f7d63e6ee35da39de407b"
+    },
+    "phat_aux_holdout_brier": 0.11770768044683598,
+    "phat_aux_holdout_accuracy": 0.8325,
+    "noise_index": 0.08237436015503086
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181010,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "dccae857236d8c6c134abb16a2bc1e1cc5161d950bc1bfe3cf4522cdba7a3c34",
+      "validation": "6300c6cf65102b71d079aad48da08937305b1b1d286037754c0e20a91c3b7589",
+      "reference": "77d265b68feccb340214b1b7ce47b42a84fd7c6844aaaca638927a559bc29289",
+      "history": "d10a698faca4fb97ee73b73b2d6a0ee06fb56d4931c17f78b08e557e49ff84d8",
+      "stream": "ff7f705fcf96c25e27a685c682acf23c8376e9dbb6c30f95df11506a5fc99f28",
+      "test": "2ae6848c9d9bc09badd73e8ab5ea805d1a6684536af737c009b28a232718c9fd"
+    },
+    "phat_aux_holdout_brier": 0.09186927216666183,
+    "phat_aux_holdout_accuracy": 0.8775,
+    "noise_index": 0.08790543455446856
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181011,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "8e92d1d0814eab7ab938d4cb0593e06097a41130258a171667666907319c3282",
+      "validation": "e4b1d18ae8a7410b1c756447d1f985ae11e94c2ee4863581e1e9e48638833f27",
+      "reference": "255a18410daae3cfd33029c120c7b3301e5a4b96579252d27065d8a414f22104",
+      "history": "f1cf0702a14674d46da27bb0b66f2e9f6a8a70f61b7e0ebc60b61a36e50fc576",
+      "stream": "4ab586754b518d9fb1c4d4923075a43dfa18d9157db06d88e35cd1e0ecb7315a",
+      "test": "3ddac43eb519a0008f776e963046f19440709e9798f0ab24c04615d706e62e17"
+    },
+    "phat_aux_holdout_brier": 0.1038322836001303,
+    "phat_aux_holdout_accuracy": 0.8675,
+    "noise_index": 0.09337404103002235
+  },
+  {
+    "dataset": "cifar10_cat_dog",
+    "seed": 181012,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "a617fcd9ec4721021d833b3c498f4a13970544f704a7e5c8e1cd731490e1527a",
+      "validation": "4baefc2604114fc55120d2a35fd3515b6b3fcdd25ed8af3b9b773decb2cbbb47",
+      "reference": "9616c774a72f294c9f66698337979aae4f7f8bef22ec272ef2f39c45b8eb4c8b",
+      "history": "d168dedd062ecca19390fe470e117e34df5ab87d37a786eb2cc1bb7209a30207",
+      "stream": "ddc19253827b2b6916470c0dd816098efc5e1612baa41b26bb123fb9ea0f542b",
+      "test": "9ec16c7f63caff4bd41fc935ce9e97b5afbd9f11cec114cbbc47822ddd270b8e"
+    },
+    "phat_aux_holdout_brier": 0.10497258034120932,
+    "phat_aux_holdout_accuracy": 0.85,
+    "noise_index": 0.08775446075258311
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181001,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "60ca6e45cfa63dd0731eb474a3288711fb7ebddf23e06a72cb1344246dec2d0a",
+      "validation": "2b919e8481f71cbf13658012f1adbdf9c1499a527630d4190d6fc8ca41ec5aa5",
+      "reference": "f245ff54306d148ba89400b25262e1d1665ed3164944c7f3d08fe5d5e3d8a518",
+      "history": "69844740116ac5df3c9d52c4112b56bb148bdf37fe4d2981c8505ed2a4b78790",
+      "stream": "8153a14366e44c7ff4e948e242333d4c59dabc7ad841f2796f0567bcc4d62ce0",
+      "test": "e1cd1020e719f78409e1ae2fa80804fbc3788cc9f591965f575f322e937aee77"
+    },
+    "phat_aux_holdout_brier": 0.09730381680881499,
+    "phat_aux_holdout_accuracy": 0.87,
+    "noise_index": 0.07177100233652631
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181002,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "70498f662c56f07ab87f3d0ae6a1e6b4971b7bb28e8eba496a7dae02a6a4ddc3",
+      "validation": "c7a8468fb56cd9e1d16dab76106107b2e31be5a8847f60db5e993444e73f9ad8",
+      "reference": "70eda90041a1a64fd1fb963588f8b1e148de4cdb3b0d264027e505899ae39c99",
+      "history": "4ff640d934f2461e3bc1e7e3e7f9cb60bd0b0ad17fd9a52f857a32d20786facf",
+      "stream": "624253acf3b75a14e8fd59b4543a6f19de5c73aa10db2eb847675be082939413",
+      "test": "055d294636d72db7c781ee9dd67e2004b3892989ca1aed22b7db12673864b05d"
+    },
+    "phat_aux_holdout_brier": 0.10000698429681883,
+    "phat_aux_holdout_accuracy": 0.85,
+    "noise_index": 0.07434613621707081
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181003,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "e695eb2124d0e185444ce195ccb35a0a78cd2222024035a89fe785b618a78cfd",
+      "validation": "6d6bf9c7d17b96e6a3ee66fdaf69f88c10359f84b2f6f165423af088989ce469",
+      "reference": "0c70be7d1b50fafbcb1f50aba798002fe3f68f60d36a7b1ed6e563f53db18cb1",
+      "history": "f1b4b8ca8ba1a9bb9c77ca2daf8cffa103f8c4ffe90d01cdee13a630dffcd310",
+      "stream": "05b81d3737b3e666253c71f23ea58bc63a6887f8458f79a01d0b46c8079eb607",
+      "test": "0bbdd5b03ba2ee5b00a70d50886ed26eb623f89fc5b0bf0a4c8d98f67b7b7d02"
+    },
+    "phat_aux_holdout_brier": 0.0893709947519341,
+    "phat_aux_holdout_accuracy": 0.8975,
+    "noise_index": 0.07658029929204409
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181004,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "c1c57c65793dc387741b40989ec8067b29546ae77bf9b7e08cb7a17c9d746080",
+      "validation": "579f63930663048c69f75119a53cfafecbff4f9cb30a67b90cc8358bcef7b209",
+      "reference": "bc5b9d3dce49f62380ca6c0d0973e26fb24952a3eefb90ed5362a8622bc2c4eb",
+      "history": "b9cc95fe9e20988304e7b9c92dbecd4523fb3e09a20bae9785b46a4ca603f06b",
+      "stream": "c3c4126b4a350857e0e3214e32df667ba09c9458fed0cc49b35a8e0086d1e194",
+      "test": "c5c113b2a9ffe09ce62c84cdafa65e60ddb081d8eaa79bec9e0c8c09567c1e5c"
+    },
+    "phat_aux_holdout_brier": 0.09347765892128487,
+    "phat_aux_holdout_accuracy": 0.87,
+    "noise_index": 0.06993973872061138
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181005,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "da7cb5fc6bee480537a342dc5ecf5e9f5cdf166a2cf636f5c9566f18024a196b",
+      "validation": "335be56f765acf9c5010e44d8671028e832e011d4f14743d90c1bd523c456575",
+      "reference": "76850ae8625e5f1d50f6d324c202385bb7f0ec7fb71154110e643baab7629fc6",
+      "history": "fecbc249ceeb2434ea3376947506926231254a1a6792f041869fe4dc2a87c333",
+      "stream": "bcab12bc03c081f1af3ed60bc9f36e47085acff6e1cbb703c4b8cc1b9384f4a0",
+      "test": "20c6d852edfdd6334053d50e79b2e37dd893bd5ec9cc3650846659d9d7baab4f"
+    },
+    "phat_aux_holdout_brier": 0.08084217843626032,
+    "phat_aux_holdout_accuracy": 0.8975,
+    "noise_index": 0.07446678183982945
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181006,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "0e7a1f43ee3eb3063cc865dc902d23b345e26250d7dde046aacee742b016fe5d",
+      "validation": "aa2388811a193d8f9b42419eaf1323fb41c0cbbc7848da363d34105a0c162ceb",
+      "reference": "274813b456f6a990054e69619567b6dac7b9c6ca8a3ef9d1dd5972f6a055e127",
+      "history": "0a103b70b37f59eb3cdd3c3953dc01b1cb2ea96ec161c6c5f7295490b23f8df6",
+      "stream": "177a8ff655c5f2941dfcc34b4a17790f87fb91a16d0c5ff7c173b727ed80320b",
+      "test": "14cfd150a6ed8678307c0c77106075e39f827b52373d63d9859ee8ecb8ef74dd"
+    },
+    "phat_aux_holdout_brier": 0.10019034338900411,
+    "phat_aux_holdout_accuracy": 0.86,
+    "noise_index": 0.08224716921600357
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181007,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "101abf051e5d95069ad7fd1c5d9732247d8826c1c30ebaccddfa1a0ac00456f4",
+      "validation": "5309508297382141eeffd7ea95ee8f0ac38614d514fd3c33b5de5048344f243a",
+      "reference": "030a0007de89bd3e653c2e38b3dbc7a85e18e100726ed53c96d721af471794b6",
+      "history": "6c83bdafa93f4a2b8b9d6212f37384e077513bbb555df510c4cf8d5853a6455a",
+      "stream": "df71056b30b09f8d83bab12a9e7f8636bc85cc7c0e6c929f0faa2ecdd7a7bc6a",
+      "test": "25cbc206bc85e2196c9e8876b886060ff0cacf9349ccf8e54451d3bac60dae24"
+    },
+    "phat_aux_holdout_brier": 0.08684852810452309,
+    "phat_aux_holdout_accuracy": 0.885,
+    "noise_index": 0.07091313028846508
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181008,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "dcbc236dcb053a3b87e4a7dcc353534ffc66c3f70973d780a7818c4aafd84a3b",
+      "validation": "2d4194459eb354c7fe36800e1d1b0960395706585a3c9480639f02ce02cb7f4b",
+      "reference": "c7578d3ae7533f3e161afef4f59761ad30e3c32614354f33053af2a2fb205429",
+      "history": "720a50b50122e4eba878060ecedca4025832876f3e1f58801e4e7dfdaaf97424",
+      "stream": "dbf7035230ae6d71e61d5e1843e82117433471f1cdc2b4ec78377830517280d1",
+      "test": "5e6a730a46c8ca454ec80ee59c26e8173c096558587c16e1cf249a0830a9ee1c"
+    },
+    "phat_aux_holdout_brier": 0.10980367457657678,
+    "phat_aux_holdout_accuracy": 0.8525,
+    "noise_index": 0.08094238400999243
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181009,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "2594d11960218775adc40cc451484de0246501062d67c95ccaed16ac6cbeb062",
+      "validation": "da0aceae5dd5d068a25070cfa708ff1eab9ff242839b79c0f71396b7d8630d10",
+      "reference": "d1f9c8c3a0daa26acd62779f5308ba5d49e25bf0928d66f0eccdd88bf32bac4b",
+      "history": "59d5912791ec5c049904decf998de9979bccc444586cea55a41f645a7de6b59b",
+      "stream": "391089a7c76f9e2749d52fa4c5091358ce65e0f4fd6b7e55c3e808dc1a7517e4",
+      "test": "1a66b81fb35bdfd74106fd7cede179ea92f4ff679d02a422e28421ad06126775"
+    },
+    "phat_aux_holdout_brier": 0.10693496135820123,
+    "phat_aux_holdout_accuracy": 0.8375,
+    "noise_index": 0.06939365763146668
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181010,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "29440d25cf29235eef3f2b879fb4429aa9a418bac3d5741b84946e4fa3cd51eb",
+      "validation": "7640d17ba365b953d22287def166edf54a3ae3536e1eba532674648264129a1a",
+      "reference": "68adece049556b175b5cd0d8aa58249c3eacde72a9284b956948b451c9758a57",
+      "history": "f32191e51fc6b71cc0b08bec65df2e76d5bceb9d1e9f4ed15094dde103527a73",
+      "stream": "82f4dbe562393bead00eec8c96a8904f50b138411687ec77599a2936feb9dfc5",
+      "test": "f66c59ecd53ac3bf81e68ba254a09706feecf10060de30cca9ccf2a7b75615da"
+    },
+    "phat_aux_holdout_brier": 0.08462983332888173,
+    "phat_aux_holdout_accuracy": 0.8875,
+    "noise_index": 0.0731560234860126
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181011,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "3c6679154ac986c65b57955add7186c5af8d296747c402909ebe0ca5ef86b793",
+      "validation": "3999735b0b439b201467b4c46ef51567b91a6f9618c81d9e67476eb408488221",
+      "reference": "9ed0dbbc93e1e70f627f59bba5167dcbd50998217f39abff2c069f2f5a0ebc09",
+      "history": "5d392e895a0341b98daf7a91afad2297bd74359e29a85d8d669136c93973e6af",
+      "stream": "fe6aff95c975b206f7bcdbc77b6034be40bc7d103aca2a6101798eca9771ac04",
+      "test": "054c512c0d9a9ee490162a2884f879f799425f6c4615d785d9e62706e7edaa8a"
+    },
+    "phat_aux_holdout_brier": 0.09411830927519174,
+    "phat_aux_holdout_accuracy": 0.8675,
+    "noise_index": 0.07788231456572348
+  },
+  {
+    "dataset": "agnews_business_scitech",
+    "seed": 181012,
+    "counts": {
+      "aux": 2000,
+      "validation": 512,
+      "reference": 256,
+      "history": 68,
+      "stream": 1200,
+      "test": 512
+    },
+    "pairwise_disjoint": true,
+    "split_hashes": {
+      "aux": "a6bf773d0e0c28056d1ff3ec2f51355189052b1ced84e0c6e35ffa5a85ea7634",
+      "validation": "622cd357eae9fa416734befad6ba7986b7f5ac5ecf0eec2ab8365f4d4fd89006",
+      "reference": "298eb02230c2c7cda03ee31167a571bc13a4d27390899aedbcc696013b4c70e5",
+      "history": "db0ce4ad1e36fda87a23113ce7eb2828db956dc0e2aba854320568df1a85f817",
+      "stream": "57144176f393b624a11dfcc4efda21a52f2ee58e9088b70f51cd1ae02c63853c",
+      "test": "a42a4e67b769d4f9ac3f1e80468b8cae839e394d800c5c9e8af939d0b030a5d8"
+    },
+    "phat_aux_holdout_brier": 0.07918106837168712,
+    "phat_aux_holdout_accuracy": 0.9025,
+    "noise_index": 0.07732318370161087
+  }
+]

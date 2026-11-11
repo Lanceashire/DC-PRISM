@@ -1,0 +1,131 @@
+{
+  "status": "COMPLETE",
+  "smoke": false,
+  "protocol_sha256": "0fc6d178aab343b57ad71c89f00d10ad394946563e2e03c59eea31cca7427df7",
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "torch": "2.11.0+cu128",
+  "completed": [
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181001,
+      "seconds": 82.49244689941406
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181002,
+      "seconds": 81.32526421546936
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181003,
+      "seconds": 81.66179323196411
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181004,
+      "seconds": 80.91298842430115
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181005,
+      "seconds": 81.063072681427
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181006,
+      "seconds": 81.3877604007721
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181007,
+      "seconds": 80.93668675422668
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181008,
+      "seconds": 81.01974606513977
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181009,
+      "seconds": 81.4408962726593
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181010,
+      "seconds": 81.41214609146118
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181011,
+      "seconds": 80.93414974212646
+    },
+    {
+      "dataset": "cifar10_cat_dog",
+      "seed": 181012,
+      "seconds": 81.37567901611328
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181001,
+      "seconds": 80.89976811408997
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181002,
+      "seconds": 80.30243873596191
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181003,
+      "seconds": 80.75639581680298
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181004,
+      "seconds": 80.65404891967773
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181005,
+      "seconds": 81.26496148109436
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181006,
+      "seconds": 80.98068332672119
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181007,
+      "seconds": 80.45715808868408
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181008,
+      "seconds": 80.82564496994019
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181009,
+      "seconds": 80.59019422531128
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181010,
+      "seconds": 80.31385707855225
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181011,
+      "seconds": 80.67442727088928
+    },
+    {
+      "dataset": "agnews_business_scitech",
+      "seed": 181012,
+      "seconds": 80.43571710586548
+    }
+  ],
+  "elapsed_seconds": 1944.1544539928436,
+  "peak_gpu_memory_bytes": 330467328
+}

@@ -1,0 +1,29 @@
+{
+  "H1": true,
+  "H2": false,
+  "cifar10_cat_dog": {
+    "all_materially_short": {
+      "oracle-test": true,
+      "oracle-split": false,
+      "oracle-exante": false
+    },
+    "any_certified_not_materially_short": {
+      "oracle-test": false,
+      "oracle-split": false,
+      "oracle-exante": false
+    }
+  },
+  "agnews_business_scitech": {
+    "all_materially_short": {
+      "oracle-test": true,
+      "oracle-split": false,
+      "oracle-exante": false
+    },
+    "any_certified_not_materially_short": {
+      "oracle-test": false,
+      "oracle-split": false,
+      "oracle-exante": false
+    }
+  },
+  "H3": false
+}

@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "frozen_sources_and_data_unchanged": true,
+  "all_24_split_assertions_pass": true,
+  "initial_scores_identical_across_methods": true,
+  "decomposition_max_absolute_error": 0.0,
+  "compressed_results": {
+    "sha256": "176b5482c7db03278340797a0c5226a83cb9834b53395bb169cf24c8beef6dea",
+    "rows": 4464,
+    "columns": [
+      "dataset",
+      "seed",
+      "method",
+      "step",
+      "n_labels",
+      "brier_T",
+      "brier_V",
+      "accuracy_T",
+      "noise_index"
+    ],
+    "categorical_values": {
+      "dataset": [
+        "agnews_business_scitech",
+        "cifar10_cat_dog"
+      ],
+      "method": [
+        "CoreSet",
+        "Random",
+        "Uncertainty",
+        "oracle-exante",
+        "oracle-split",
+        "oracle-test"
+      ]
+    },
+    "all_other_fields_numeric": true,
+    "content": "Only per-experiment trajectory/step aggregate Brier, accuracy, label budget and estimated noise. No source examples, features, personal identifiers, or per-record predictions."
+  }
+}

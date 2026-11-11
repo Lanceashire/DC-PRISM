@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "trajectories": 24,
+  "rows": 4464,
+  "all_curves_complete": true,
+  "uniform_label_budget": true,
+  "finite_metrics": true
+}

@@ -1,12 +1,14 @@
 """Descriptive figures only; formal decisions are in the prespecified statistics tables."""
 from pathlib import Path
+import argparse
 import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-ROOT=Path(__file__).resolve().parent;OUT=ROOT/'MAIN'
+ROOT=Path(__file__).resolve().parent
+ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,default=ROOT/'MAIN');args=ap.parse_args();OUT=args.output
 df=pd.read_csv(OUT/'rows.csv.gz')
 colors={'oracle-test':'#b51f2b','oracle-split':'#d47a0a','oracle-exante':'#151c28','Random':'#6d7c9c','Uncertainty':'#2868ae','CoreSet':'#29846b'}
 names={'cifar10_cat_dog':'CIFAR-10 cat/dog | MobileNetV3-Small','agnews_business_scitech':'AG News Business/Sci-Tech | MiniLM-L6'}
