@@ -1,0 +1,30 @@
+{
+  "note": "GitHub API import creates new commit identities. Every imported commit has exactly the same Git tree as the corresponding Claude local commit. The local repository and its uncommitted manuscript edits were left unchanged.",
+  "commits": [
+    {
+      "original": "fbf0a1944fb5ebef8655aa9018b25091d39c7d5a",
+      "published": "738824fa748033cf9495bcabd14a5fd85025efae",
+      "tree": "b2b7315cc6c668d19ef0c1beeb1bd9f89cdb1a74"
+    },
+    {
+      "original": "26e6facdff24d27fb483e52ac2022672b5b016cf",
+      "published": "9fbcf61c67ae947213a58744645e35987394eadd",
+      "tree": "27a36af1ae88ebd4a2a5859be076c3b972490847"
+    },
+    {
+      "original": "3952e47547477b6b6b0d01a1aab211fee71aa02a",
+      "published": "10b2d511e43cc8bf1a06f34e9c749f8b6dd9bc90",
+      "tree": "71dd33d830156951ca3948c0b438f01d58244bd9"
+    },
+    {
+      "original": "97be653a108b08669702b715a618d8852f18410e",
+      "published": "36fcd92e5aef3fab931d5ef307a001cfa8bed2fe",
+      "tree": "523f60fc96c2bee3ddad4db199143ab4bd1f6446"
+    },
+    {
+      "original": "e6ead7540559ec8a397121714a1cfd990593f519",
+      "published": "264b1b961b0e543245cbba9e953c37b71f7eb9bd",
+      "tree": "eb083b1dfdac7a49a42a08041a4ef6c1454ea46e"
+    }
+  ]
+}

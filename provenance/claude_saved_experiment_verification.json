@@ -1,0 +1,23 @@
+{
+  "supplement_v12": {
+    "protocol_matches_freeze": true,
+    "source_hashes_match": true,
+    "sources_checked": 23,
+    "saved_runs": {
+      "CORE": "COMPLETE",
+      "BENCHMLP": "COMPLETE",
+      "EXACT": "COMPLETE",
+      "BENCH": "COMPLETE",
+      "LATER": "COMPLETE"
+    }
+  },
+  "supplement_v13": {
+    "protocol_matches_freeze": true,
+    "source_hashes_match": true,
+    "sources_checked": 7,
+    "saved_runs": {
+      "MAIN": "COMPLETE",
+      "BIGV": "COMPLETE"
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+ "version": "supplement-v12-final-revision",
+ "created_at_utc": "2026-11-10T10:28:40.135783+00:00",
+ "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+ "diabetes_npz_sha256": "0d4e21f0a879c36907d30546a8c0f09a2aab30668afa946803f6337d09e424da",
+ "benchmarks_npz_sha256": "2f5ca1620576d397447172b0cfb659100768a487c5a4789611bed13c5fb39f28",
+ "usps_raw_npz_sha256": "d1d1076665d7190b4b44fa0796b32b11b94c2a3e9fee9eaae7a8650068cac78b",
+ "CORE": {
+  "datasets": [
+   "HMEQ",
+   "LendingClub",
+   "PPDai",
+   "UCI_Credit",
+   "Diabetes",
+   "USPS",
+   "Spambase",
+   "BankMarketing"
+  ],
+  "seed_start": 161001,
+  "n_seeds": 48,
+  "R_family": 128,
+  "R_family_list": [
+   8,
+   16,
+   32,
+   64,
+   128
+  ],
+  "R_greedy_list": [
+   8,
+   16,
+   32,
+   64
+  ],
+  "R_search": 32,
+  "n_boot": 200,
+  "smoke_overrides": {
+   "R_family": 8,
+   "R_family_list": [
+    4,
+    8
+   ],
+   "R_greedy_list": [
+    4,
+    8
+   ],
+   "R_search": 4,
+   "n_boot": 20
+  },
+  "primary_family_size": 16
+ },
+ "EXACT": {
+  "datasets": [
+   "HMEQ",
+   "LendingClub",
+   "PPDai",
+   "UCI_Credit",
+   "Diabetes",
+   "USPS",
+   "Spambase",
+   "BankMarketing"
+  ],
+  "seed_start": 162001,
+  "n_seeds": 24,
+  "pool": 16,
+  "R": 32,
+  "R_list": [
+   16,
+   32
+  ],
+  "smoke_overrides": {
+   "R": 4,
+   "R_list": [
+    4
+   ]
+  },
+  "n_seeds_pool20": 24,
+  "agreement_threshold": 0.0002
+ },
+ "BENCH": {
+  "datasets": [
+   "USPSraw",
+   "USPS",
+   "Spambase",
+   "BankMarketing",
+   "HMEQ",
+   "LendingClub"
+  ],
+  "learner_datasets": {
+   "logit": [
+    "USPS",
+    "Spambase",
+    "BankMarketing",
+    "HMEQ",
+    "LendingClub"
+   ],
+   "mlp": [
+    "USPSraw",
+    "USPS",
+    "Spambase",
+    "BankMarketing",
+    "HMEQ",
+    "LendingClub"
+   ]
+  },
+  "n_hist": [
+   68,
+   128,
+   256,
+   512
+  ],
+  "seed_start": 163001,
+  "n_seeds": 32,
+  "R": 32,
+  "smoke_overrides": {
+   "R": 4
+  },
+  "smoke_datasets": 6,
+  "primary_n_hist": 68
+ },
+ "LATER": {
+  "datasets": [
+   "HMEQ",
+   "LendingClub",
+   "PPDai",
+   "UCI_Credit",
+   "Diabetes",
+   "USPS",
+   "Spambase",
+   "BankMarketing"
+  ],
+  "n_hist": [
+   128,
+   256,
+   512
+  ],
+  "seed_start": 164001,
+  "n_seeds": 24,
+  "R_family": 64,
+  "R_greedy": 32,
+  "smoke_overrides": {
+   "R_family": 4,
+   "R_greedy": 4
+  }
+ },
+ "BENCHMLP": {
+  "datasets": [
+   "USPSraw",
+   "USPS",
+   "Spambase",
+   "BankMarketing",
+   "HMEQ",
+   "LendingClub"
+  ],
+  "learner_datasets": {
+   "logit": [
+    "USPS",
+    "Spambase",
+    "BankMarketing",
+    "HMEQ",
+    "LendingClub"
+   ],
+   "mlp": [
+    "USPSraw",
+    "USPS",
+    "Spambase",
+    "BankMarketing",
+    "HMEQ",
+    "LendingClub"
+   ]
+  },
+  "n_hist": [
+   68,
+   128,
+   256,
+   512
+  ],
+  "seed_start": 163001,
+  "n_seeds": 32,
+  "R": 32,
+  "smoke_overrides": {
+   "R": 4
+  },
+  "smoke_datasets": 6,
+  "primary_n_hist": 68
+ },
+ "base_commit": "018675c (GitHub main, consolidated through supplement-v11)",
+ "plan": "report/\u8bba\u6587\u5b9e\u9a8c\u6539\u8fdb\u8ba1\u5212.pdf (2026-11-10): E1 bracket, E2 benchmark conclusion, E3 stronger ex-ante search, E4 larger exact pools, E5 p_hat sensitivity on real labels, E6 later positions",
+ "excluded_by_user": "biology and chemistry datasets",
+ "inference": {
+  "alpha": 0.05,
+  "material_delta": 0.0005,
+  "legacy_delta": 0.0001,
+  "method": "paired one-sample t on independent states; Bonferroni simultaneous t intervals and global Holm within each registered family (supplement-v3 family_table)"
+ },
+ "predictions": {
+  "E1": "greedy benchmark accounting at R=64 per dataset: (a) residual at the plug-in end <= residual at the cross-fitted end in 8/8 datasets; (b) bracket width (cross-fit minus plug-in residual) smaller at R=64 than at R=8 in at least 7/8 datasets; (c) Spearman(noise index, residual share) > 0 at both ends; (d) in the two datasets with the highest mean noise index the plug-in-end residual share is >= 0.40. Family level (R=128): F_lo <= F_plugin <= F_cf in 8/8 datasets.",
+  "E3": "with local search from 10 starts used for both oracles (R=32): the cross-fitted ex-ante gain rises over greedy by at most 10% of the greedy reported gap in at least 6/8 datasets and pooled; Spearman(noise index, cross-fit residual share) > 0 under the strongest search.",
+  "E4": "for 16- and 20-candidate pools (R=32): greedy, local and multi-start searches agree with exhaustive search within 0.2e-3 Brier (dataset means of test reuse, cross-fit residual and cross-fitted gain) in every dataset.",
+  "E5": "for each outcome model variant (GBDT, recalibrated at the point slope and at the bootstrap 2.5%/97.5% slopes, MLP p_hat): Spearman(noise index, residual share) > 0 at both ends, and the two highest-noise datasets (GBDT index) keep a larger mean cross-fit residual share than the two lowest-noise datasets.",
+  "E2": "benchmark-style step (no delay, budget of six labels), history 68 (primary), per learner separately: (i) in the two datasets with the highest mean noise index, every practical strategy falls materially short of the oracle on the reported comparison (oracle and strategy scored on T1), and at least one strategy does not fall materially short of the cross-fitted ex-ante oracle (scored on T2) ('conclusion changes'); (ii) MLP learner on raw-pixel USPS: every practical strategy falls materially short of the cross-fitted oracle (conclusion unchanged). Secondary: the top-two strategies by reported gain differ from the top two by held-out gain in at least one dataset-learner cell. Later history sizes 128, 256, 512 descriptive.",
+  "E6": "descriptive: family floor and greedy residual share at history 128, 256, 512 under the risk envelope."
+ },
+ "stopping": "fixed sizes; no interim looks; no additional seeds after results",
+ "development": "smoke tests used seeds 99001 and 99003 only (timing); no study seed (161001-164024) was run before this freeze"
+}

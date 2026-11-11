@@ -1,0 +1,63 @@
+{
+ "version": "supplement-v13-curves-split-oracle",
+ "created_at_utc": "2026-11-10T12:46:25.071376+00:00",
+ "base_commit": "3952e47 (supplement-v12 paper revision)",
+ "motivation": "Zhou et al. (AISTATS 2021) select the oracle on a separate validation set, which removes test reuse; CDALBench (2024) and BoSS (2026) select on the test split. Does outcome luck remain after the split, along full learning curves?",
+ "data_sha256": "8a4e800f5d64188fd718dc732be01007409a4d0953343b7c5febf0d713a238b5",
+ "diabetes_npz_sha256": "0d4e21f0a879c36907d30546a8c0f09a2aab30668afa946803f6337d09e424da",
+ "benchmarks_npz_sha256": "2f5ca1620576d397447172b0cfb659100768a487c5a4789611bed13c5fb39f28",
+ "excluded_by_user": "biology and chemistry datasets",
+ "common": {
+  "steps": 30,
+  "pool": 40,
+  "batch": 10,
+  "R": 32,
+  "learner": "l2-logistic 0.45",
+  "phat": "GBDT as supplement-v6 on records disjoint from T, V, Q, history and stream (cap 20000)"
+ },
+ "smoke_overrides": {
+  "steps": 2,
+  "R": 2
+ },
+ "MAIN": {
+  "datasets": [
+   "HMEQ",
+   "LendingClub",
+   "PPDai",
+   "UCI_Credit",
+   "Diabetes",
+   "USPS",
+   "Spambase",
+   "BankMarketing"
+  ],
+  "seed_start": 171001,
+  "n_seeds": 32,
+  "v_mult": 1
+ },
+ "BIGV": {
+  "datasets": [
+   "LendingClub",
+   "UCI_Credit",
+   "PPDai",
+   "BankMarketing"
+  ],
+  "seed_start": 172001,
+  "n_seeds": 16,
+  "v_mult": 4
+ },
+ "strategies": "Random, Uncertainty, BAIT-greedy, TargetVar-greedy, Fisher-cost; DC-PRISM omitted because it may acquire fewer than b labels by design",
+ "inference": {
+  "alpha": 0.05,
+  "material_delta": 0.0005,
+  "legacy_delta": 0.0001,
+  "method": "paired t over seeds, Bonferroni simultaneous intervals and Holm within each registered family"
+ },
+ "predictions": {
+  "P1": "MAIN, whole-curve ALC: outcome luck = ALC(oracle-exante) - ALC(oracle-split) is material positive (simultaneous interval above 0.5e-3) in at least the 4 datasets with the highest noise index; Spearman(noise index, luck share of the split-oracle lead over the best strategy) > 0.",
+  "P2": "MAIN: the test-reuse share of the test-oracle lead over the best strategy is larger in the late window (steps 21-30) than in the early window (steps 1-10) in at least 6/8 datasets.",
+  "P3": "MAIN: every strategy falls materially short of oracle-test in 8/8 datasets and of oracle-split in at least 6/8 datasets; every strategy falls materially short of oracle-exante in at most 4/8 datasets.",
+  "P4": "BIGV (validation set four times the test set): luck remains material positive in at least 3/4 datasets."
+ },
+ "stopping": "fixed sizes; no interim looks; no additional seeds after results",
+ "development": "smoke tests use seed 99001 only (2 steps, R=2)"
+}

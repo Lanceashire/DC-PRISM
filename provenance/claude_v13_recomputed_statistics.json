@@ -1,0 +1,24 @@
+{
+  "MAIN": {
+    "saved_summary_tables_recomputed_match": true,
+    "tables": [
+      "summary_all.csv",
+      "summary_early.csv",
+      "summary_late.csv",
+      "primary_luck_reuse.csv",
+      "primary_shortfall.csv",
+      "all_strategies_materially_short.csv",
+      "prediction_check.csv"
+    ]
+  },
+  "BIGV": {
+    "saved_summary_tables_recomputed_match": true,
+    "tables": [
+      "summary_all.csv",
+      "summary_early.csv",
+      "summary_late.csv",
+      "primary_luck_reuse.csv",
+      "prediction_check.csv"
+    ]
+  }
+}

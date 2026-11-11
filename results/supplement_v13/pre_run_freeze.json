@@ -1,0 +1,15 @@
+{
+  "version": "supplement-v13-curves-split-oracle",
+  "frozen_at_utc": "2026-11-10T12:54:19.795955+00:00",
+  "protocol_sha256": "207d9bab032fb19333fe2ed710ae5704f1e6a6c024b4b65d0b967fc93522de27",
+  "source_sha256": {
+    "experiments/supplement_v13/run.py": "0be98643b6be12aedfcfeaa77af2c5cab6eded758f532c9d45bb1c33ce7b1694",
+    "experiments/supplement_v13/stats_v13.py": "27fe8b49560f980f70eb2569a3e21cc67dd593711628de3172e62fc0cd6e1104",
+    "experiments/supplement_v12/common.py": "266f1cda8ac6aa387629a704819edaf3b2cdec4ccfbe0bca5ecbc525f2ce8b88",
+    "experiments/supplement_v3/baselines.py": "fd1bcc5dac538d2b1716239a1c925e71a308c66ccab52119f3348b5dc742f90c",
+    "experiments/supplement_v5/run_offline.py": "f23aef60330a7aeb16414db5d16b479d7c8ddf2dd36cc24dcc32cebaeda0bacd",
+    "experiments/supplement_v6/run.py": "b9a4f2735a37c98033313beed3ebde56f146b57b96ed9d78d9032d610bd1bc76",
+    "src/prism_engine.py": "f90c1f1fb727cf4d3b281b3e13bdc4aa7f1ff9f35a69de019acc1ab8e98105fe"
+  },
+  "note": "frozen before any study seed (171001-172016) was run; smoke used 99001, timing used 99003"
+}
