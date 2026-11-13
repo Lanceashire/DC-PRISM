@@ -1,0 +1,30 @@
+{
+ "version": "external-v15-multiclass-encoders-heads",
+ "origin": "supplement-v13 (three oracles, full curves) and external-v14 (two binary frozen-encoder tasks), scaled up",
+ "steps": 30, "pool": 40, "batch": 10, "replicates": 32, "initial_labels": 68,
+ "test_size": 512, "validation_size": 512, "aux_size": 4000, "reference_size": 256, "pca_dim": 64,
+ "hidden": 64, "epochs": 60, "lr_mlp": 0.02, "lr_linear": 0.05, "chunk": 1536,
+ "datasets": ["cifar10", "cifar100c", "fmnist", "svhn", "agnews", "dbpedia", "imdb", "yelp"],
+ "grids": {
+  "A": {"encoder": "primary", "head": "mlp", "seed_start": 191001, "n_seeds": 24, "datasets": ["cifar10", "cifar100c", "fmnist", "svhn", "agnews", "dbpedia", "imdb", "yelp"]},
+  "B": {"encoder": "secondary", "head": "mlp", "seed_start": 192001, "n_seeds": 12, "datasets": ["cifar10", "cifar100c", "fmnist", "svhn", "agnews", "dbpedia", "imdb", "yelp"]},
+  "C": {"encoder": "primary", "head": "linear", "seed_start": 193001, "n_seeds": 12, "datasets": ["cifar10", "cifar100c", "fmnist", "svhn", "agnews", "dbpedia", "imdb", "yelp"]}
+ },
+ "encoders": {"primary": {"image": "facebook/dinov2-small", "text": "BAAI/bge-small-en-v1.5"}, "secondary": {"image": "timm/mobilenetv3_small_100.lamb_in1k", "text": "sentence-transformers/all-MiniLM-L6-v2"}},
+ "strategies": ["Random", "Margin", "Entropy", "CoreSet", "BADGE"],
+ "brier": "multiclass: mean over records of sum_k (p_k - 1[y=k])^2",
+ "noise_index": "mean Gini impurity 1 - sum_k p_hat_k^2 over stream candidates",
+ "inference": {"alpha": 0.05, "material_delta": 0.0005, "method": "paired t over trajectory seeds within dataset; Bonferroni simultaneous two-sided intervals and Holm within each registered family"},
+ "windows": {"early": [1, 10], "late": [21, 30], "all": [1, 30]},
+ "predictions": {
+  "Q1": "Grid A: whole-curve test reuse = ALC(oracle-split) - ALC(oracle-test) is material positive (simultaneous lower bound > 0.0005) in at least 6/8 datasets.",
+  "Q2": "Grid A: the reuse share of the test-oracle lead over the best strategy is larger in the late window than in the early window in at least 6/8 datasets.",
+  "Q3": "Grid A: every strategy falls materially short of oracle-test in at least 7/8 datasets, and of oracle-exante in at most 4/8 datasets.",
+  "Q4": "Grid A: early-window outcome luck = ALC(oracle-exante) - ALC(oracle-split) over steps 1-10 is material positive in at least 4/8 datasets.",
+  "Q5": "Grids B and C separately: the number of datasets where every strategy falls materially short of oracle-test exceeds the number where every strategy falls materially short of oracle-exante."
+ },
+ "scope": "Frozen pretrained encoders plus retrained softmax heads (BoSS also retrains only the final layer); not end-to-end fine-tuning; 512-record test and validation samples; one PCA-64 representation per seed fitted on label-free auxiliary features; outcome model = multiclass GBDT on auxiliary labels only.",
+ "stopping": "fixed seeds; no interim endpoint inspection; no seed expansion; failures retained",
+ "smoke_overrides": {"steps": 2, "replicates": 2, "pool": 12, "batch": 3},
+ "excluded": "no biology, chemistry, drone or other domain-specific data at the user's request; only the most common public benchmarks"
+}

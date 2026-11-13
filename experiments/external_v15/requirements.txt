@@ -1,0 +1,6 @@
+# torch 2.11 with CUDA (install from the official PyTorch index, see setup.sh); versions used locally:
+numpy==2.5.4
+pandas==3.1.1
+scipy==1.18.1
+scikit-learn==1.9.1
+threadpoolctl

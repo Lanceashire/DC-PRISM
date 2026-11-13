@@ -1,0 +1,9 @@
+{
+  "status": "RUNNING",
+  "smoke": false,
+  "grids": "A,B,C",
+  "tasks": 384,
+  "started": 1794540532.5721855,
+  "done": 99,
+  "elapsed": 17130.827788591385
+}

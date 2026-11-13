@@ -1,5 +1,7 @@
 # DC-PRISM — label-acquisition experiments and oracle-gap evaluation
 
+**2026-11-13 external-v15 更新：** 已归档 L40 新完成的 **99/384 条部分结果**（未作中途结论），另保留本机旧 18 条并单独标注。见 [可迁移实验程序、数据包与续跑说明](experiments/external_v15/README.md) 和 [结果快照记录](results/external_v15/README.md)。完整预提取特征数据包已生成，附件发布状态见结果说明，未放入 Git 历史。
+
 **2026-11-07 consolidated research snapshot / 研究工作汇总。** This repository now includes the local Claude and Codex work through supplement v11, both bilingual manuscript branches, saved experimental rows and trajectories, frozen protocols, code, and review records. The prior public head was `a35fc466b4cfdd4783310a3da39f1ea6e88edd8b` (supplement v1); the local Claude checkout was based on `f8a71bb` plus two uncommitted generator changes. Local historical commit IDs are recorded as provenance; the consolidated public commit does not recreate those historical Git objects.
 
 ## Start here / 阅读入口

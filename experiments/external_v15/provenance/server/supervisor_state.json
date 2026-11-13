@@ -1,0 +1,11 @@
+{
+  "status": "RUNNING",
+  "started": 1794540530.0997357,
+  "supervisor_pid": 1548,
+  "workers": 2,
+  "total": 384,
+  "log": "runs/main_20261113_112850.log",
+  "note": "Frozen protocol and research sources unchanged; local18 excluded.",
+  "updated": 1794540530.1001806,
+  "runner_pid": 1549
+}

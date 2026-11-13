@@ -1,0 +1,2 @@
+name, driver_version, utilization.gpu [%], memory.used [MiB], memory.total [MiB]
+NVIDIA L40, 580.126.09, 100 %, 2999 MiB, 46068 MiB

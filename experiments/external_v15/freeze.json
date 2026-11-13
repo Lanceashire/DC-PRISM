@@ -1,0 +1,29 @@
+{
+  "frozen_at_utc": "2026-11-12T16:59:01.215164+00:00",
+  "protocol_sha256": "5542d27b1ad8ec16e94226cb5c3795d4c83ced3cd0ec9be29e4f2b1a846aa8f4",
+  "sources": {
+    "run_v15.py": "08037b894262039e4a1a46b131d56e8f30fd8dbd20fec5c13215af3cf337c368",
+    "heads.py": "36fec7bc0ae83671b87724402ef257d8cc24a7fce9cd9bc65d3cdd2fcf5d97d1",
+    "stats_v15.py": "55f9405a613a372af596313a504ac1732609cac87610d9789f0b2c17aaf22b4e",
+    "prepare_v15.py": "e69e753d5735537372faf59799383401e4ccb702b7f802ddc4cba38cf432dbc1"
+  },
+  "features": {
+    "agnews__bge.npz": "89d9b001857d86f79b7d40d3377ec71b709a64bfe0f98700ced7a2ab0649e32b",
+    "agnews__minilm.npz": "e286f94cbb8851be36dba7a8f4e15fbcb60ff22cc57dabf98331c79ed0194d25",
+    "cifar100c__dinov2s.npz": "992d8b25909ebada123cbbad510f8d3054df1ecfd024de37c286ec0a23c04076",
+    "cifar100c__mnv3s.npz": "22bf697451f1a6fd65b1014692b70df7bfc87780b63339dd24e6c958d1931faf",
+    "cifar10__dinov2s.npz": "570bf10f177996ecad9c6ba6f5bb931e6df55175d4b0bd408128de172385583b",
+    "cifar10__mnv3s.npz": "d7c3486d8d25fd91be7adcb8a6211d9481fe64721445d569783e39e6dc081aeb",
+    "dbpedia__bge.npz": "5f6369f9b617e4f04e6999e07cd4fabb6a7df5615fd5f148f221d521e920581a",
+    "dbpedia__minilm.npz": "fe838d4cf620b5b3a90ad3e7419bb1f0e3e130b6726d5964236a9869a7b5f4ee",
+    "fmnist__dinov2s.npz": "ea0a948e865ffaf06ea22e5ffd6509d1aa3b0f0f4ad62dc20d2c6059cefba73d",
+    "fmnist__mnv3s.npz": "ab75b9301f8e5c882fb8c0b459a747cb41d6673db53faf7ec7bf4eb26265f4ad",
+    "imdb__bge.npz": "a18c1d2bc66991fb9e3e4fcb2cfd00683a5b4989e5229205a9e49ec8e74f3d2e",
+    "imdb__minilm.npz": "b69506810a911ab76824c7b64321239309a9288b44eb86b4a3af80d592226cc9",
+    "svhn__dinov2s.npz": "463398e719a2a6b3f8dae0d2285e244f9a05b914c48b0b3998d8c1fc57dd4e99",
+    "svhn__mnv3s.npz": "bc21506484a493647bb2f83cb7b0ca8af03198cc4e84e73524fe11c9a6f18fff",
+    "yelp__bge.npz": "c333b4c600bd73324615db7698b7d957167c775d0c7c8e0b4672f7ae1ed83080",
+    "yelp__minilm.npz": "393480d8d892571e4a963c7bf93a95fafeb3093d29ac3a5e9b5e83589d8c3b6a"
+  },
+  "note": "frozen before any formal seed (191001-193012) was run; development and timing used seeds 99001 and 99003 only; TF32 matmul enabled"
+}

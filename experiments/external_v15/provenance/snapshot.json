@@ -1,0 +1,31 @@
+{
+  "snapshot_at": "2026-11-13T16:16:43.012025+08:00",
+  "status": "PARTIAL_RUNNING_SNAPSHOT",
+  "completed": 99,
+  "planned": 384,
+  "server": "GPUFree NVIDIA L40",
+  "workers": 2,
+  "by_dataset": {
+    "agnews": 12,
+    "cifar100c": 13,
+    "cifar10": 13,
+    "dbpedia": 12,
+    "fmnist": 13,
+    "imdb": 12,
+    "svhn": 12,
+    "yelp": 12
+  },
+  "old_local_results": 18,
+  "old_local_results_included_in_formal_count": false,
+  "inference": "No interim endpoint statistics calculated or inspected for this publication.",
+  "continuation": "Completed CSVs are skipped; in-flight trajectories restart from their seed.",
+  "hardware": "TF32 enabled. Continuing on a different GPU is a mixed-hardware run; retain source attribution.",
+  "dependencies": {
+    "torch": "2.7.1+cu128",
+    "numpy": "2.2.6",
+    "pandas": "3.1.1",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "threadpoolctl": "3.8.0"
+  }
+}

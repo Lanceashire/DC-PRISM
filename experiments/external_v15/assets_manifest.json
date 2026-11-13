@@ -1,0 +1,262 @@
+{
+  "assets": {
+    "uoft-cs/cifar10": {
+      "revision": "0b2714987fa478483af9968de7c934580d0bb9a2",
+      "kind": "dataset"
+    },
+    "facebook/dinov2-small": {
+      "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "kind": "model"
+    },
+    "timm/mobilenetv3_small_100.lamb_in1k": {
+      "revision": "76b303ec28c466e9df37f4745dfb7aef20ab87ae",
+      "kind": "model"
+    },
+    "fancyzhx/ag_news": {
+      "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+      "kind": "dataset"
+    },
+    "BAAI/bge-small-en-v1.5": {
+      "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "kind": "model"
+    },
+    "sentence-transformers/all-MiniLM-L6-v2": {
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "kind": "model"
+    },
+    "uoft-cs/cifar100": {
+      "revision": "aadb3af77e9048adbea6b47c21a81e47dd092ae5",
+      "kind": "dataset"
+    },
+    "zalando-datasets/fashion_mnist": {
+      "revision": "531be5e2ccc9dba0c201ad3ae567a4f3d16ecdd2",
+      "kind": "dataset"
+    },
+    "ufldl-stanford/svhn": {
+      "revision": "f9e1717d73324ebbc1ece84267ccd80d0aca0690",
+      "kind": "dataset"
+    },
+    "fancyzhx/dbpedia_14": {
+      "revision": "9abd46cf7fc8b4c64290f26993c540b92aa145ac",
+      "kind": "dataset"
+    },
+    "stanfordnlp/imdb": {
+      "revision": "e6281661ce1c48d982bc483cf8a173c1bbeb5d31",
+      "kind": "dataset"
+    },
+    "fancyzhx/yelp_polarity": {
+      "revision": "bbf1c97a1f0cf005e5aded43839fd814654a1557",
+      "kind": "dataset"
+    }
+  },
+  "features": {
+    "cifar10__dinov2s": {
+      "dataset": "uoft-cs/cifar10",
+      "config": null,
+      "encoder": "facebook/dinov2-small",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 10,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "570bf10f177996ecad9c6ba6f5bb931e6df55175d4b0bd408128de172385583b",
+      "seconds": 127.1
+    },
+    "cifar10__mnv3s": {
+      "dataset": "uoft-cs/cifar10",
+      "config": null,
+      "encoder": "timm/mobilenetv3_small_100.lamb_in1k",
+      "rows": 28000,
+      "dim": 1024,
+      "classes": 10,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "d7c3486d8d25fd91be7adcb8a6211d9481fe64721445d569783e39e6dc081aeb",
+      "seconds": 150.7
+    },
+    "agnews__bge": {
+      "dataset": "fancyzhx/ag_news",
+      "config": null,
+      "encoder": "BAAI/bge-small-en-v1.5",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 4,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 1,
+      "sha256": "89d9b001857d86f79b7d40d3377ec71b709a64bfe0f98700ced7a2ab0649e32b",
+      "seconds": 48.8
+    },
+    "agnews__minilm": {
+      "dataset": "fancyzhx/ag_news",
+      "config": null,
+      "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 4,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 1,
+      "sha256": "e286f94cbb8851be36dba7a8f4e15fbcb60ff22cc57dabf98331c79ed0194d25",
+      "seconds": 57.8
+    },
+    "cifar100c__dinov2s": {
+      "dataset": "uoft-cs/cifar100",
+      "config": null,
+      "encoder": "facebook/dinov2-small",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 20,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "992d8b25909ebada123cbbad510f8d3054df1ecfd024de37c286ec0a23c04076",
+      "seconds": 179.4
+    },
+    "cifar100c__mnv3s": {
+      "dataset": "uoft-cs/cifar100",
+      "config": null,
+      "encoder": "timm/mobilenetv3_small_100.lamb_in1k",
+      "rows": 28000,
+      "dim": 1024,
+      "classes": 20,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "22bf697451f1a6fd65b1014692b70df7bfc87780b63339dd24e6c958d1931faf",
+      "seconds": 204.6
+    },
+    "fmnist__dinov2s": {
+      "dataset": "zalando-datasets/fashion_mnist",
+      "config": null,
+      "encoder": "facebook/dinov2-small",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 10,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "ea0a948e865ffaf06ea22e5ffd6509d1aa3b0f0f4ad62dc20d2c6059cefba73d",
+      "seconds": 131.0
+    },
+    "fmnist__mnv3s": {
+      "dataset": "zalando-datasets/fashion_mnist",
+      "config": null,
+      "encoder": "timm/mobilenetv3_small_100.lamb_in1k",
+      "rows": 28000,
+      "dim": 1024,
+      "classes": 10,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "ab75b9301f8e5c882fb8c0b459a747cb41d6673db53faf7ec7bf4eb26265f4ad",
+      "seconds": 156.1
+    },
+    "svhn__dinov2s": {
+      "dataset": "ufldl-stanford/svhn",
+      "config": "cropped_digits",
+      "encoder": "facebook/dinov2-small",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 10,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "463398e719a2a6b3f8dae0d2285e244f9a05b914c48b0b3998d8c1fc57dd4e99",
+      "seconds": 451.6
+    },
+    "svhn__mnv3s": {
+      "dataset": "ufldl-stanford/svhn",
+      "config": "cropped_digits",
+      "encoder": "timm/mobilenetv3_small_100.lamb_in1k",
+      "rows": 28000,
+      "dim": 1024,
+      "classes": 10,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "bc21506484a493647bb2f83cb7b0ca8af03198cc4e84e73524fe11c9a6f18fff",
+      "seconds": 476.7
+    },
+    "dbpedia__bge": {
+      "dataset": "fancyzhx/dbpedia_14",
+      "config": null,
+      "encoder": "BAAI/bge-small-en-v1.5",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 14,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "5f6369f9b617e4f04e6999e07cd4fabb6a7df5615fd5f148f221d521e920581a",
+      "seconds": 79.0
+    },
+    "dbpedia__minilm": {
+      "dataset": "fancyzhx/dbpedia_14",
+      "config": null,
+      "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 14,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "fe838d4cf620b5b3a90ad3e7419bb1f0e3e130b6726d5964236a9869a7b5f4ee",
+      "seconds": 91.4
+    },
+    "imdb__bge": {
+      "dataset": "stanfordnlp/imdb",
+      "config": null,
+      "encoder": "BAAI/bge-small-en-v1.5",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 2,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 113,
+      "sha256": "a18c1d2bc66991fb9e3e4fcb2cfd00683a5b4989e5229205a9e49ec8e74f3d2e",
+      "seconds": 79.1
+    },
+    "imdb__minilm": {
+      "dataset": "stanfordnlp/imdb",
+      "config": null,
+      "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 2,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 113,
+      "sha256": "b69506810a911ab76824c7b64321239309a9288b44eb86b4a3af80d592226cc9",
+      "seconds": 104.1
+    },
+    "yelp__bge": {
+      "dataset": "fancyzhx/yelp_polarity",
+      "config": null,
+      "encoder": "BAAI/bge-small-en-v1.5",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 2,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "c333b4c600bd73324615db7698b7d957167c775d0c7c8e0b4672f7ae1ed83080",
+      "seconds": 153.5
+    },
+    "yelp__minilm": {
+      "dataset": "fancyzhx/yelp_polarity",
+      "config": null,
+      "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "rows": 28000,
+      "dim": 384,
+      "classes": 2,
+      "train": 24000,
+      "test": 4000,
+      "text_exact_duplicates_skipped": 0,
+      "sha256": "393480d8d892571e4a963c7bf93a95fafeb3093d29ac3a5e9b5e83589d8c3b6a",
+      "seconds": 177.6
+    }
+  }
+}
